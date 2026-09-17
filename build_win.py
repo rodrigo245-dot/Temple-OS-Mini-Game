@@ -30,16 +30,10 @@ icon_dir = os.path.join(res_dir, "icons")
 os.makedirs(icon_dir)
 shutil.copy(os.path.join(DIR, "appIcon.png"), os.path.join(icon_dir, "appIcon.png"))
 
-# Download neutralino.js if not present
-neu_js_path = os.path.join(res_dir, "js", "neutralino.js")
-if not os.path.exists(neu_js_path):
-    import urllib.request
-    urllib.request.urlretrieve("https://github.com/neutralinojs/neutralino.js/releases/download/v6.9.0/neutralino.js", neu_js_path)
-
 # 2. Prepare neutralino.config.json
 config = {
     "applicationId": "org.templeos.arcade",
-    "version": "4.0.0",
+    "version": "5.0.0",
     "defaultMode": "window",
     "port": 0,
     "url": "/",
