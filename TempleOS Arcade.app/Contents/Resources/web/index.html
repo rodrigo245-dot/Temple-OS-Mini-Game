@@ -59,18 +59,24 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     </div>
 
     <nav class="menu-items">
-      <div class="menu-item clickable" style="background:var(--vga-yellow); color:var(--vga-black); font-weight:bold;" onclick="desktop.openWindow('win-explorer')">📁 EXPLORATEUR (38 JEUX)</div>
-      <div class="menu-item clickable" style="color:var(--vga-light-green);" onclick="desktop.openWindow('win-nwo')">[👁️ NWO Tycoon]</div>
-      <div class="menu-item clickable" style="color:var(--vga-yellow);" onclick="desktop.openWindow('win-pyramid')">[🔺 Pyramid Run]</div>
-      <div class="menu-item clickable" onclick="desktop.openWindow('win-reptilian')">[🦎 Reptiliens]</div>
-      <div class="menu-item clickable" onclick="desktop.openWindow('win-tripong')">[📐 Tri-Pong]</div>
-      <div class="menu-item clickable" onclick="desktop.openWindow('win-decrypt')">[📜 Décrypteur]</div>
-      <div class="menu-item clickable" onclick="desktop.openWindow('win-achievements')">🏆 SUCCÈS</div>
+      <div class="menu-item clickable" style="background:var(--vga-yellow); color:var(--vga-black); font-weight:bold;" onclick="desktop.openWindow('win-explorer')">📁 EXPLORATEUR (45 JEUX)</div>
+      <div class="menu-item clickable" style="color:var(--vga-light-green);" onclick="desktop.openWindow('win-raycaster')">[🔫 Pentagone 3D]</div>
+      <div class="menu-item clickable" style="color:var(--vga-light-cyan);" onclick="desktop.openWindow('win-flight')">[✈️ Vol 3D]</div>
+      <div class="menu-item clickable" onclick="desktop.openWindow('win-warroom')">[🌍 War Room]</div>
+      <div class="menu-item clickable" onclick="desktop.openWindow('win-cards')">[🃏 Black Jack]</div>
+      <div class="menu-item clickable" onclick="desktop.openWindow('win-goat')">[🐐 Chèvre]</div>
+      <div class="menu-item clickable" onclick="desktop.openWindow('win-ide')">[💻 HolyC IDE]</div>
+      <div class="menu-item clickable" onclick="desktop.openWindow('win-soundboard')">[🗣️ Soundboard]</div>
+      <div class="menu-item clickable" onclick="desktop.openWindow('win-multiplayer')">[🌐 P2P Multi]</div>
       <div class="menu-item clickable" id="tile-btn" style="color:var(--vga-light-green);">[🪟 Mosaïque]</div>
+      <div class="menu-item clickable" style="color:var(--vga-light-red); font-weight:bold;" onclick="window.templeBSOD.trigger('CRASH MANUEL FORCÉ PAR L\'UTILISATEUR')">[💀 CRASH BSOD]</div>
       <div class="menu-item clickable" id="oracle-direct-btn" style="color: var(--vga-blue);">[F7 Oracle]</div>
     </nav>
 
     <div class="topbar-right">
+      <!-- Radio FM Chiptune -->
+      <div id="radio-btn" class="speaker-indicator clickable" onclick="window.templeRadio.togglePlay()" title="Cliquez pour allumer la radio chiptune">📻 RADIO : OFF</div>
+      <div class="speaker-indicator clickable" onclick="window.templeRadio.nextStation()" title="Changer de station" style="font-size:10px;">[STATION ⏩]</div>
       <!-- Indicateur Manette -->
       <div id="gamepad-indicator" style="font-size:11px; color:var(--vga-dark-gray);">🎮 MANETTE : OFF</div>
       <!-- Toggle Voix Terry -->
@@ -802,7 +808,129 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
         <div style="margin-top: 6px;">
           <button class="temple-btn primary" onclick="desktop.games.triPong.start()">ENGAGER LE SERVICE</button>
           <button class="temple-btn" onclick="desktop.games.triPong.stop()">PAUSE</button>
+    <!-- ==================================================================== -->
+    <!-- LE MEGASYS RING-0 (TEMPLEOS V5.0)                                    -->
+    <!-- ==================================================================== -->
+
+    <!-- 1. WOLFENSTEIN PENTAGONE 3D -->
+    <div id="win-raycaster" class="temple-window" style="top: 25px; left: 130px; width: 440px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>🔫</span><span>C:/MEGASYS/DOOM_PENTAGON_3D.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body" style="text-align: center;">
+        <div style="font-size: 11px; color: var(--vga-light-cyan); margin-bottom: 4px;">
+          [Z/S] AVANCER/RECULER • [Q/D] TOURNER • [ESPACE] PURIFIER L'ENNEMI
         </div>
+        <div id="raycaster-status" style="font-weight: bold; color: var(--vga-yellow); margin-bottom: 6px;">
+          PENTAGONE NIVEAU -1 • SCORE : 0
+        </div>
+        <canvas id="raycaster-canvas" style="border: 2px solid #55ff55; background: #000;"></canvas>
+        <div style="margin-top: 6px;">
+          <button class="temple-btn primary" onclick="desktop.games.raycaster.start()">INFILTRER LE PENTAGONE</button>
+          <button class="temple-btn" onclick="desktop.games.raycaster.stop()">PAUSE</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. SIMULATEUR DE VOL TERRY 3D -->
+    <div id="win-flight" class="temple-window" style="top: 35px; left: 150px; width: 480px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>✈️</span><span>C:/MEGASYS/GOD_FLIGHT_3D.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body" style="text-align: center;">
+        <div style="font-size: 11px; color: var(--vga-light-cyan); margin-bottom: 4px;">
+          SIMULATEUR DE VOL 3D TERRY DAVIS • [HAUT/BAS] TANGAGE • [GAUCHE/DROITE] ROULIS/LACET
+        </div>
+        <div id="flight-status" style="font-weight: bold; color: var(--vga-yellow); margin-bottom: 6px;">
+          ALT: 1200m | CAP: 0° | VITESSE: 140 KTS
+        </div>
+        <canvas id="flight-canvas" style="border: 2px solid #55ffff; background: #000;"></canvas>
+        <div style="margin-top: 6px;">
+          <button class="temple-btn primary" onclick="desktop.games.flightSim.start()">DÉCOLLAGE DU TEMPLE</button>
+          <button class="temple-btn" onclick="desktop.games.flightSim.stop()">PAUSE</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. BLACK JACK DU VATICAN -->
+    <div id="win-cards" class="temple-window" style="top: 45px; left: 170px; width: 460px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>🃏</span><span>C:/MEGASYS/VATICAN_BLACKJACK.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body">
+        <div id="vatican-cards-container" style="min-height: 280px;"></div>
+      </div>
+    </div>
+
+    <!-- 4. TAMAGOTCHI CHÈVRE SACRÉE -->
+    <div id="win-goat" class="temple-window" style="top: 55px; left: 190px; width: 440px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>🐐</span><span>C:/MEGASYS/GOAT_TAMAGOTCHI.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body">
+        <div id="goat-container" style="min-height: 290px;"></div>
+      </div>
+    </div>
+
+    <!-- 5. WAR ROOM CONSPIRATIONNISTE -->
+    <div id="win-warroom" class="temple-window" style="top: 30px; left: 120px; width: 580px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>🌍</span><span>C:/MEGASYS/WAR_ROOM_RADAR.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body" style="text-align: center;">
+        <div style="font-size: 11px; color: var(--vga-light-green); margin-bottom: 4px;">
+          RADAR DE SURVEILLANCE MONDIAL ECHELON • CLIQUEZ SUR LES BASES SECRÈTES
+        </div>
+        <canvas id="warroom-canvas" style="border: 2px solid #00aa00; background: #000;"></canvas>
+        <div id="warroom-log" style="text-align: left; background: #000; border: 1px solid #333; padding: 6px; margin-top: 6px; min-height: 60px;">
+          <div style="color: #aaa; font-size: 11px;">En attente de sélection d'une base...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. IDE HOLYC -->
+    <div id="win-ide" class="temple-window" style="top: 40px; left: 140px; width: 580px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>💻</span><span>C:/MEGASYS/HOLYC_IDE_COMPILER.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body">
+        <div style="font-size: 11px; color: var(--vga-light-cyan); margin-bottom: 4px;">
+          ÉCRIVEZ DU CODE HOLYC ET EXÉCUTEZ-LE EN DIRECT DANS LE KERNEL DU RING-0
+        </div>
+        <textarea id="holyc-editor" style="width: 100%; height: 160px; background: #000; color: #55ff55; font-family: monospace; font-size: 12px; border: 1px solid #777; padding: 6px; resize: none;"></textarea>
+        <div style="display: flex; gap: 8px; margin: 6px 0;">
+          <button class="temple-btn primary" onclick="desktop.games.holycIde.run()">⚡ COMPILER & EXÉCUTER</button>
+          <button class="temple-btn" onclick="desktop.games.holycIde.clear()">EFFACER CONSOLE</button>
+        </div>
+        <div id="holyc-output" style="background: #001100; border: 1px solid #00aa00; padding: 6px; height: 90px; overflow-y: auto; font-family: monospace; font-size: 11px;"></div>
+      </div>
+    </div>
+
+    <!-- 7. SOUNDBOARD TERRY DAVIS -->
+    <div id="win-soundboard" class="temple-window" style="top: 50px; left: 160px; width: 480px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>🗣️</span><span>C:/MEGASYS/TERRY_SOUNDBOARD.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body">
+        <div id="soundboard-container" style="min-height: 220px;"></div>
+      </div>
+    </div>
+
+    <!-- 8. MULTIJOUEUR WEBRTC P2P -->
+    <div id="win-multiplayer" class="temple-window" style="top: 60px; left: 180px; width: 480px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>🌐</span><span>C:/MEGASYS/NET_WEBRTC_P2P.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body">
+        <div id="multiplayer-container" style="min-height: 220px;"></div>
       </div>
     </div>
 
@@ -844,8 +972,19 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
   <script src="js/games/complex_ai.js"></script>
   <script src="js/games/tron.js"></script>
   <script src="js/games/chess.js"></script>
-  <script src="js/games/guitar_terry.js"></script>
   <script src="js/games/illuminati_games.js"></script>
+
+  <!-- MEGASYS V5.0 -->
+  <script src="js/bsod.js"></script>
+  <script src="js/radio.js"></script>
+  <script src="js/soundboard.js"></script>
+  <script src="js/multiplayer.js"></script>
+  <script src="js/holyc_ide.js"></script>
+  <script src="js/games/raycaster3d.js"></script>
+  <script src="js/games/flight_sim.js"></script>
+  <script src="js/games/vatican_cards.js"></script>
+  <script src="js/games/tamagotchi_goat.js"></script>
+  <script src="js/games/war_room.js"></script>
 
   <script src="js/games/explorer.js"></script>
   <script src="js/games/cia_radar.js"></script>
@@ -910,6 +1049,19 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
       desktop.games.illuminatiDecrypt = new IlluminatiDecryptGame('decrypt-container');
       desktop.games.whackReptilian = new WhackReptilianGame('reptilian-container');
       desktop.games.triPong = new TriPongGame('tripong-canvas', 'tripong-status');
+
+      // 8. Le Megasys Ring-0 (v5.0)
+      desktop.games.raycaster = new Raycaster3DGame('raycaster-canvas', 'raycaster-status');
+      desktop.games.flightSim = new FlightSimGame('flight-canvas', 'flight-status');
+      desktop.games.vaticanCards = new VaticanCardsGame('vatican-cards-container');
+      desktop.games.tamagotchiGoat = new TamagotchiGoatGame('goat-container');
+      desktop.games.warRoom = new WarRoomGame('warroom-canvas', 'warroom-log');
+      desktop.games.holycIde = new HolyCIDE('holyc-editor', 'holyc-output');
+      desktop.games.soundboard = new TerrySoundboard('soundboard-container');
+      desktop.games.multiplayer = new TempleMultiplayer('multiplayer-container');
+
+      // BSOD Simulator
+      window.templeBSOD = new TempleBSOD();
 
       // Activer le thème Illuminati par défaut
       desktop.setTheme('illuminati');

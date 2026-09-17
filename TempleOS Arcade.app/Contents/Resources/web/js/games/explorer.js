@@ -85,6 +85,20 @@ const TEMPLE_GAMES_CATALOG = [
       { id: "win-reptilian", name: "Whack-a-Reptilian (Denver)", file: "REPTILIAN.HC", icon: "🦎" },
       { id: "win-tripong", name: "Tri-Pong Maçonnique (3 Côtés)", file: "TRI_PONG.HC", icon: "📐" }
     ]
+  },
+  {
+    category: "8. LE MEGASYS RING-0 (v5.0)",
+    folder: "C:/MEGASYS/",
+    games: [
+      { id: "win-raycaster", name: "Wolfenstein Pentagone 3D", file: "DOOM_PENTAGON.HC", icon: "🔫" },
+      { id: "win-flight", name: "Simulateur de Vol Terry 3D", file: "GOD_FLIGHT.HC", icon: "✈️" },
+      { id: "win-cards", name: "Black Jack du Vatican", file: "VATICAN_BJ.HC", icon: "🃏" },
+      { id: "win-goat", name: "Tamagotchi Chèvre Sacrée", file: "GOAT_TAMAGOTCHI.HC", icon: "🐐" },
+      { id: "win-warroom", name: "War Room Conspirationniste", file: "WAR_ROOM.HC", icon: "🌍" },
+      { id: "win-ide", name: "IDE HolyC de Programmation", file: "HOLYC_IDE.HC", icon: "💻" },
+      { id: "win-soundboard", name: "Soundboard de Terry Davis", file: "TERRY_VOICE.HC", icon: "🗣️" },
+      { id: "win-multiplayer", name: "Liaison Multijoueur P2P", file: "NET_WEBRTC.HC", icon: "🌐" }
+    ]
   }
 ];
 

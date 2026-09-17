@@ -85,3 +85,15 @@ Ouvrez simplement [`index.html`](index.html) dans n'importe quel navigateur Web 
 - **T** : Réorganiser automatiquement toutes les fenêtres en Mosaïque.
 - **W/A/S/D** ou **Flèches** : Déplacements dans les jeux.
 - **Manette (PS5 / Xbox / Switch)** : Détectée et configurée automatiquement !
+
+### 8. ⚡ Le Megasys Ring-0 (v5.0)
+- **Wolfenstein Pentagone 3D** : Moteur de raycasting DDA 3D en vue subjective. Purifiez les agents de la CIA dans les couloirs du Pentagone !
+- **Simulateur de Vol Terry 3D** : Vol wireframe 3D basse résolution au-dessus de montagnes sacrées et de pyramides.
+- **Black Jack du Vatican & Tarot Maçonnique** : Jeu de cartes ésotérique contre le Diable avec pouvoirs sacrés.
+- **Tamagotchi Chèvre Sacrée** : Animal virtuel rétro en ASCII à élever en Ring-0 avec manne céleste.
+- **War Room Conspirationniste** : Carte mondiale vectorielle militaire avec bases secrètes cliquables (Zone 51, Denver, CERN, Bermudes).
+- **Simulateur de Crash BSOD (Red Screen of Death)** : Dump de registres CPU en direct (`RAX`, `RBX`, `RIP`) en cas d'alerte maximale ou de crash provoqué.
+- **IDE HolyC Intégré** : Mini éditeur de code permettant d'écrire et d'exécuter du code en direct dans l'OS avec sorties sonores.
+- **Radio FM Conspirationniste 8-bit** : Lecteur cassette chiptune avec 4 stations (Vatican Synthwave, Cyber-Moïse, Area 51, Grand Orgue).
+- **Soundboard Vocale de Terry Davis** : Boîte à sons avec citations cultes de Terry.
+- **Liaison Multijoueur P2P WebRTC** : Jouer à deux joueurs sur Tron ou Pong via un code de salle partagé.

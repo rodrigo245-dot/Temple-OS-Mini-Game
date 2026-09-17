@@ -150,6 +150,9 @@ class TempleDesktop {
       setTimeout(() => window.soundEngine.beep(900, 0.2, 'sawtooth'), 150);
       if (window.speechEngine) window.speechEngine.speak("Alerte rouge ! Les agents de la CIA brillent dans le noir !");
       if (window.achievementsManager) window.achievementsManager.unlock('paranoia_100');
+      setTimeout(() => {
+        if (window.templeBSOD) window.templeBSOD.trigger("SEUIL CRITIQUE DE PARANOÏA DÉPASSÉ (100% CIA DETECTED)");
+      }, 1000);
     }
   }
 
@@ -378,6 +381,9 @@ class TempleDesktop {
     if (id === 'win-guitar' && this.games.guitar) this.games.guitar.start();
     if (id === 'win-pyramid' && this.games.pyramid) this.games.pyramid.start();
     if (id === 'win-tripong' && this.games.triPong) this.games.triPong.start();
+    if (id === 'win-raycaster' && this.games.raycaster) this.games.raycaster.start();
+    if (id === 'win-flight' && this.games.flightSim) this.games.flightSim.start();
+    if (id === 'win-warroom' && this.games.warRoom) this.games.warRoom.start();
     if (id === 'win-achievements' && window.achievementsManager) window.achievementsManager.renderWindow();
   }
 
@@ -392,6 +398,9 @@ class TempleDesktop {
     if (id === 'win-guitar' && this.games.guitar) this.games.guitar.stop();
     if (id === 'win-pyramid' && this.games.pyramid) this.games.pyramid.stop();
     if (id === 'win-tripong' && this.games.triPong) this.games.triPong.stop();
+    if (id === 'win-raycaster' && this.games.raycaster) this.games.raycaster.stop();
+    if (id === 'win-flight' && this.games.flightSim) this.games.flightSim.stop();
+    if (id === 'win-warroom' && this.games.warRoom) this.games.warRoom.stop();
   }
 
   initClock() {
