@@ -31,40 +31,54 @@ class FlightSimGame {
   }
 
   initEvents() {
-    window.addEventListener('keydown', (e) => {
-      if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','KeyW','KeyS','KeyA','KeyD'].includes(e.code)) {
-        this.keys[e.code] = true;
-      }
-    });
-    window.addEventListener('keyup', (e) => {
-      if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','KeyW','KeyS','KeyA','KeyD'].includes(e.code)) {
-        this.keys[e.code] = false;
-      }
-    });
+    const setKey = (code, key, val) => {
+      const k = (key || '').toLowerCase();
+      const c = code || '';
+      if (['w', 'z', 'arrowup'].includes(k) || ['KeyW', 'KeyZ', 'ArrowUp'].includes(c)) this.keys['pitchDown'] = val;
+      if (['s', 'arrowdown'].includes(k) || ['KeyS', 'ArrowDown'].includes(c)) this.keys['pitchUp'] = val;
+      if (['a', 'q', 'arrowleft'].includes(k) || ['KeyA', 'KeyQ', 'ArrowLeft'].includes(c)) this.keys['rollLeft'] = val;
+      if (['d', 'arrowright'].includes(k) || ['KeyD', 'ArrowRight'].includes(c)) this.keys['rollRight'] = val;
+    };
+
+    window.addEventListener('keydown', (e) => setKey(e.code, e.key, true));
+    window.addEventListener('keyup', (e) => setKey(e.code, e.key, false));
+
+    if (this.canvas) {
+      this.canvas.addEventListener('click', () => {
+        if (!this.isRunning) {
+          this.start();
+        }
+      });
+    }
   }
 
   start() {
-    if (!this.isRunning) {
-      this.isRunning = true;
-      this.loop();
+    if (this.animId) {
+      cancelAnimationFrame(this.animId);
+      this.animId = null;
     }
+    this.isRunning = true;
+    this.loop();
   }
 
   stop() {
     this.isRunning = false;
-    if (this.animId) cancelAnimationFrame(this.animId);
+    if (this.animId) {
+      cancelAnimationFrame(this.animId);
+      this.animId = null;
+    }
   }
 
   update() {
-    // Commandes de vol
-    if (this.keys['ArrowUp'] || this.keys['KeyW']) this.pitch = Math.max(-0.5, this.pitch - 0.02);
-    else if (this.keys['ArrowDown'] || this.keys['KeyS']) this.pitch = Math.min(0.5, this.pitch + 0.02);
+    // Commandes de vol (AZERTY & QWERTY & Flèches)
+    if (this.keys['pitchDown']) this.pitch = Math.max(-0.5, this.pitch - 0.02);
+    else if (this.keys['pitchUp']) this.pitch = Math.min(0.5, this.pitch + 0.02);
     else this.pitch *= 0.95;
 
-    if (this.keys['ArrowLeft'] || this.keys['KeyA']) {
+    if (this.keys['rollLeft']) {
       this.roll = Math.max(-0.6, this.roll - 0.03);
       this.yaw -= 0.025;
-    } else if (this.keys['ArrowRight'] || this.keys['KeyD']) {
+    } else if (this.keys['rollRight']) {
       this.roll = Math.min(0.6, this.roll + 0.03);
       this.yaw += 0.025;
     } else {

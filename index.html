@@ -969,6 +969,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
   <script src="js/games/logic_games.js"></script>
   <script src="js/games/audio_creative.js"></script>
   <script src="js/games/arcade_games.js"></script>
+  <script src="js/games/guitar_terry.js"></script>
   <script src="js/games/complex_ai.js"></script>
   <script src="js/games/tron.js"></script>
   <script src="js/games/chess.js"></script>
@@ -993,84 +994,93 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
   <script>
     let desktop, holyTerminal, wireframeViewer, gamesExplorer;
 
+    function safeInit(name, fn) {
+      try {
+        return fn();
+      } catch (err) {
+        console.error(`[TEMPLEOS INIT ERROR] Failed to init ${name}:`, err);
+        return null;
+      }
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       desktop = new TempleDesktop();
       window.desktop = desktop;
 
-      wireframeViewer = new Illuminati3DViewer('wireframe-container');
+      wireframeViewer = safeInit('wireframeViewer', () => new Illuminati3DViewer('wireframe-container'));
       window.wireframeViewer = wireframeViewer;
 
       // 1. Grilles
-      desktop.games.morpion = new MorpionJeu('morpion-board', 'morpion-status', 'morpion-comment');
-      desktop.games.puissance4 = new Puissance4('p4-board', 'p4-status', 'p4-comment');
-      desktop.games.demineur = new DemineurCIA('demineur-grid', 'mine-face', 'mine-counter', 'mine-timer', 'demineur-comment');
-      desktop.games.battleship = new BattleshipJeu('bs-player-grid', 'bs-enemy-grid', 'bs-status', 'bs-comment');
-      desktop.games.conway = new ConwayGame('conway-canvas', 'conway-stats');
-      desktop.games.taquin = new TaquinPuzzle('taquin-board', 'taquin-moves', 'taquin-comment');
-      desktop.games.sudoku = new SudokuGame('sudoku-board', 'sudoku-status');
+      desktop.games.morpion = safeInit('morpion', () => new MorpionJeu('morpion-board', 'morpion-status', 'morpion-comment'));
+      desktop.games.puissance4 = safeInit('puissance4', () => new Puissance4('p4-board', 'p4-status', 'p4-comment'));
+      desktop.games.demineur = safeInit('demineur', () => new DemineurCIA('demineur-grid', 'mine-face', 'mine-counter', 'mine-timer', 'demineur-comment'));
+      desktop.games.battleship = safeInit('battleship', () => new BattleshipJeu('bs-player-grid', 'bs-enemy-grid', 'bs-status', 'bs-comment'));
+      desktop.games.conway = safeInit('conway', () => new ConwayGame('conway-canvas', 'conway-stats'));
+      desktop.games.taquin = safeInit('taquin', () => new TaquinPuzzle('taquin-board', 'taquin-moves', 'taquin-comment'));
+      desktop.games.sudoku = safeInit('sudoku', () => new SudokuGame('sudoku-board', 'sudoku-status'));
 
       // 2. Logique
-      desktop.games.plusmoins = new PlusMoinsGame('plusmoins-container');
-      desktop.games.mastermind = new MastermindGame('mastermind-container');
-      desktop.games.pendu = new PenduGame('pendu-container');
-      desktop.games.motus = new MotusGame('motus-container');
-      desktop.games.nim = new NimGame('nim-container');
-      desktop.games.binary = new BinaryConvertGame('binary-container');
+      desktop.games.plusmoins = safeInit('plusmoins', () => new PlusMoinsGame('plusmoins-container'));
+      desktop.games.mastermind = safeInit('mastermind', () => new MastermindGame('mastermind-container'));
+      desktop.games.pendu = safeInit('pendu', () => new PenduGame('pendu-container'));
+      desktop.games.motus = safeInit('motus', () => new MotusGame('motus-container'));
+      desktop.games.nim = safeInit('nim', () => new NimGame('nim-container'));
+      desktop.games.binary = safeInit('binary', () => new BinaryConvertGame('binary-container'));
 
       // 3. Audio & Créatif
-      desktop.games.simon = new SimonGame('simon-container');
-      desktop.games.poursuite = new PoursuiteGame('poursuite-container');
-      desktop.games.pipedream = new PipeDreamGame('pipedream-container');
-      desktop.games.sequencer = new BeatSequencerGame('sequencer-container');
-      desktop.games.idle = new RentalIdleGame('idle-container');
+      desktop.games.simon = safeInit('simon', () => new SimonGame('simon-container'));
+      desktop.games.poursuite = safeInit('poursuite', () => new PoursuiteGame('poursuite-container'));
+      desktop.games.pipedream = safeInit('pipedream', () => new PipeDreamGame('pipedream-container'));
+      desktop.games.sequencer = safeInit('sequencer', () => new BeatSequencerGame('sequencer-container'));
+      desktop.games.idle = safeInit('idle', () => new RentalIdleGame('idle-container'));
 
       // 4. Physique & Arcade
-      desktop.games.pong = new HolyPong('pong-canvas', 'pong-comment', 'pong-player-score', 'pong-cpu-score');
-      desktop.games.snake = new HolySnake('snake-canvas', 'snake-score', 'snake-comment');
-      desktop.games.breakout = new BreakoutGame('breakout-canvas', 'breakout-score');
-      desktop.games.flappy = new FlappyGame('flappy-canvas', 'flappy-score');
-      desktop.games.tetris = new TetrisGame('tetris-canvas', 'tetris-score');
-      desktop.games.asteroids = new AsteroidsGame('asteroids-canvas');
-      desktop.games.invaders = new SpaceInvadersGame('invaders-canvas');
-      desktop.games.tron = new TronGame('tron-canvas', 'tron-status');
-      desktop.games.guitar = new GuitarTerryGame('guitar-container', 'guitar-score');
+      desktop.games.pong = safeInit('pong', () => new HolyPong('pong-canvas', 'pong-comment', 'pong-player-score', 'pong-cpu-score'));
+      desktop.games.snake = safeInit('snake', () => new HolySnake('snake-canvas', 'snake-score', 'snake-comment'));
+      desktop.games.breakout = safeInit('breakout', () => new BreakoutGame('breakout-canvas', 'breakout-score'));
+      desktop.games.flappy = safeInit('flappy', () => new FlappyGame('flappy-canvas', 'flappy-score'));
+      desktop.games.tetris = safeInit('tetris', () => new TetrisGame('tetris-canvas', 'tetris-score'));
+      desktop.games.asteroids = safeInit('asteroids', () => new AsteroidsGame('asteroids-canvas'));
+      desktop.games.invaders = safeInit('invaders', () => new SpaceInvadersGame('invaders-canvas'));
+      desktop.games.tron = safeInit('tron', () => new TronGame('tron-canvas', 'tron-status'));
+      desktop.games.guitar = safeInit('guitar', () => new GuitarTerryGame('guitar-container', 'guitar-score'));
 
       // 5. IA & Algorithmes Complexes
-      desktop.games.labyrinth = new LabyrinthGame('labyrinth-canvas', 'labyrinth-status');
-      desktop.games.rogue = new RogueGame('rogue-container');
-      desktop.games.cadavre = new CadavreGame('cadavre-container');
-      desktop.games.qlearn = new QLearningGame('qlearn-container');
-      desktop.games.eightqueens = new EightQueensGame('eightqueens-container');
-      desktop.games.chess = new ChessGame('chess-board', 'chess-status');
+      desktop.games.labyrinth = safeInit('labyrinth', () => new LabyrinthGame('labyrinth-canvas', 'labyrinth-status'));
+      desktop.games.rogue = safeInit('rogue', () => new RogueGame('rogue-container'));
+      desktop.games.cadavre = safeInit('cadavre', () => new CadavreGame('cadavre-container'));
+      desktop.games.qlearn = safeInit('qlearn', () => new QLearningGame('qlearn-container'));
+      desktop.games.eightqueens = safeInit('eightqueens', () => new EightQueensGame('eightqueens-container'));
+      desktop.games.chess = safeInit('chess', () => new ChessGame('chess-board', 'chess-status'));
 
       // 7. Nouvel Ordre Mondial & Jeux Illuminati
-      desktop.games.pyramid = new PyramidRunGame('pyramid-canvas', 'pyramid-score');
-      desktop.games.nwoClicker = new NWOClickerGame('nwo-container');
-      desktop.games.illuminatiDecrypt = new IlluminatiDecryptGame('decrypt-container');
-      desktop.games.whackReptilian = new WhackReptilianGame('reptilian-container');
-      desktop.games.triPong = new TriPongGame('tripong-canvas', 'tripong-status');
+      desktop.games.pyramid = safeInit('pyramid', () => new PyramidRunGame('pyramid-canvas', 'pyramid-score'));
+      desktop.games.nwoClicker = safeInit('nwoClicker', () => new NWOClickerGame('nwo-container'));
+      desktop.games.illuminatiDecrypt = safeInit('illuminatiDecrypt', () => new IlluminatiDecryptGame('decrypt-container'));
+      desktop.games.whackReptilian = safeInit('whackReptilian', () => new WhackReptilianGame('reptilian-container'));
+      desktop.games.triPong = safeInit('triPong', () => new TriPongGame('tripong-canvas', 'tripong-status'));
 
       // 8. Le Megasys Ring-0 (v5.0)
-      desktop.games.raycaster = new Raycaster3DGame('raycaster-canvas', 'raycaster-status');
-      desktop.games.flightSim = new FlightSimGame('flight-canvas', 'flight-status');
-      desktop.games.vaticanCards = new VaticanCardsGame('vatican-cards-container');
-      desktop.games.tamagotchiGoat = new TamagotchiGoatGame('goat-container');
-      desktop.games.warRoom = new WarRoomGame('warroom-canvas', 'warroom-log');
-      desktop.games.holycIde = new HolyCIDE('holyc-editor', 'holyc-output');
-      desktop.games.soundboard = new TerrySoundboard('soundboard-container');
-      desktop.games.multiplayer = new TempleMultiplayer('multiplayer-container');
+      desktop.games.raycaster = safeInit('raycaster', () => new Raycaster3DGame('raycaster-canvas', 'raycaster-status'));
+      desktop.games.flightSim = safeInit('flightSim', () => new FlightSimGame('flight-canvas', 'flight-status'));
+      desktop.games.vaticanCards = safeInit('vaticanCards', () => new VaticanCardsGame('vatican-cards-container'));
+      desktop.games.tamagotchiGoat = safeInit('tamagotchiGoat', () => new TamagotchiGoatGame('goat-container'));
+      desktop.games.warRoom = safeInit('warRoom', () => new WarRoomGame('warroom-canvas', 'warroom-log'));
+      desktop.games.holycIde = safeInit('holycIde', () => new HolyCIDE('holyc-editor', 'holyc-output'));
+      desktop.games.soundboard = safeInit('soundboard', () => new TerrySoundboard('soundboard-container'));
+      desktop.games.multiplayer = safeInit('multiplayer', () => new TempleMultiplayer('multiplayer-container'));
 
       // BSOD Simulator
-      window.templeBSOD = new TempleBSOD();
+      window.templeBSOD = safeInit('templeBSOD', () => new TempleBSOD());
 
       // Activer le thème Illuminati par défaut
       desktop.setTheme('illuminati');
 
       // Explorateur & Terminal
-      gamesExplorer = new GamesExplorer('explorer-container');
+      gamesExplorer = safeInit('gamesExplorer', () => new GamesExplorer('explorer-container'));
       window.gamesExplorer = gamesExplorer;
 
-      holyTerminal = new HolyConsole('terminal-output', 'terminal-input');
+      holyTerminal = safeInit('holyTerminal', () => new HolyConsole('terminal-output', 'terminal-input'));
       window.holyTerminal = holyTerminal;
 
       // Succès initiaux

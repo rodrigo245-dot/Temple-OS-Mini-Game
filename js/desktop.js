@@ -381,9 +381,16 @@ class TempleDesktop {
     if (id === 'win-guitar' && this.games.guitar) this.games.guitar.start();
     if (id === 'win-pyramid' && this.games.pyramid) this.games.pyramid.start();
     if (id === 'win-tripong' && this.games.triPong) this.games.triPong.start();
-    if (id === 'win-raycaster' && this.games.raycaster) this.games.raycaster.start();
-    if (id === 'win-flight' && this.games.flightSim) this.games.flightSim.start();
+    if (id === 'win-raycaster' && this.games.raycaster) {
+      this.games.raycaster.start();
+      this.games.raycaster.render();
+    }
+    if (id === 'win-flight' && this.games.flightSim) {
+      this.games.flightSim.start();
+      this.games.flightSim.render();
+    }
     if (id === 'win-warroom' && this.games.warRoom) this.games.warRoom.start();
+    if (id === 'win-explorer' && window.gamesExplorer) window.gamesExplorer.render();
     if (id === 'win-achievements' && window.achievementsManager) window.achievementsManager.renderWindow();
   }
 

@@ -56,24 +56,51 @@ class Raycaster3DGame {
   }
 
   initEvents() {
-    window.addEventListener('keydown', (e) => {
-      if (['KeyW','KeyS','KeyA','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code)) {
-        this.keys[e.code] = true;
-        if (e.code === 'Space' && this.isRunning) {
+    const setKey = (code, key, val) => {
+      const k = (key || '').toLowerCase();
+      const c = code || '';
+      if (['w', 'z', 'arrowup'].includes(k) || ['KeyW', 'KeyZ', 'ArrowUp'].includes(c)) {
+        this.keys['up'] = val;
+      }
+      if (['s', 'arrowdown'].includes(k) || ['KeyS', 'ArrowDown'].includes(c)) {
+        this.keys['down'] = val;
+      }
+      if (['a', 'q', 'arrowleft'].includes(k) || ['KeyA', 'KeyQ', 'ArrowLeft'].includes(c)) {
+        this.keys['left'] = val;
+      }
+      if (['d', 'arrowright'].includes(k) || ['KeyD', 'ArrowRight'].includes(c)) {
+        this.keys['right'] = val;
+      }
+      if (k === ' ' || c === 'Space') {
+        this.keys['shoot'] = val;
+        if (val && this.isRunning) {
           this.shoot();
         }
       }
+    };
+
+    window.addEventListener('keydown', (e) => {
+      setKey(e.code, e.key, true);
     });
     window.addEventListener('keyup', (e) => {
-      if (['KeyW','KeyS','KeyA','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code)) {
-        this.keys[e.code] = false;
-      }
+      setKey(e.code, e.key, false);
     });
+
+    if (this.canvas) {
+      this.canvas.addEventListener('click', () => {
+        if (!this.isRunning) {
+          this.start();
+        }
+        this.shoot();
+      });
+    }
   }
 
   shoot() {
-    window.soundEngine.beep(900, 0.08, 'sawtooth');
-    setTimeout(() => window.soundEngine.playPaddleHit(), 50);
+    if (window.soundEngine) {
+      window.soundEngine.beep(900, 0.08, 'sawtooth');
+      setTimeout(() => window.soundEngine.playPaddleHit(), 50);
+    }
 
     // Vérifie si un ennemi est dans le viseur central
     for (const en of this.enemies) {
@@ -86,10 +113,10 @@ class Raycaster3DGame {
       while (diff > Math.PI) diff -= Math.PI * 2;
       diff = Math.abs(diff);
 
-      if (diff < 0.25 && Math.hypot(dx, dy) < 6) {
+      if (diff < 0.35 && Math.hypot(dx, dy) < 7) {
         en.alive = false;
         this.score += 100;
-        window.soundEngine.playExplosion();
+        if (window.soundEngine) window.soundEngine.playExplosion();
         if (window.speechEngine) window.speechEngine.speak("Agent fédéral purifié !");
         if (this.statusEl) {
           this.statusEl.textContent = `AGENT PURIFIÉ ! SCORE : ${this.score} • CIBLE ÉLIMINÉE`;
@@ -100,29 +127,34 @@ class Raycaster3DGame {
   }
 
   start() {
-    if (!this.isRunning) {
-      this.isRunning = true;
-      this.loop();
+    if (this.animId) {
+      cancelAnimationFrame(this.animId);
+      this.animId = null;
     }
+    this.isRunning = true;
+    this.loop();
   }
 
   stop() {
     this.isRunning = false;
-    if (this.animId) cancelAnimationFrame(this.animId);
+    if (this.animId) {
+      cancelAnimationFrame(this.animId);
+      this.animId = null;
+    }
   }
 
   update() {
     const moveSpeed = 0.06;
     const rotSpeed = 0.045;
 
-    // Déplacement avant / arrière
-    if (this.keys['KeyW'] || this.keys['ArrowUp']) {
+    // Déplacement avant / arrière (AZERTY & QWERTY & Flèches)
+    if (this.keys['up']) {
       const nx = this.px + this.dirX * moveSpeed;
       const ny = this.py + this.dirY * moveSpeed;
       if (this.map[Math.floor(this.py)][Math.floor(nx)] === 0) this.px = nx;
       if (this.map[Math.floor(ny)][Math.floor(this.px)] === 0) this.py = ny;
     }
-    if (this.keys['KeyS'] || this.keys['ArrowDown']) {
+    if (this.keys['down']) {
       const nx = this.px - this.dirX * moveSpeed;
       const ny = this.py - this.dirY * moveSpeed;
       if (this.map[Math.floor(this.py)][Math.floor(nx)] === 0) this.px = nx;
@@ -130,7 +162,7 @@ class Raycaster3DGame {
     }
 
     // Rotation gauche / droite
-    if (this.keys['KeyA'] || this.keys['ArrowLeft']) {
+    if (this.keys['left']) {
       const oldDirX = this.dirX;
       this.dirX = this.dirX * Math.cos(-rotSpeed) - this.dirY * Math.sin(-rotSpeed);
       this.dirY = oldDirX * Math.sin(-rotSpeed) + this.dirY * Math.cos(-rotSpeed);
@@ -138,7 +170,7 @@ class Raycaster3DGame {
       this.planeX = this.planeX * Math.cos(-rotSpeed) - this.planeY * Math.sin(-rotSpeed);
       this.planeY = oldPlaneX * Math.sin(-rotSpeed) + this.planeY * Math.cos(-rotSpeed);
     }
-    if (this.keys['KeyD'] || this.keys['ArrowRight']) {
+    if (this.keys['right']) {
       const oldDirX = this.dirX;
       this.dirX = this.dirX * Math.cos(rotSpeed) - this.dirY * Math.sin(rotSpeed);
       this.dirY = oldDirX * Math.sin(rotSpeed) + this.dirY * Math.cos(rotSpeed);
@@ -231,6 +263,56 @@ class Raycaster3DGame {
     // Rendu canon laser sacré en bas
     this.ctx.fillStyle = '#ffff55';
     this.ctx.fillRect(this.width / 2 - 8, this.height - 35, 16, 35);
+
+    // Rendu des sprites ennemis (billboards)
+    this.enemies.forEach(en => {
+      if (!en.alive) return;
+      const spriteX = en.x - this.px;
+      const spriteY = en.y - this.py;
+      const invDet = 1.0 / (this.planeX * this.dirY - this.dirX * this.planeY);
+      const transformX = invDet * (this.dirY * spriteX - this.dirX * spriteY);
+      const transformY = invDet * (-this.planeY * spriteX + this.planeX * spriteY);
+
+      if (transformY > 0.3) {
+        const spriteScreenX = Math.floor((this.width / 2) * (1 + transformX / transformY));
+        const spriteSize = Math.abs(Math.floor(this.height / transformY));
+        if (spriteSize > 8 && spriteSize < 220) {
+          this.ctx.font = `${Math.min(42, Math.max(16, spriteSize / 2))}px monospace`;
+          this.ctx.textAlign = 'center';
+          this.ctx.textBaseline = 'middle';
+          this.ctx.fillText(en.icon, spriteScreenX, this.height / 2 + 10);
+        }
+      }
+    });
+
+    // Radar / Minimap dans le coin haut-droit
+    const mmSize = 56;
+    const mmX = this.width - mmSize - 6;
+    const mmY = 6;
+    this.ctx.fillStyle = 'rgba(0,0,15,0.75)';
+    this.ctx.fillRect(mmX, mmY, mmSize, mmSize);
+    this.ctx.strokeStyle = '#00ff00';
+    this.ctx.lineWidth = 1;
+    this.ctx.strokeRect(mmX, mmY, mmSize, mmSize);
+    const cellW = mmSize / this.mapW;
+    const cellH = mmSize / this.mapH;
+    for (let r = 0; r < this.mapH; r++) {
+      for (let c = 0; c < this.mapW; c++) {
+        if (this.map[r][c] > 0) {
+          this.ctx.fillStyle = this.map[r][c] === 2 ? '#ffd700' : '#007700';
+          this.ctx.fillRect(mmX + c * cellW, mmY + r * cellH, cellW, cellH);
+        }
+      }
+    }
+    // Ennemis sur minimap
+    this.enemies.forEach(en => {
+      if (!en.alive) return;
+      this.ctx.fillStyle = '#ff2222';
+      this.ctx.fillRect(mmX + en.x * cellW - 1.5, mmY + en.y * cellH - 1.5, 3, 3);
+    });
+    // Terry (joueur) sur minimap
+    this.ctx.fillStyle = '#00ffff';
+    this.ctx.fillRect(mmX + this.px * cellW - 1.5, mmY + this.py * cellH - 1.5, 3, 3);
   }
 
   loop() {
