@@ -150,13 +150,13 @@ class GamesExplorer {
           </div>
           <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:5px;">
             ${cat.games.map(g => `
-              <div class="clickable" style="display:flex; align-items:center; gap:8px; background:#000; border:1px solid #333; padding:4px 8px; cursor:pointer;" onclick="desktop.openWindow('${g.id}')">
+              <div class="clickable" style="display:flex; align-items:center; gap:8px; background:#000; border:1px solid #333; padding:4px 8px; cursor:pointer;" onmousedown="event.stopPropagation()" onclick="desktop.openWindow('${g.id}')">
                 <span style="font-size:16px;">${g.icon}</span>
                 <div style="flex:1; overflow:hidden;">
                   <div style="color:var(--vga-white); font-weight:bold; font-size:11px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${g.name}</div>
                   <div style="color:var(--vga-green); font-size:10px;">${g.file}</div>
                 </div>
-                <button class="temple-btn" style="padding:1px 6px; font-size:10px;" onclick="event.stopPropagation(); desktop.openWindow('${g.id}')">OUVRIR</button>
+                <button class="temple-btn" style="padding:1px 6px; font-size:10px;" onmousedown="event.stopPropagation()" onclick="event.stopPropagation(); desktop.openWindow('${g.id}')">OUVRIR</button>
               </div>
             `).join('')}
           </div>

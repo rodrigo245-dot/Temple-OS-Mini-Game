@@ -659,6 +659,17 @@ class AsteroidsGame {
     }
   }
 
+  start() {
+    if (!this.isRunning) {
+      this.isRunning = true;
+      this.loop();
+    }
+  }
+
+  stop() {
+    this.isRunning = false;
+  }
+
   loop() {
     if (!this.isRunning) return;
     this.update();
@@ -764,6 +775,17 @@ class SpaceInvadersGame {
         this.ctx.fillStyle = '#55ffff';
       }
     }
+  }
+
+  start() {
+    if (!this.isRunning) {
+      this.isRunning = true;
+      this.loop();
+    }
+  }
+
+  stop() {
+    this.isRunning = false;
   }
 
   loop() {

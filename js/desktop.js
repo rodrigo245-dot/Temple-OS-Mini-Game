@@ -319,6 +319,40 @@ class TempleDesktop {
 
     win.addEventListener('mousedown', () => this.bringToFront(win));
 
+    const minBtn = win.querySelector('.win-btn.minimize');
+    if (minBtn) {
+      minBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.soundEngine.playClick();
+        this.closeWindow(id);
+      });
+    }
+
+    const maxBtn = win.querySelector('.win-btn.maximize');
+    if (maxBtn) {
+      maxBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.soundEngine.playClick();
+        if (win.dataset.isMaximized === 'true') {
+          win.style.left = win.dataset.origLeft || '100px';
+          win.style.top = win.dataset.origTop || '40px';
+          win.style.width = win.dataset.origWidth || '500px';
+          win.style.height = win.dataset.origHeight || 'auto';
+          win.dataset.isMaximized = 'false';
+        } else {
+          win.dataset.origLeft = win.style.left;
+          win.dataset.origTop = win.style.top;
+          win.dataset.origWidth = win.style.width;
+          win.dataset.origHeight = win.style.height;
+          win.style.left = '10px';
+          win.style.top = '32px';
+          win.style.width = 'calc(100% - 20px)';
+          win.style.height = 'calc(100vh - 90px)';
+          win.dataset.isMaximized = 'true';
+        }
+      });
+    }
+
     if (closeBtn) {
       closeBtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -363,8 +397,8 @@ class TempleDesktop {
   }
 
   bringToFront(win) {
-    if (!this.activeZ || this.activeZ < 1000) this.activeZ = 1000;
-    this.activeZ += 1;
+    if (!this.activeZ || this.activeZ < 2000) this.activeZ = 2000;
+    this.activeZ += 10;
     document.querySelectorAll('.temple-window').forEach(w => w.classList.remove('active-window'));
     win.classList.add('active-window');
     win.style.zIndex = this.activeZ;
@@ -380,12 +414,71 @@ class TempleDesktop {
     this.bringToFront(win);
     if (window.soundEngine) window.soundEngine.playClick();
 
-    // 4. Physique & Arcade
+    // Auto-positionnement centré dans le viewport
+    if (id !== 'win-explorer') {
+      const deskW = window.innerWidth || 1024;
+      const deskH = (window.innerHeight || 768) - 56;
+      const winW = parseInt(win.style.width) || win.offsetWidth || 480;
+      const winH = parseInt(win.style.height) || win.offsetHeight || 380;
+      const posX = Math.max(15, Math.floor((deskW - winW) / 2));
+      const posY = Math.max(32, Math.floor((deskH - winH) / 2));
+      win.style.left = `${posX}px`;
+      win.style.top = `${posY}px`;
+
+      // Si l'explorateur est affiché, abaisser son z-index pour laisser le jeu au premier plan
+      if (this.windows['win-explorer'] && this.windows['win-explorer'].style.display !== 'none') {
+        this.windows['win-explorer'].style.zIndex = 100;
+      }
+    }
+
+    // 1. Grilles & Tableaux 2D
+    if (id === 'win-morpion' && this.games.morpion) this.games.morpion.init();
+    if (id === 'win-p4' && this.games.puissance4) this.games.puissance4.init();
+    if (id === 'win-demineur' && this.games.demineur) this.games.demineur.reset();
+    if (id === 'win-battleship' && this.games.battleship) this.games.battleship.init();
+    if (id === 'win-conway' && this.games.conway) this.games.conway.draw();
+    if (id === 'win-taquin' && this.games.taquin) this.games.taquin.reset();
+    if (id === 'win-sudoku' && this.games.sudoku) this.games.sudoku.render();
+
+    // 2. Logique, Strings & Boucles
+    if (id === 'win-plusmoins' && this.games.plusmoins) this.games.plusmoins.init();
+    if (id === 'win-mastermind' && this.games.mastermind) this.games.mastermind.render();
+    if (id === 'win-pendu' && this.games.pendu) this.games.pendu.render();
+    if (id === 'win-motus' && this.games.motus) this.games.motus.render();
+    if (id === 'win-nim' && this.games.nim) this.games.nim.render();
+    if (id === 'win-binary' && this.games.binary) this.games.binary.render();
+
+    // 3. Audio & Interface
+    if (id === 'win-simon' && this.games.simon) this.games.simon.render();
+    if (id === 'win-poursuite' && this.games.poursuite) this.games.poursuite.render();
+    if (id === 'win-pipedream' && this.games.pipedream) this.games.pipedream.render();
+    if (id === 'win-sequencer' && this.games.sequencer) this.games.sequencer.render();
+    if (id === 'win-idle' && this.games.idle) this.games.idle.render();
+
+    // 4. Physique & Arcade 2D
     if (id === 'win-pong' && this.games.pong) this.games.pong.start();
-    if (id === 'win-snake' && this.games.snake) this.games.snake.reset();
+    if (id === 'win-snake' && this.games.snake) { this.games.snake.reset(); this.games.snake.start(); }
+    if (id === 'win-breakout' && this.games.breakout) this.games.breakout.start();
+    if (id === 'win-flappy' && this.games.flappy) this.games.flappy.start();
+    if (id === 'win-tetris' && this.games.tetris) this.games.tetris.start();
+    if (id === 'win-asteroids' && this.games.asteroids) this.games.asteroids.start();
+    if (id === 'win-invaders' && this.games.invaders) this.games.invaders.start();
     if (id === 'win-tron' && this.games.tron) this.games.tron.start();
     if (id === 'win-guitar' && this.games.guitar) this.games.guitar.start();
+
+    // 5. IA & Algorithmes Complexes
+    if (id === 'win-labyrinth' && this.games.labyrinth) this.games.labyrinth.draw();
+    if (id === 'win-rogue' && this.games.rogue) this.games.rogue.render();
+    if (id === 'win-cadavre' && this.games.cadavre) this.games.cadavre.generateSentence();
+    if (id === 'win-qlearn' && this.games.qlearn) this.games.qlearn.render();
+    if (id === 'win-eightqueens' && this.games.eightqueens) this.games.eightqueens.render();
+    if (id === 'win-chess' && this.games.chess) this.games.chess.reset();
+
+    // 7. Nouvel Ordre Mondial & Illuminati
     if (id === 'win-pyramid' && this.games.pyramid) this.games.pyramid.start();
+    if (id === 'win-nwo' && this.games.nwoClicker) this.games.nwoClicker.render();
+    if (id === 'win-decrypt' && this.games.illuminatiDecrypt) this.games.illuminatiDecrypt.render();
+    if (id === 'win-reptilian' && this.games.whackReptilian) this.games.whackReptilian.render();
     if (id === 'win-tripong' && this.games.triPong) this.games.triPong.start();
 
     // 8. Le Megasys Ring-0 (v5.0)
@@ -472,6 +565,11 @@ class TempleDesktop {
 
     if (id === 'win-pong' && this.games.pong) this.games.pong.stop();
     if (id === 'win-snake' && this.games.snake) this.games.snake.stop();
+    if (id === 'win-breakout' && this.games.breakout) this.games.breakout.stop();
+    if (id === 'win-flappy' && this.games.flappy) this.games.flappy.stop();
+    if (id === 'win-tetris' && this.games.tetris) this.games.tetris.stop();
+    if (id === 'win-asteroids' && this.games.asteroids) this.games.asteroids.stop();
+    if (id === 'win-invaders' && this.games.invaders) this.games.invaders.stop();
     if (id === 'win-tron' && this.games.tron) this.games.tron.stop();
     if (id === 'win-guitar' && this.games.guitar) this.games.guitar.stop();
     if (id === 'win-pyramid' && this.games.pyramid) this.games.pyramid.stop();
@@ -483,6 +581,7 @@ class TempleDesktop {
     if (id === 'win-cern' && this.games.cern) this.games.cern.stop();
     if (id === 'win-civic' && this.games.civicEscape) this.games.civicEscape.stop();
     if (id === 'win-haarp' && this.games.haarpHacker) this.games.haarpHacker.stop();
+    if (id === 'win-reptilian' && this.games.whackReptilian) this.games.whackReptilian.stop();
     if (id === 'win-uvb' && this.games.numbersStation && this.games.numbersStation.isBuzzerActive) {
       this.games.numbersStation.toggleBuzzer();
     }

@@ -341,18 +341,23 @@ html, body {
   position: absolute;
   top: 10px;
   left: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 10;
+  display: grid;
+  grid-template-rows: repeat(8, 62px);
+  grid-auto-flow: column;
+  gap: 6px 10px;
+  max-height: calc(100vh - 75px);
+  z-index: 100;
+  pointer-events: auto;
 }
 
 .desktop-icon {
-  width: 100px;
+  width: 95px;
   text-align: center;
-  padding: 4px;
+  padding: 3px 2px;
   border: 1px dashed transparent;
   color: var(--vga-yellow);
+  cursor: pointer;
+  user-select: none;
 }
 
 .desktop-icon:hover {
@@ -361,20 +366,24 @@ html, body {
 }
 
 .desktop-icon .icon-art {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
   display: block;
 }
 
 .desktop-icon .icon-label {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: bold;
   background-color: var(--vga-black);
-  padding: 2px 4px;
+  padding: 1px 3px;
   display: inline-block;
   color: var(--vga-white);
   border: 1px solid var(--vga-dark-gray);
+  max-width: 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* FENÊTRES TEMPLEOS */
@@ -392,7 +401,6 @@ html, body {
 
 .temple-window.active-window {
   border-color: var(--vga-yellow);
-  z-index: 500;
 }
 
 .window-titlebar {
