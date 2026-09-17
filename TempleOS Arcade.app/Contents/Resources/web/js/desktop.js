@@ -363,6 +363,7 @@ class TempleDesktop {
   }
 
   bringToFront(win) {
+    if (!this.activeZ || this.activeZ < 1000) this.activeZ = 1000;
     this.activeZ += 1;
     document.querySelectorAll('.temple-window').forEach(w => w.classList.remove('active-window'));
     win.classList.add('active-window');
@@ -371,16 +372,23 @@ class TempleDesktop {
 
   openWindow(id) {
     const win = this.windows[id];
-    if (!win) return;
+    if (!win) {
+      console.warn("Fenêtre inconnue :", id);
+      return;
+    }
     win.style.display = 'flex';
     this.bringToFront(win);
+    if (window.soundEngine) window.soundEngine.playClick();
 
+    // 4. Physique & Arcade
     if (id === 'win-pong' && this.games.pong) this.games.pong.start();
     if (id === 'win-snake' && this.games.snake) this.games.snake.reset();
     if (id === 'win-tron' && this.games.tron) this.games.tron.start();
     if (id === 'win-guitar' && this.games.guitar) this.games.guitar.start();
     if (id === 'win-pyramid' && this.games.pyramid) this.games.pyramid.start();
     if (id === 'win-tripong' && this.games.triPong) this.games.triPong.start();
+
+    // 8. Le Megasys Ring-0 (v5.0)
     if (id === 'win-raycaster' && this.games.raycaster) {
       this.games.raycaster.start();
       this.games.raycaster.render();
@@ -389,7 +397,30 @@ class TempleDesktop {
       this.games.flightSim.start();
       this.games.flightSim.render();
     }
-    if (id === 'win-warroom' && this.games.warRoom) this.games.warRoom.start();
+    if (id === 'win-warroom' && this.games.warRoom) {
+      this.games.warRoom.start();
+      this.games.warRoom.render();
+    }
+    if (id === 'win-cards' && this.games.vaticanCards) {
+      if (this.games.vaticanCards.playerHand.length === 0) {
+        this.games.vaticanCards.deal();
+      } else {
+        this.games.vaticanCards.render();
+      }
+    }
+    if (id === 'win-goat' && this.games.tamagotchiGoat) {
+      this.games.tamagotchiGoat.render();
+    }
+    if (id === 'win-ide' && this.games.holycIde) {
+      // IDE HolyC prêt
+    }
+    if (id === 'win-soundboard' && this.games.soundboard) {
+      this.games.soundboard.render();
+    }
+    if (id === 'win-multiplayer' && this.games.multiplayer) {
+      this.games.multiplayer.render();
+    }
+
     if (id === 'win-explorer' && window.gamesExplorer) window.gamesExplorer.render();
     if (id === 'win-achievements' && window.achievementsManager) window.achievementsManager.renderWindow();
   }

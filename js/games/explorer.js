@@ -133,7 +133,7 @@ class GamesExplorer {
                   <div style="color:var(--vga-white); font-weight:bold; font-size:11px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${g.name}</div>
                   <div style="color:var(--vga-green); font-size:10px;">${g.file}</div>
                 </div>
-                <button class="temple-btn" style="padding:1px 6px; font-size:10px;">OUVRIR</button>
+                <button class="temple-btn" style="padding:1px 6px; font-size:10px;" onclick="event.stopPropagation(); desktop.openWindow('${g.id}')">OUVRIR</button>
               </div>
             `).join('')}
           </div>
