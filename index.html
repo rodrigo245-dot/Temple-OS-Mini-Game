@@ -59,7 +59,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     </div>
 
     <nav class="menu-items">
-      <div class="menu-item clickable" style="background:var(--vga-yellow); color:var(--vga-black); font-weight:bold;" onclick="desktop.openWindow('win-explorer')">[DIR] EXPLORATEUR (45 JEUX)</div>
+      <div class="menu-item clickable" style="background:var(--vga-yellow); color:var(--vga-black); font-weight:bold;" onclick="desktop.openWindow('win-explorer')">[DIR] EXPLORATEUR (52 JEUX)</div>
       <div class="menu-item clickable" style="color:var(--vga-light-green);" onclick="desktop.openWindow('win-raycaster')">[3D] Pentagone 3D</div>
       <div class="menu-item clickable" style="color:var(--vga-light-cyan);" onclick="desktop.openWindow('win-flight')">[FLY] Vol 3D</div>
       <div class="menu-item clickable" onclick="desktop.openWindow('win-warroom')">[MAP] War Room</div>
@@ -243,6 +243,41 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
       <div class="desktop-icon" data-window="win-bbs">
         <span class="icon-art">[ERR]</span>
         <span class="icon-label">BBS_HACK</span>
+      </div>
+
+      <div class="desktop-icon" data-window="win-civic">
+        <span class="icon-art">[CAR]</span>
+        <span class="icon-label">CIVIC_1996</span>
+      </div>
+
+      <div class="desktop-icon" data-window="win-haarp">
+        <span class="icon-art">[WAVE]</span>
+        <span class="icon-label">HAARP_HACK</span>
+      </div>
+
+      <div class="desktop-icon" data-window="win-hex">
+        <span class="icon-art">[HEX]</span>
+        <span class="icon-label">FAT32_HEX</span>
+      </div>
+
+      <div class="desktop-icon" data-window="win-denver">
+        <span class="icon-art">[BUNKER]</span>
+        <span class="icon-label">DENVER_S7</span>
+      </div>
+
+      <div class="desktop-icon" data-window="win-uvb">
+        <span class="icon-art">[RADIO]</span>
+        <span class="icon-label">UVB76_BUZZ</span>
+      </div>
+
+      <div class="desktop-icon" data-window="win-crusade">
+        <span class="icon-art">[DECK]</span>
+        <span class="icon-label">CRUSADE_3X3</span>
+      </div>
+
+      <div class="desktop-icon" data-window="win-crispr">
+        <span class="icon-art">[GENE]</span>
+        <span class="icon-label">CRISPR_LAB</span>
       </div>
     </div>
 
@@ -1118,16 +1153,123 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
       </div>
     </div>
 
+    <!-- 13. TERRY HONDA CIVIC 1996 PSEUDO-3D -->
+    <div id="win-civic" class="temple-window" style="top: 25px; left: 130px; width: 620px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>[CAR]</span><span>C:/GAMES/CIVIC_1996_ESCAPE.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body" style="background:#000; text-align:center;">
+        <canvas id="civic-canvas" width="600" height="380" style="background:#000; border:1px solid var(--vga-red); image-rendering:pixelated;"></canvas>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:#111;">
+          <div id="civic-status" style="font-size:11px; color:var(--vga-yellow); text-align:left;">
+            TOUCHES : FLECHES GAUCHE/DROITE (DIRIGER), HAUT (ACCELERER), BAS (FREINER)
+          </div>
+          <button class="action-btn" onclick="desktop.games.civicEscape.reset()">[RESET] RECOMMENCER</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. HAARP IONOSPHERE HACKER -->
+    <div id="win-haarp" class="temple-window" style="top: 35px; left: 145px; width: 620px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>[WAVE]</span><span>C:/GAMES/HAARP_IONOSPHERE.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body" style="background:#000; text-align:center;">
+        <canvas id="haarp-canvas" width="600" height="350" style="background:#000; border:1px solid var(--vga-green); image-rendering:pixelated;"></canvas>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:#111;">
+          <div id="haarp-status" style="font-size:11px; color:var(--vga-green); text-align:left;">
+            AJUSTEZ LA FREQUENCE, PUISSANCE ET PHASE POUR GENERER L'AURORE BOREALE
+          </div>
+          <button class="action-btn" onclick="desktop.games.haarpHacker.randomizeTarget()">[NOUVELLE CIBLE]</button>
+        </div>
+        <div style="display:flex; gap:6px; padding:6px; background:#050505; justify-content:center; flex-wrap:wrap;">
+          <button class="action-btn" onclick="desktop.games.haarpHacker.adjustFreq(-0.2)">FREQ -</button>
+          <button class="action-btn" onclick="desktop.games.haarpHacker.adjustFreq(0.2)">FREQ +</button>
+          <button class="action-btn" onclick="desktop.games.haarpHacker.adjustPower(-5)">PUISSANCE -</button>
+          <button class="action-btn" onclick="desktop.games.haarpHacker.adjustPower(5)">PUISSANCE +</button>
+          <button class="action-btn" onclick="desktop.games.haarpHacker.adjustPhase(-15)">PHASE -</button>
+          <button class="action-btn" onclick="desktop.games.haarpHacker.adjustPhase(15)">PHASE +</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. FAT32 HEX RECOVERY -->
+    <div id="win-hex" class="temple-window" style="top: 45px; left: 160px; width: 560px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>[HEX]</span><span>C:/SYSTEM/FAT32_HEX_RECOVERY.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body">
+        <div id="hex-container" style="min-height:240px;"></div>
+      </div>
+    </div>
+
+    <!-- 16. DENVER SUB-LEVEL 7 -->
+    <div id="win-denver" class="temple-window" style="top: 30px; left: 140px; width: 620px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>[BUNKER]</span><span>C:/GAMES/DENVER_SUBLEVEL_7.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body" style="background:#000; text-align:center;">
+        <canvas id="denver-canvas" width="600" height="350" style="background:#000; border:1px solid #aa44ff;"></canvas>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:#111;">
+          <div id="denver-status" style="font-size:11px; color:#ff55ff; text-align:left;">
+            EXPLORATION CASE PAR CASE SOUS L'AEROPORT DE DENVER
+          </div>
+          <div style="display:flex; gap:4px;">
+            <button class="action-btn" onclick="desktop.games.denverDungeon.turnLeft()">TOURNER GAUCHE</button>
+            <button class="action-btn" onclick="desktop.games.denverDungeon.moveForward()">AVANCER</button>
+            <button class="action-btn" onclick="desktop.games.denverDungeon.turnRight()">TOURNER DROITE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 17. UVB-76 NUMBERS STATION -->
+    <div id="win-uvb" class="temple-window" style="top: 50px; left: 170px; width: 560px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>[RADIO]</span><span>C:/NET/UVB76_NUMBERS_STATION.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body">
+        <div id="uvb-container" style="min-height:240px;"></div>
+      </div>
+    </div>
+
+    <!-- 18. HOLY CRUSADE 3x3 -->
+    <div id="win-crusade" class="temple-window" style="top: 40px; left: 155px; width: 520px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>[DECK]</span><span>C:/GAMES/HOLY_CRUSADE_3X3.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body">
+        <div id="crusade-container" style="min-height:240px;"></div>
+      </div>
+    </div>
+
+    <!-- 19. CRISPR GENE LAB -->
+    <div id="win-crispr" class="temple-window" style="top: 45px; left: 165px; width: 560px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>[GENE]</span><span>C:/BIO/CRISPR_SYNTHETIC_LAB.HC</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body">
+        <div id="crispr-container" style="min-height:240px;"></div>
+      </div>
+    </div>
+
   </main>
 
   <!-- BARRE D'ÉTAT INFÉRIEURE -->
   <footer id="bottombar">
     <div id="oracle-ticker" class="status-oracle-ticker">
-      + TEMPLEOS 64-BIT ARCADE v3.0 - 45 JEUX COMPLETS - VOIX ROBOTIQUE ACTIVE - TOUCHE F7
+      + TEMPLEOS 64-BIT ARCADE v3.0 - 52 JEUX COMPLETS - VOIX ROBOTIQUE ACTIVE - TOUCHE F7
     </div>
     <div class="status-stats">
       <span>[VGA: 640x480]</span>
-      <span>[45/45 JEUX PRÊTS]</span>
+      <span>[45/52 JEUX PRÊTS]</span>
       <span>[VOICE: ON]</span>
       <span>[F7 READY]</span>
     </div>
@@ -1171,6 +1313,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
   <script src="js/games/tamagotchi_goat.js"></script>
   <script src="js/games/war_room.js"></script>
   <script src="js/games/megasys_games.js"></script>
+  <script src="js/games/expansion_pack.js"></script>
 
   <script src="js/games/explorer.js"></script>
   <script src="js/games/cia_radar.js"></script>
@@ -1259,6 +1402,15 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
       desktop.games.area51 = safeInit('area51', () => new Area51Game('area51-canvas', 'area51-status'));
       desktop.games.cern = safeInit('cern', () => new CernSmasherGame('cern-canvas', 'cern-status'));
       desktop.games.bbs = safeInit('bbs', () => new BBSPhreakGame('bbs-output', 'bbs-input'));
+
+      // 10. Expansion Pack v5.3 (7 Nouveaux Jeux)
+      desktop.games.civicEscape = safeInit('civicEscape', () => new CivicEscapeGame('civic-canvas', 'civic-status'));
+      desktop.games.haarpHacker = safeInit('haarpHacker', () => new HaarpHackerGame('haarp-canvas', 'haarp-status'));
+      desktop.games.hexRecovery = safeInit('hexRecovery', () => new HexRecoveryGame('hex-container'));
+      desktop.games.denverDungeon = safeInit('denverDungeon', () => new DenverDungeonGame('denver-canvas', 'denver-status'));
+      desktop.games.numbersStation = safeInit('numbersStation', () => new NumbersStationGame('uvb-container'));
+      desktop.games.holyCrusade = safeInit('holyCrusade', () => new HolyCrusadeGame('crusade-container'));
+      desktop.games.crisprLab = safeInit('crisprLab', () => new CrisprLabGame('crispr-container'));
 
       // BSOD Simulator
       window.templeBSOD = safeInit('templeBSOD', () => new TempleBSOD());

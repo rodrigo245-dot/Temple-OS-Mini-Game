@@ -438,6 +438,29 @@ class TempleDesktop {
       if (input) input.focus();
     }
 
+    // 10. Expansion Pack v5.3 (7 Nouveaux Jeux)
+    if (id === 'win-civic' && this.games.civicEscape) {
+      this.games.civicEscape.start();
+    }
+    if (id === 'win-haarp' && this.games.haarpHacker) {
+      this.games.haarpHacker.start();
+    }
+    if (id === 'win-hex' && this.games.hexRecovery) {
+      this.games.hexRecovery.render();
+    }
+    if (id === 'win-denver' && this.games.denverDungeon) {
+      this.games.denverDungeon.render();
+    }
+    if (id === 'win-uvb' && this.games.numbersStation) {
+      this.games.numbersStation.render();
+    }
+    if (id === 'win-crusade' && this.games.holyCrusade) {
+      this.games.holyCrusade.render();
+    }
+    if (id === 'win-crispr' && this.games.crisprLab) {
+      this.games.crisprLab.render();
+    }
+
     if (id === 'win-explorer' && window.gamesExplorer) window.gamesExplorer.render();
     if (id === 'win-achievements' && window.achievementsManager) window.achievementsManager.renderWindow();
   }
@@ -458,6 +481,11 @@ class TempleDesktop {
     if (id === 'win-warroom' && this.games.warRoom) this.games.warRoom.stop();
     if (id === 'win-area51' && this.games.area51) this.games.area51.stop();
     if (id === 'win-cern' && this.games.cern) this.games.cern.stop();
+    if (id === 'win-civic' && this.games.civicEscape) this.games.civicEscape.stop();
+    if (id === 'win-haarp' && this.games.haarpHacker) this.games.haarpHacker.stop();
+    if (id === 'win-uvb' && this.games.numbersStation && this.games.numbersStation.isBuzzerActive) {
+      this.games.numbersStation.toggleBuzzer();
+    }
   }
 
   initClock() {

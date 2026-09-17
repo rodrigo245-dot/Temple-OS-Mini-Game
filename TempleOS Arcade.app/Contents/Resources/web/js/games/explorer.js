@@ -109,6 +109,19 @@ const TEMPLE_GAMES_CATALOG = [
       { id: "win-cern", name: "CERN Particle Smasher LHC", file: "CERN_COLLIDER.HC", icon: "[LHC]" },
       { id: "win-bbs", name: "Cyber-Phreaking BBS Terminal", file: "BLUE_BOX_2600.HC", icon: "[ERR]" }
     ]
+  },
+  {
+    category: "10. NOUVELLES EXPÉRIMENTATIONS DU RING-0 (v5.3)",
+    folder: "C:/RING0_EXP/",
+    games: [
+      { id: "win-civic", name: "Terry 1996 Civic Escape (Pseudo-3D)", file: "CIVIC_1996.HC", icon: "[CAR]" },
+      { id: "win-haarp", name: "HAARP Ionosphere Wave Hacker", file: "HAARP_ARRAY.HC", icon: "[WAVE]" },
+      { id: "win-hex", name: "FAT32 Hex Sector Recovery", file: "FAT32_HEX.HC", icon: "[HEX]" },
+      { id: "win-denver", name: "Denver Sub-Level 7 (Dungeon 3D)", file: "DENVER_S7.HC", icon: "[BUNKER]" },
+      { id: "win-uvb", name: "UVB-76 Numbers Station 4625kHz", file: "UVB_76_RX.HC", icon: "[RADIO]" },
+      { id: "win-crusade", name: "Holy Crusade (Mini Deck-Builder)", file: "CRUSADE_3X3.HC", icon: "[DECK]" },
+      { id: "win-crispr", name: "CRISPR Synthetic Gene Lab", file: "CRISPR_DNA.HC", icon: "[GENE]" }
+    ]
   }
 ];
 
@@ -123,7 +136,7 @@ class GamesExplorer {
 
     let html = `
       <div style="font-size:12px; color:var(--vga-light-cyan); margin-bottom:6px; font-weight:bold;">
-        EXPLORATEUR DE FICHIERS TEMPLEOS (33 JEUX & OUTILS DISPONIBLES)
+        EXPLORATEUR DE FICHIERS TEMPLEOS (52 JEUX & OUTILS DISPONIBLES)
       </div>
       <div style="max-height:430px; overflow-y:auto; padding-right:6px;">
     `;
