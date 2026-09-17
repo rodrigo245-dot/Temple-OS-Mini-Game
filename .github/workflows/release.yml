@@ -1,0 +1,45 @@
+name: Release Artifacts
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: TempleOS Arcade ${{ github.ref_name }} (Windows 11 & macOS)
+          body: |
+            ## ✝ TempleOS Divine Gaming Arcade - v4.0 (Illuminati Edition) 👁️
+
+            ### 🪟 Windows 11 / Windows 10
+            - **`TempleOS_Arcade_Windows_x64.zip`** : Décompressez et lancez `TempleOS_Arcade.exe` (aucun prérequis, utilise WebView2 natif).
+            - **`TempleOS_Arcade.exe`** & **`resources.neu`** : Fichiers autonomes directs.
+
+            ### 🍎 macOS
+            - **`TempleOS_Arcade.dmg`** : Image disque d'installation macOS standard.
+            - **`TempleOS_Arcade_Mac.zip`** : Application `.app` zippée.
+
+            ### 🎮 38 Jeux & Fonctionnalités Incluses :
+            - 38 Jeux et Défis (Morpion Minimax, Puissance 4, Démineur CIA, Bataille Navale, Conway, Taquin, Sudoku, Tron, Guitar Terry, Échecs de Dieu, Q-Learning, 8 Dames, etc.).
+            - Catégorie Illuminati & NWO : Pyramid Run, NWO Tycoon, Décrypteur, Whack-a-Reptilian, Tri-Pong.
+            - Synthèse vocale de Terry Davis & PC Speaker 8-bit.
+            - Pyramide 3D fil de fer avec l'Œil de la Providence qui suit la souris.
+          files: |
+            TempleOS_Arcade_Windows_x64.zip
+            TempleOS_Arcade_Windows/TempleOS_Arcade.exe
+            TempleOS_Arcade_Windows/resources.neu
+            TempleOS_Arcade.dmg
+            TempleOS_Arcade_Mac.zip
