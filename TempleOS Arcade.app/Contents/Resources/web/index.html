@@ -224,6 +224,26 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
         <span class="icon-art">🌐</span>
         <span class="icon-label">P2P_MULTI</span>
       </div>
+
+      <div class="desktop-icon" data-window="win-radio">
+        <span class="icon-art">📻</span>
+        <span class="icon-label">RADIO_PIRATE</span>
+      </div>
+
+      <div class="desktop-icon" data-window="win-area51">
+        <span class="icon-art">🛸</span>
+        <span class="icon-label">AREA_51</span>
+      </div>
+
+      <div class="desktop-icon" data-window="win-cern">
+        <span class="icon-art">⚛️</span>
+        <span class="icon-label">CERN_LHC</span>
+      </div>
+
+      <div class="desktop-icon" data-window="win-bbs">
+        <span class="icon-art">💀</span>
+        <span class="icon-label">BBS_HACK</span>
+      </div>
     </div>
 
     <!-- ==================================================================== -->
@@ -975,16 +995,139 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
       </div>
     </div>
 
+    <!-- 9. RADIO PIRATE DISSIDENTE & PODCASTS ANARCHISTES -->
+    <div id="win-radio" class="temple-window" style="top: 40px; left: 120px; width: 560px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>📻</span><span id="radio-win-title">FM 93.4 MHz • RADIO PIRATE DU TEMPLE</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body" style="background: #000; color: #fff; padding: 10px;">
+        <!-- Cassette Deck & VU-Meters -->
+        <div style="display:flex; justify-content:space-between; align-items:center; background:#111; border:2px solid var(--vga-green); padding:10px; margin-bottom:10px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div id="tape-reel-left" style="width:32px; height:32px; border:3px solid #ff5555; border-radius:50%; display:flex; align-items:center; justify-content:center;">
+              <div style="width:8px; height:8px; background:#fff; border-radius:50%;"></div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:10px; color:#aaa; letter-spacing:1px;">ANARCHIST STEREO CASSETTE DECK</div>
+              <div id="radio-win-author" style="color:var(--vga-yellow); font-size:11px; font-weight:bold;">Mikhaïl Bakounine (1871)</div>
+            </div>
+            <div id="tape-reel-right" style="width:32px; height:32px; border:3px solid #ff5555; border-radius:50%; display:flex; align-items:center; justify-content:center;">
+              <div style="width:8px; height:8px; background:#fff; border-radius:50%;"></div>
+            </div>
+          </div>
+          <!-- VU Meters -->
+          <div style="width:140px;">
+            <div style="font-size:9px; color:#888; margin-bottom:2px;">SIGNAL VU-METER L/R</div>
+            <div style="height:6px; background:#222; margin-bottom:3px; border:1px solid #444;">
+              <div id="radio-vu-l" style="height:100%; width:0%; background:var(--vga-green); transition:width 0.1s;"></div>
+            </div>
+            <div style="height:6px; background:#222; border:1px solid #444;">
+              <div id="radio-vu-r" style="height:100%; width:0%; background:var(--vga-yellow); transition:width 0.1s;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div style="display:flex; gap:8px; margin-bottom:10px; align-items:center; flex-wrap:wrap;">
+          <button id="radio-win-play" class="action-btn" onclick="window.templeRadio.togglePlay()" style="min-width:110px;">▶️ DIFFUSER</button>
+          <button class="action-btn" onclick="window.templeRadio.prevStation()">⏮️ PRÉC.</button>
+          <button class="action-btn" onclick="window.templeRadio.nextStation()">SUIV. ⏭️</button>
+          <button id="radio-win-voice-toggle" class="action-btn" onclick="window.templeRadio.toggleVoice()">🗣️ PODCAST : ON</button>
+          <button id="radio-win-music-toggle" class="action-btn" onclick="window.templeRadio.toggleMusic()">🎵 AMBIENT : ON</button>
+          <div style="display:flex; align-items:center; gap:5px; margin-left:auto;">
+            <span style="font-size:10px; color:#aaa;">VOL:</span>
+            <input type="range" min="0" max="1" step="0.05" value="0.5" onchange="window.templeRadio.setVolume(this.value)" style="width:70px;">
+          </div>
+        </div>
+
+        <!-- Transcription en direct -->
+        <div style="border:1px solid var(--vga-dark-gray); background:#050505; padding:8px; margin-bottom:10px;">
+          <div style="font-size:10px; color:var(--vga-cyan); margin-bottom:4px; display:flex; justify-content:space-between;">
+            <span>TRANSCRIPTION EN DIRECT (PODCAST SYNTH) :</span>
+            <span id="radio-status" style="color:#888;">ARRÊTÉ</span>
+          </div>
+          <div id="radio-transcript" style="font-size:12px; line-height:1.4; min-height:55px; color:#ffff55; font-style:italic;">
+            Appuyez sur [DIFFUSER] pour écouter la fréquence rebelle pirate...
+          </div>
+        </div>
+
+        <!-- Liste des fréquences et podcasts -->
+        <div style="font-size:10px; color:#aaa; margin-bottom:4px;">GRILLE DES FRÉQUENCES CLANDESTINES :</div>
+        <div id="radio-station-list" style="max-height:150px; overflow-y:auto; border:1px solid #333;"></div>
+      </div>
+    </div>
+
+    <!-- 10. INFILTRATION AREA 51 (BUNKER S-4) -->
+    <div id="win-area51" class="temple-window" style="top: 30px; left: 140px; width: 620px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>🛸</span><span>C:/GAMES/AREA51_STEALTH.HC • BUNKER S-4</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body" style="background:#000; text-align:center;">
+        <canvas id="area51-canvas" width="600" height="380" style="background:#050d05; border:1px solid var(--vga-green); image-rendering:pixelated;"></canvas>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:#111;">
+          <div id="area51-status" style="font-size:11px; color:var(--vga-light-green); text-align:left;">
+            OBJET : INFILTREZ LE BUNKER S-4, ÉVITEZ LES FEDS & LIBÉREZ L'EXTRATERRESTRE !
+          </div>
+          <button class="action-btn" onclick="desktop.games.area51.reset()">🔄 RECOMMENCER</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. CERN LHC PARTICLE SMASHER -->
+    <div id="win-cern" class="temple-window" style="top: 50px; left: 160px; width: 620px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>⚛️</span><span>C:/GAMES/CERN_LHC_SMASHER.HC • ACCÉLÉRATEUR RING-0</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body" style="background:#000; text-align:center;">
+        <canvas id="cern-canvas" width="600" height="380" style="background:#000; border:1px solid var(--vga-cyan); image-rendering:pixelated;"></canvas>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:#111;">
+          <div id="cern-status" style="font-size:11px; color:var(--vga-cyan); text-align:left;">
+            STATUS : FAISCEAU STABLE • ATTEIGNEZ 99.999% c POUR DÉCOUVRIR LE HIGGS
+          </div>
+          <div style="display:flex; gap:6px;">
+            <button class="action-btn" onclick="desktop.games.cern.accelerate()">⚡ INJECTER ÉNERGIE</button>
+            <button class="action-btn" onclick="desktop.games.cern.triggerCollision()" style="background:var(--vga-red); color:#fff;">💥 FORCER COLLISION</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. BBS PHREAK & CYBER-WAR TERMINAL -->
+    <div id="win-bbs" class="temple-window" style="top: 45px; left: 150px; width: 620px; display: none;">
+      <div class="window-titlebar">
+        <div class="window-title"><span>💀</span><span>C:/NET/BBS_PHREAK_2600.HC • TERMINAL 1200 BAUD</span></div>
+        <div class="window-controls"><button class="win-btn close">X</button></div>
+      </div>
+      <div class="window-body" style="background:#000; padding:10px;">
+        <div id="bbs-output" style="height:280px; overflow-y:auto; background:#050505; border:1px solid var(--vga-light-green); color:var(--vga-light-green); font-family:var(--font-temple); font-size:12px; padding:8px; line-height:1.4;"></div>
+        <div style="display:flex; gap:6px; margin-top:8px;">
+          <input type="text" id="bbs-input" placeholder="Tapez 'help' ou choisissez une action ci-dessous..." style="flex:1; background:#111; color:var(--vga-yellow); border:1px solid var(--vga-yellow); font-family:var(--font-temple); padding:4px 8px; font-size:12px;">
+          <button class="action-btn" onclick="desktop.games.bbs.handleInput(document.getElementById('bbs-input').value); document.getElementById('bbs-input').value='';">ENVOYER</button>
+        </div>
+        <div style="display:flex; gap:4px; margin-top:6px; flex-wrap:wrap;">
+          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('dial')">📞 DIAL TONE</button>
+          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('bluebox')">🔵 BLUEBOX 2600Hz</button>
+          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('scan')">📡 SCAN NODES</button>
+          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('brute')">🔨 BRUTE FORCE</button>
+          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('download')">💾 DL CIA LEAKS</button>
+          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('help')">❓ AIDE</button>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- BARRE D'ÉTAT INFÉRIEURE -->
   <footer id="bottombar">
     <div id="oracle-ticker" class="status-oracle-ticker">
-      ✝ TEMPLEOS 64-BIT ARCADE v3.0 - 33 JEUX COMPLETS - VOIX ROBOTIQUE ACTIVE - TOUCHE F7
+      ✝ TEMPLEOS 64-BIT ARCADE v3.0 - 45 JEUX COMPLETS - VOIX ROBOTIQUE ACTIVE - TOUCHE F7
     </div>
     <div class="status-stats">
       <span>[VGA: 640x480]</span>
-      <span>[33/33 JEUX PRÊTS]</span>
+      <span>[45/45 JEUX PRÊTS]</span>
       <span>[VOICE: ON]</span>
       <span>[F7 READY]</span>
     </div>
@@ -1027,6 +1170,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
   <script src="js/games/vatican_cards.js"></script>
   <script src="js/games/tamagotchi_goat.js"></script>
   <script src="js/games/war_room.js"></script>
+  <script src="js/games/megasys_games.js"></script>
 
   <script src="js/games/explorer.js"></script>
   <script src="js/games/cia_radar.js"></script>
@@ -1110,6 +1254,11 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
       desktop.games.holycIde = safeInit('holycIde', () => new HolyCIDE('holyc-editor', 'holyc-output'));
       desktop.games.soundboard = safeInit('soundboard', () => new TerrySoundboard('soundboard-container'));
       desktop.games.multiplayer = safeInit('multiplayer', () => new TempleMultiplayer('multiplayer-container'));
+
+      // 9. Nouveaux Jeux Megasys & Piraterie (v5.1)
+      desktop.games.area51 = safeInit('area51', () => new Area51Game('area51-canvas', 'area51-status'));
+      desktop.games.cern = safeInit('cern', () => new CernSmasherGame('cern-canvas', 'cern-status'));
+      desktop.games.bbs = safeInit('bbs', () => new BBSPhreakGame('bbs-output', 'bbs-input'));
 
       // BSOD Simulator
       window.templeBSOD = safeInit('templeBSOD', () => new TempleBSOD());

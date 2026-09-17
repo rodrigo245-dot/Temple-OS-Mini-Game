@@ -651,3 +651,18 @@ html, body {
 }
 
 .god-title { color: var(--vga-light-cyan); font-weight: bold; }
+
+/* CASSETTE TAPE ANIMATION */
+@keyframes tapeSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.tape-reel {
+  display: inline-block;
+  transform-origin: center center;
+}
+
+.tape-spinning {
+  animation: tapeSpin 2.2s linear infinite;
+}

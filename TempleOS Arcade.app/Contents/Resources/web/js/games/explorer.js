@@ -99,6 +99,16 @@ const TEMPLE_GAMES_CATALOG = [
       { id: "win-soundboard", name: "Soundboard de Terry Davis", file: "TERRY_VOICE.HC", icon: "🗣️" },
       { id: "win-multiplayer", name: "Liaison Multijoueur P2P", file: "NET_WEBRTC.HC", icon: "🌐" }
     ]
+  },
+  {
+    category: "9. PIRATERIE & RÉSEAUX DISSIDENTS (v5.1)",
+    folder: "C:/UNDERGROUND/",
+    games: [
+      { id: "win-radio", name: "Radio Pirate Anarchiste & Podcasts", file: "RADIO_PIRATE.HC", icon: "📻" },
+      { id: "win-area51", name: "Area 51 Stealth Infiltration", file: "HANGAR_S4.HC", icon: "🛸" },
+      { id: "win-cern", name: "CERN Particle Smasher LHC", file: "CERN_COLLIDER.HC", icon: "⚛️" },
+      { id: "win-bbs", name: "Cyber-Phreaking BBS Terminal", file: "BLUE_BOX_2600.HC", icon: "💀" }
+    ]
   }
 ];
 

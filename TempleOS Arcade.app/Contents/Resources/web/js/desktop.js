@@ -421,6 +421,23 @@ class TempleDesktop {
       this.games.multiplayer.render();
     }
 
+    // 9. Nouveaux Jeux Megasys & Piraterie (v5.1)
+    if (id === 'win-radio' && window.templeRadio) {
+      window.templeRadio.renderWindow();
+    }
+    if (id === 'win-area51' && this.games.area51) {
+      this.games.area51.start();
+      this.games.area51.render();
+    }
+    if (id === 'win-cern' && this.games.cern) {
+      this.games.cern.start();
+      this.games.cern.render();
+    }
+    if (id === 'win-bbs' && this.games.bbs) {
+      const input = document.getElementById('bbs-input');
+      if (input) input.focus();
+    }
+
     if (id === 'win-explorer' && window.gamesExplorer) window.gamesExplorer.render();
     if (id === 'win-achievements' && window.achievementsManager) window.achievementsManager.renderWindow();
   }
@@ -439,6 +456,8 @@ class TempleDesktop {
     if (id === 'win-raycaster' && this.games.raycaster) this.games.raycaster.stop();
     if (id === 'win-flight' && this.games.flightSim) this.games.flightSim.stop();
     if (id === 'win-warroom' && this.games.warRoom) this.games.warRoom.stop();
+    if (id === 'win-area51' && this.games.area51) this.games.area51.stop();
+    if (id === 'win-cern' && this.games.cern) this.games.cern.stop();
   }
 
   initClock() {
