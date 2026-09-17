@@ -697,3 +697,80 @@ html, body {
   background: var(--vga-blue);
   color: var(--vga-white);
 }
+
+/* ========================================================================== */
+/* TROLL & CHAOS MODE STYLES (v5.4)                                          */
+/* ========================================================================== */
+
+#wallpaper-ascii-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#desktop-terry-mascot {
+  position: absolute;
+  z-index: 8;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid var(--vga-yellow);
+  color: var(--vga-yellow);
+  font-family: var(--font-temple);
+  font-size: 10px;
+  padding: 4px 8px;
+  cursor: grab;
+  box-shadow: 0 0 10px rgba(255, 255, 85, 0.5);
+  user-select: none;
+  pointer-events: auto;
+  white-space: pre;
+}
+
+#desktop-terry-mascot:hover {
+  background: var(--vga-blue);
+  color: #fff;
+  border-color: #fff;
+}
+
+#floating-troll-banner {
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid var(--vga-light-green);
+  color: var(--vga-light-green);
+  font-family: var(--font-temple);
+  font-size: 11px;
+  padding: 3px 8px;
+  z-index: 10;
+  pointer-events: none;
+  letter-spacing: 1px;
+}
+
+/* EFFET CHAOS MODE / PANIQUE TOTALE */
+.troll-chaos-mode .temple-window {
+  animation: windowJiggle 0.15s infinite alternate !important;
+}
+
+.troll-chaos-mode #topbar {
+  background-color: var(--vga-red) !important;
+  color: #fff !important;
+}
+
+.troll-chaos-mode .crt-overlay {
+  opacity: 0.95 !important;
+  animation: crtGlitch 0.1s infinite !important;
+}
+
+@keyframes windowJiggle {
+  0% { transform: translate(-2px, 1px) rotate(-0.5deg); }
+  100% { transform: translate(2px, -1px) rotate(0.5deg); }
+}
+
+@keyframes crtGlitch {
+  0% { filter: hue-rotate(0deg) contrast(1.2); }
+  50% { filter: hue-rotate(90deg) contrast(2); }
+  100% { filter: hue-rotate(180deg) contrast(1.5); }
+}

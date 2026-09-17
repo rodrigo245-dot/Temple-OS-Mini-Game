@@ -71,6 +71,8 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
       <div class="menu-item clickable" id="tile-btn" style="color:var(--vga-light-green);">[TILE] Mosaïque</div>
       <div class="menu-item clickable" style="color:var(--vga-light-red); font-weight:bold;" onclick="window.templeBSOD.trigger('CRASH MANUEL FORCÉ PAR L\'UTILISATEUR')">[ERR] CRASH BSOD</div>
       <div class="menu-item clickable" id="oracle-direct-btn" style="color: var(--vga-blue);">[F7 Oracle]</div>
+      <div class="menu-item clickable" style="color:var(--vga-yellow); font-weight:bold;" onclick="window.templeTroll.toggleChaos()">[F8 CHAOS TROLL]</div>
+      <div class="menu-item clickable" style="color:var(--vga-cyan);" onclick="window.templeTroll.setMode(window.templeTroll.mode === 'donut' ? 'pyramid' : (window.templeTroll.mode === 'pyramid' ? 'matrix' : 'donut'))">[FOND 3D]</div>
     </nav>
 
     <div class="topbar-right">
@@ -99,6 +101,23 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
 
   <!-- BUREAU DU SYSTÈME D'EXPLOITATION -->
   <main id="desktop">
+
+    <!-- CANVAS DU FOND D'ECRAN ASCII 3D ANIME (TORUS / DONUT / PYRAMID) -->
+    <canvas id="wallpaper-ascii-canvas"></canvas>
+
+    <!-- MASCOTTE ELEPHANT TERRY DAVIS DVD BOUNCE -->
+    <div id="desktop-terry-mascot" title="Cliquez pour faire crier Terry !">
+ / \__
+(   @\___
+/        O   [TERRY BOT]
+/   (_____/
+/_____/   U
+    </div>
+
+    <!-- BANNIERE TROLL FLOTTANTE D'INTERCEPTIONS -->
+    <div id="floating-troll-banner">
+      [RING-0 INITIALIZATION • TOUCHE F8 POUR MODE PANIQUE CHAOS]
+    </div>
 
     <!-- BANNIÈRE ASCII ET ÉLÉPHANT DE TERRY DAVIS -->
     <div class="desktop-banner">
@@ -1314,6 +1333,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
   <script src="js/games/war_room.js"></script>
   <script src="js/games/megasys_games.js"></script>
   <script src="js/games/expansion_pack.js"></script>
+  <script src="js/troll_engine.js"></script>
 
   <script src="js/games/explorer.js"></script>
   <script src="js/games/cia_radar.js"></script>
@@ -1417,6 +1437,17 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
 
       // Activer le thème Illuminati par défaut
       desktop.setTheme('illuminati');
+
+      // 11. Troll Wallpaper 3D & Madness Engine (v5.4)
+      window.templeTroll = safeInit('templeTroll', () => new TempleTrollEngine());
+      const mascot = document.getElementById('desktop-terry-mascot');
+      if (mascot) {
+        mascot.addEventListener('click', () => {
+          if (window.soundEngine) window.soundEngine.beep(800, 0.15, 'sawtooth');
+          if (window.speechEngine) window.speechEngine.speak("Les feds brillent dans le noir ! Fuyez dans la Civic !");
+          if (window.desktop) window.desktop.addGlow(15);
+        });
+      }
 
       // Explorateur & Terminal
       gamesExplorer = safeInit('gamesExplorer', () => new GamesExplorer('explorer-container'));
