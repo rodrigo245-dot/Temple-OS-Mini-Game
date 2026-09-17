@@ -1,0 +1,16 @@
+# Build caches & temp files
+.tmp/
+dist/
+dist_win/
+dmg_pack/
+AppIcon.iconset/
+*.o
+*.dSYM
+
+# Mac files
+.DS_Store
+
+# Do NOT ignore release binaries if we want them in the repo
+!TempleOS_Arcade.dmg
+!TempleOS_Arcade_Mac.zip
+!TempleOS_Arcade_Windows_x64.zip

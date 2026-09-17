@@ -1,0 +1,653 @@
+/* ==========================================================================
+   TEMPLE OS 64-BIT RETRO STYLING (V3.0 ULTIMATE MASTER EDITION)
+   Palette officielle 16 couleurs VGA/EGA + Thèmes + Bootloader + Screensaver
+   ========================================================================== */
+
+:root {
+  --vga-black: #000000;
+  --vga-blue: #0000aa;
+  --vga-green: #00aa00;
+  --vga-cyan: #00aaaa;
+  --vga-red: #aa0000;
+  --vga-magenta: #aa00aa;
+  --vga-brown: #aa5500;
+  --vga-light-gray: #aaaaaa;
+  --vga-dark-gray: #555555;
+  --vga-light-blue: #5555ff;
+  --vga-light-green: #55ff55;
+  --vga-light-cyan: #55ffff;
+  --vga-light-red: #ff5555;
+  --vga-light-magenta: #ff55ff;
+  --vga-yellow: #ffff55;
+  --vga-white: #ffffff;
+
+  --desktop-bg: var(--vga-blue);
+  --desktop-fg: var(--vga-yellow);
+  --window-bg: var(--vga-black);
+  --titlebar-bg: var(--vga-cyan);
+  --titlebar-active: var(--vga-yellow);
+
+  --font-temple: "Courier New", Courier, "Lucida Console", Monaco, monospace;
+}
+
+/* THÈMES ALTERNATIFS */
+body.theme-phosphor {
+  --desktop-bg: #001100;
+  --desktop-fg: #33ff33;
+  --vga-blue: #002200;
+  --vga-yellow: #55ff55;
+  --vga-cyan: #22aa22;
+  --vga-light-cyan: #44ff44;
+  --vga-light-green: #55ff55;
+  --vga-white: #88ff88;
+  --titlebar-bg: #004400;
+  --titlebar-active: #22aa22;
+}
+
+body.theme-amber {
+  --desktop-bg: #110800;
+  --desktop-fg: #ffaa00;
+  --vga-blue: #221100;
+  --vga-yellow: #ffbb00;
+  --vga-cyan: #aa6600;
+  --vga-light-cyan: #ffcc44;
+  --vga-light-green: #ffaa00;
+  --vga-white: #ffdd88;
+  --titlebar-bg: #442200;
+  --titlebar-active: #aa5500;
+}
+
+body.theme-cga {
+  --desktop-bg: #000000;
+  --desktop-fg: #55ffff;
+  --vga-blue: #0000aa;
+  --vga-yellow: #ffffff;
+  --vga-cyan: #55ffff;
+  --vga-light-cyan: #55ffff;
+  --vga-light-green: #ffffff;
+  --vga-white: #ffffff;
+  --vga-red: #ff55ff;
+  --titlebar-bg: #ff55ff;
+  --titlebar-active: #55ffff;
+}
+
+/* THÈME 5 : ILLUMINATI NOVEL ORDRE MONDIAL (VERT BILLET DE BANQUE & OR) */
+body.theme-illuminati {
+  --desktop-bg: #0b1a0d;
+  --desktop-fg: #d4af37;
+  --vga-blue: #08220f;
+  --vga-yellow: #ffd700;
+  --vga-cyan: #85bb65;
+  --vga-light-cyan: #a3e085;
+  --vga-light-green: #44ee77;
+  --vga-white: #f5f5dc;
+  --vga-red: #cc2222;
+  --titlebar-bg: #1e4620;
+  --titlebar-active: #d4af37;
+  --window-bg: #030a04;
+}
+
+/* Filigrane d'ambiance illuminati */
+body.theme-illuminati #desktop::before {
+  content: "ANNUIT CŒPTIS  •  NOVUS ORDO SECLORUM  •  MDCCLXXVI";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  font-size: 28px;
+  font-weight: bold;
+  color: rgba(133, 187, 101, 0.08);
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: 6px;
+  z-index: 1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+button, .clickable, .menu-item, .desktop-icon, .p4-cell, .morpion-cell, .bs-cell, .mine-cell, .chess-cell, .tron-cell {
+  cursor: pointer !important;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--desktop-bg);
+  color: var(--desktop-fg);
+  font-family: var(--font-temple);
+  font-size: 13px;
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+  image-rendering: pixelated;
+}
+
+/* ÉCRAN CRT SCANLINES */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+  background: 
+    radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.45) 100%),
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 100%, 100% 3px, 3px 100%;
+  opacity: 0.75;
+}
+
+/* BOOTLOADER BIOS D'INTRODUCTION */
+#bootloader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  color: #ffffff;
+  z-index: 100000;
+  padding: 30px;
+  font-family: var(--font-temple);
+  font-size: 15px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bios-header {
+  color: #ffff55;
+  font-weight: bold;
+}
+
+.bios-log {
+  white-space: pre-wrap;
+  color: #aaaaaa;
+}
+
+.bios-footer {
+  color: #55ff55;
+  font-weight: bold;
+}
+
+/* SCREENSAVER 3D INTERACTIF */
+#screensaver-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  z-index: 99990;
+  display: none;
+}
+
+/* TOP MENU BAR */
+#topbar {
+  width: 100%;
+  height: 28px;
+  background-color: var(--vga-light-gray);
+  color: var(--vga-black);
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-weight: bold;
+  border-bottom: 2px solid var(--vga-black);
+  z-index: 10000;
+  position: relative;
+}
+
+.topbar-brand {
+  color: var(--vga-blue);
+  margin-right: 10px;
+  text-shadow: 1px 1px 0px var(--vga-white);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.menu-items {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.menu-item {
+  color: var(--vga-black);
+  padding: 2px 4px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.menu-item:hover, .menu-item.active {
+  background-color: var(--vga-blue);
+  color: var(--vga-yellow);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+/* JAUGE GLOW-O-METER */
+.glow-meter {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #000;
+  color: #ffff55;
+  padding: 1px 6px;
+  border: 1px solid #555;
+  font-size: 11px;
+}
+
+.glow-bar {
+  width: 50px;
+  height: 10px;
+  background: #222;
+  border: 1px solid #777;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-fill {
+  height: 100%;
+  width: 25%;
+  background: var(--vga-green);
+  transition: width 0.3s;
+}
+
+/* TOAST SUCCÈS DIVINS */
+#achievement-toast {
+  position: fixed;
+  bottom: 40px;
+  left: 20px;
+  background-color: var(--vga-black);
+  border: 3px solid var(--vga-yellow);
+  color: var(--vga-yellow);
+  padding: 10px 16px;
+  z-index: 99995;
+  display: none;
+  box-shadow: 0 0 15px rgba(255, 255, 85, 0.6);
+  animation: toastSlide 0.4s ease-out;
+}
+
+@keyframes toastSlide {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* DESKTOP CONTAINER */
+#desktop {
+  width: 100%;
+  height: calc(100vh - 56px);
+  position: relative;
+  background-color: var(--desktop-bg);
+  overflow: hidden;
+}
+
+.desktop-banner {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: var(--vga-light-cyan);
+  pointer-events: none;
+  opacity: 0.3;
+  white-space: pre;
+  font-size: 12px;
+  line-height: 1.15;
+}
+
+/* WIDGET 3D ASCII */
+.wireframe-widget {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 2px dashed var(--vga-yellow);
+  padding: 6px;
+  color: var(--vga-light-green);
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.wireframe-title {
+  color: var(--vga-yellow);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+/* DESKTOP ICONS GRID */
+.desktop-icons {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 10;
+}
+
+.desktop-icon {
+  width: 100px;
+  text-align: center;
+  padding: 4px;
+  border: 1px dashed transparent;
+  color: var(--vga-yellow);
+}
+
+.desktop-icon:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-color: var(--vga-yellow);
+}
+
+.desktop-icon .icon-art {
+  font-size: 24px;
+  line-height: 1;
+  margin-bottom: 3px;
+  display: block;
+}
+
+.desktop-icon .icon-label {
+  font-size: 11px;
+  font-weight: bold;
+  background-color: var(--vga-black);
+  padding: 2px 4px;
+  display: inline-block;
+  color: var(--vga-white);
+  border: 1px solid var(--vga-dark-gray);
+}
+
+/* FENÊTRES TEMPLEOS */
+.temple-window {
+  position: absolute;
+  background-color: var(--window-bg);
+  border: 2px solid var(--vga-light-gray);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.85);
+  min-width: 320px;
+  min-height: 240px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.temple-window.active-window {
+  border-color: var(--vga-yellow);
+  z-index: 500;
+}
+
+.window-titlebar {
+  background-color: var(--titlebar-bg);
+  color: var(--vga-white);
+  padding: 3px 6px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move !important;
+  border-bottom: 2px solid var(--vga-black);
+}
+
+.temple-window.active-window .window-titlebar {
+  background-color: var(--titlebar-active);
+  color: var(--vga-black);
+}
+
+.window-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.win-btn {
+  background-color: var(--vga-light-gray);
+  color: var(--vga-black);
+  border: 1px solid var(--vga-black);
+  font-weight: bold;
+  font-size: 11px;
+  width: 18px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.win-btn:hover { background-color: var(--vga-white); }
+.win-btn.close:hover { background-color: var(--vga-red); color: var(--vga-white); }
+
+.window-body {
+  padding: 8px 10px;
+  flex: 1;
+  overflow: auto;
+  color: var(--vga-yellow);
+  background-color: var(--vga-black);
+  display: flex;
+  flex-direction: column;
+}
+
+/* SÉLECTEUR DE DIFFICULTÉ */
+.difficulty-selector {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #000033;
+  padding: 3px 6px;
+  border: 1px solid var(--vga-dark-gray);
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+
+.diff-label { color: var(--vga-light-cyan); font-weight: bold; }
+
+.diff-btn {
+  background-color: var(--vga-dark-gray);
+  color: var(--vga-white);
+  border: 1px solid var(--vga-light-gray);
+  padding: 2px 5px;
+  font-family: var(--font-temple);
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.diff-btn:hover { background-color: var(--vga-light-gray); color: var(--vga-black); }
+.diff-btn.active { background-color: var(--vga-yellow); color: var(--vga-black); border-color: var(--vga-white); }
+.diff-btn.troll.active { background-color: var(--vga-light-red); color: var(--vga-white); }
+
+/* STATUS BAR */
+#bottombar {
+  width: 100%;
+  height: 28px;
+  background-color: var(--vga-light-gray);
+  color: var(--vga-black);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-weight: bold;
+  border-top: 2px solid var(--vga-black);
+  z-index: 10000;
+  position: relative;
+  font-size: 12px;
+}
+
+.status-oracle-ticker {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--vga-red);
+  font-weight: bold;
+}
+
+.status-stats {
+  display: flex;
+  gap: 10px;
+  color: var(--vga-blue);
+}
+
+/* BOUTONS STYLE TEMPLEOS */
+.temple-btn {
+  background-color: var(--vga-light-gray);
+  color: var(--vga-black);
+  border: 2px outset var(--vga-white);
+  padding: 3px 8px;
+  font-family: var(--font-temple);
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.temple-btn:hover { background-color: var(--vga-yellow); }
+.temple-btn:active { border-style: inset; background-color: var(--vga-cyan); }
+.temple-btn.primary { background-color: var(--vga-yellow); color: var(--vga-black); }
+.temple-btn.danger { background-color: var(--vga-red); color: var(--vga-white); }
+.temple-btn.holy { background-color: var(--vga-white); color: var(--vga-blue); border: 2px solid var(--vga-yellow); }
+
+/* JEUX STYLES (TRON, ÉCHECS, GUITAR) */
+.tron-canvas {
+  border: 3px solid var(--vga-light-cyan);
+  background-color: var(--vga-black);
+}
+
+.chess-board {
+  display: grid;
+  grid-template-columns: repeat(8, 36px);
+  grid-template-rows: repeat(8, 36px);
+  border: 3px solid var(--vga-yellow);
+  margin: 6px auto;
+}
+
+.chess-cell {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.chess-cell.white { background-color: var(--vga-light-gray); color: #000; }
+.chess-cell.black { background-color: var(--vga-blue); color: #fff; }
+.chess-cell.selected { background-color: var(--vga-yellow) !important; color: #000 !important; }
+.chess-cell.possible { outline: 2px dashed var(--vga-light-green); }
+
+.guitar-lane {
+  width: 44px;
+  height: 260px;
+  background: #111;
+  border: 1px solid #333;
+  position: relative;
+  overflow: hidden;
+}
+
+.guitar-note {
+  position: absolute;
+  width: 38px;
+  height: 14px;
+  left: 2px;
+  border-radius: 4px;
+}
+
+.guitar-target-line {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #ffff55;
+  box-shadow: 0 0 8px #ffff55;
+}
+
+/* TAQUIN & SUDOKU */
+.taquin-board {
+  display: grid;
+  grid-template-columns: repeat(4, 48px);
+  grid-template-rows: repeat(4, 48px);
+  gap: 4px;
+  background-color: var(--vga-yellow);
+  padding: 6px;
+  border: 3px solid var(--vga-white);
+  margin: 8px auto;
+}
+
+.taquin-tile {
+  background-color: var(--vga-blue);
+  color: var(--vga-white);
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px outset var(--vga-light-gray);
+  cursor: pointer;
+}
+
+.taquin-tile.empty { background-color: var(--vga-black); border: none; cursor: default; }
+
+.sudoku-board {
+  display: grid;
+  grid-template-columns: repeat(9, 28px);
+  grid-template-rows: repeat(9, 28px);
+  gap: 1px;
+  background-color: var(--vga-white);
+  padding: 3px;
+  border: 3px solid var(--vga-yellow);
+  margin: 6px auto;
+}
+
+.sudoku-cell {
+  width: 28px;
+  height: 28px;
+  background-color: var(--vga-black);
+  color: var(--vga-light-cyan);
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #333;
+  font-family: var(--font-temple);
+  outline: none;
+}
+
+.sudoku-cell.fixed { background-color: #000044; color: var(--vga-yellow); }
+.sudoku-cell.border-right { border-right: 2px solid var(--vga-yellow); }
+.sudoku-cell.border-bottom { border-bottom: 2px solid var(--vga-yellow); }
+
+/* GOD MESSAGE BOX */
+.god-message-box {
+  background-color: var(--vga-black);
+  border: 2px dashed var(--vga-yellow);
+  color: var(--vga-yellow);
+  padding: 5px 8px;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 6px;
+  width: 100%;
+}
+
+.god-title { color: var(--vga-light-cyan); font-weight: bold; }
