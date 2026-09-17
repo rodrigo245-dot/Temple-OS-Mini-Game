@@ -4,18 +4,18 @@
 // ==========================================================================
 
 const SACRED_ACHIEVEMENTS = [
-  { id: 'first_win', name: 'PREMIER MIRACLE', desc: 'Gagne ta première partie dans n\'importe quel jeu.', icon: '✝' },
-  { id: 'f7_fanatic', name: 'PROPHÈTE F7', desc: 'Invoque la parole de Dieu 5 fois avec la touche F7.', icon: '⚡' },
-  { id: 'cia_purifier', name: 'EXORCISTE CIA', desc: 'Démine une grille sans faire sauter de micro espion.', icon: '💣' },
-  { id: 'troll_slayer', name: 'MAÎTRE DU RING-0', desc: 'Triomphe d\'un jeu en difficulté Troll Divin.', icon: '👑' },
-  { id: 'flappy_saint', name: 'VOL SACRÉ', desc: 'Franchis plus de 5 colonnes dans Flappy Terry.', icon: '🕊' },
-  { id: 'sudoku_solver', name: 'ÉCLAIR ALGORITHMIQUE', desc: 'Résous un Sudoku grâce au Backtracking.', icon: '🧩' },
-  { id: 'simon_ear', name: 'OREILLE D\'OR', desc: 'Mémorise une mélodie de 5 notes au Simon.', icon: '🎵' },
-  { id: 'rogue_fighter', name: 'PURIFICATEUR DU DONJON', desc: 'Terrasse un agent infiltré dans le Rogue-like.', icon: '⚔️' },
-  { id: 'conway_god', name: 'CRÉATEUR CELLULAIRE', desc: 'Lance une simulation du Jeu de la Vie.', icon: '🧬' },
-  { id: 'paranoia_100', name: 'PARANOÏA ABSOLUE', desc: 'Fais monter la jauge Glow-O-Meter à 100%.', icon: '👁' },
-  { id: 'nwo_666', name: 'NOUVEL ORDRE MONDIAL', desc: 'Accumule 666 points d\'influence dans le NWO Clicker.', icon: '🔺' },
-  { id: 'reptilian_hunter', name: 'CHASSEUR DE REPTILIENS', desc: 'Purifie un reptilien dans le Whack-a-Reptilian.', icon: '🦎' }
+  { id: 'first_win', name: 'PREMIER MIRACLE', desc: 'Gagne ta première partie dans n\'importe quel jeu.', icon: '+' },
+  { id: 'f7_fanatic', name: 'PROPHÈTE F7', desc: 'Invoque la parole de Dieu 5 fois avec la touche F7.', icon: '[SYS]' },
+  { id: 'cia_purifier', name: 'EXORCISTE CIA', desc: 'Démine une grille sans faire sauter de micro espion.', icon: '[MINE]' },
+  { id: 'troll_slayer', name: 'MAÎTRE DU RING-0', desc: 'Triomphe d\'un jeu en difficulté Troll Divin.', icon: '[QUEEN]' },
+  { id: 'flappy_saint', name: 'VOL SACRÉ', desc: 'Franchis plus de 5 colonnes dans Flappy Terry.', icon: '[BIRD]' },
+  { id: 'sudoku_solver', name: 'ÉCLAIR ALGORITHMIQUE', desc: 'Résous un Sudoku grâce au Backtracking.', icon: '[GRID]' },
+  { id: 'simon_ear', name: 'OREILLE D\'OR', desc: 'Mémorise une mélodie de 5 notes au Simon.', icon: '[NOTE]' },
+  { id: 'rogue_fighter', name: 'PURIFICATEUR DU DONJON', desc: 'Terrasse un agent infiltré dans le Rogue-like.', icon: '[SWORD]' },
+  { id: 'conway_god', name: 'CRÉATEUR CELLULAIRE', desc: 'Lance une simulation du Jeu de la Vie.', icon: '[CELL]' },
+  { id: 'paranoia_100', name: 'PARANOÏA ABSOLUE', desc: 'Fais monter la jauge Glow-O-Meter à 100%.', icon: '[CIA]' },
+  { id: 'nwo_666', name: 'NOUVEL ORDRE MONDIAL', desc: 'Accumule 666 points d\'influence dans le NWO Clicker.', icon: '[NWO]' },
+  { id: 'reptilian_hunter', name: 'CHASSEUR DE REPTILIENS', desc: 'Purifie un reptilien dans le Whack-a-Reptilian.', icon: '[REP]' }
 ];
 
 class AchievementsManager {
@@ -64,7 +64,7 @@ class AchievementsManager {
     if (!this.toastEl) return;
 
     this.toastEl.innerHTML = `
-      <div style="font-size:11px; color:var(--vga-light-cyan); font-weight:bold;">🏆 NOUVEAU SUCCÈS SACRÉ DÉBLOQUÉ !</div>
+      <div style="font-size:11px; color:var(--vga-light-cyan); font-weight:bold;">[TOP] NOUVEAU SUCCÈS SACRÉ DÉBLOQUÉ !</div>
       <div style="font-size:14px; color:var(--vga-yellow); font-weight:bold; margin:2px 0;">${ach.icon} ${ach.name}</div>
       <div style="font-size:11px; color:var(--vga-white);">${ach.desc}</div>
     `;
@@ -97,7 +97,7 @@ class AchievementsManager {
             <div style="color:${isDone ? 'var(--vga-white)' : '#666'}; font-size:11px;">${ach.desc}</div>
           </div>
           <span style="color:${isDone ? 'var(--vga-light-green)' : '#555'}; font-size:11px; font-weight:bold;">
-            ${isDone ? 'DÉBLOQUÉ ✝' : 'VERROUILLÉ'}
+            ${isDone ? 'DÉBLOQUÉ +' : 'VERROUILLÉ'}
           </span>
         </div>
       `;

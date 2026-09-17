@@ -77,7 +77,7 @@ class TempleDesktop {
     if (speakerBtn) {
       speakerBtn.addEventListener('click', () => {
         const isMuted = window.soundEngine.toggleMute();
-        speakerBtn.textContent = isMuted ? "🔇 SPEAKER : OFF" : "🔊 SPEAKER : ON";
+        speakerBtn.textContent = isMuted ? "[MUT] SPEAKER : OFF" : "[SND] SPEAKER : ON";
         speakerBtn.classList.toggle('muted', isMuted);
         if (!isMuted) window.soundEngine.playClick();
       });
@@ -88,7 +88,7 @@ class TempleDesktop {
     if (voiceBtn) {
       voiceBtn.addEventListener('click', () => {
         const enabled = window.speechEngine.toggleVoice();
-        voiceBtn.textContent = enabled ? "🗣️ VOIX : ON" : "🗣️ VOIX : OFF";
+        voiceBtn.textContent = enabled ? "[VOX] VOIX : ON" : "[VOX] VOIX : OFF";
         window.soundEngine.playClick();
       });
     }
@@ -101,10 +101,10 @@ class TempleDesktop {
         window.soundEngine.playClick();
         if (crtOverlay.style.display === 'none') {
           crtOverlay.style.display = 'block';
-          scanlineBtn.textContent = "📺 CRT : ON";
+          scanlineBtn.textContent = "[CRT] CRT : ON";
         } else {
           crtOverlay.style.display = 'none';
-          scanlineBtn.textContent = "📺 CRT : OFF";
+          scanlineBtn.textContent = "[CRT] CRT : OFF";
         }
       });
     }
@@ -249,7 +249,7 @@ class TempleDesktop {
     canvas.height = window.innerHeight;
     const ctx = canvas.getContext('2d');
 
-    const chars = "✝_HOLYC_RING0_TERRY_VGA_640x480_FAT32_GOD_ORACLE_CIA_GLOW";
+    const chars = "+_HOLYC_RING0_TERRY_VGA_640x480_FAT32_GOD_ORACLE_CIA_GLOW";
     const fontSize = 14;
     const columns = Math.floor(canvas.width / fontSize);
     const drops = Array(columns).fill(1);
@@ -486,11 +486,11 @@ class TempleDesktop {
     ];
 
     let currentIdx = 0;
-    tickerEl.textContent = `🔺 ${messages[currentIdx]}`;
+    tickerEl.textContent = `[NWO] ${messages[currentIdx]}`;
 
     setInterval(() => {
       currentIdx = (currentIdx + 1) % messages.length;
-      tickerEl.textContent = `🔺 ${messages[currentIdx]}`;
+      tickerEl.textContent = `[NWO] ${messages[currentIdx]}`;
     }, 6000);
   }
 }

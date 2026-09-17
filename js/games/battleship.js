@@ -1,6 +1,6 @@
 // ==========================================================================
 // BATAILLE NAVALE DE L'ARCHE (BATTLESHIP TEMPLEOS V2.0)
-// Difficultés : Facile, Normal, Difficile (Radar Parité), Troll Divin ⚡
+// Difficultés : Facile, Normal, Difficile (Radar Parité), Troll Divin [SYS]
 // ==========================================================================
 
 class BattleshipJeu {
@@ -12,11 +12,11 @@ class BattleshipJeu {
 
     this.size = 10;
     this.shipsConfig = [
-      { name: "L'Arche de Noé", size: 5, icon: "⛵" },
-      { name: "Frégate de Jéricho", size: 4, icon: "🚢" },
-      { name: "Croiseur Sacré", size: 3, icon: "🛥" },
-      { name: "Sous-Marin du Vatican", size: 3, icon: "🐟" },
-      { name: "Barque Apostolique", size: 2, icon: "🛶" }
+      { name: "L'Arche de Noé", size: 5, icon: "[SHIP]" },
+      { name: "Frégate de Jéricho", size: 4, icon: "[SHIP]" },
+      { name: "Croiseur Sacré", size: 3, icon: "[SHIP]" },
+      { name: "Sous-Marin du Vatican", size: 3, icon: "[FISH]" },
+      { name: "Barque Apostolique", size: 2, icon: "[BOAT]" }
     ];
 
     this.playerGrid = [];
@@ -48,7 +48,7 @@ class BattleshipJeu {
       facile: "NIVEAU : RECRUE CIA (FACILE) - TIRS AVEUGLES.",
       normal: "NIVEAU : COMMANDEUR FÉDÉRAL (NORMAL) - CHASSE STANDARD.",
       difficile: "NIVEAU : RADAR PARITÉ DU PENTAGONE (DIFFICILE) - BALAYAGE STRATÉGIQUE !",
-      troll: "NIVEAU : SONAR DE DIEU TROLL ⚡ - RÉVÉLATIONS MYSTIQUES SUR LE RADAR !"
+      troll: "NIVEAU : SONAR DE DIEU TROLL [SYS] - RÉVÉLATIONS MYSTIQUES SUR LE RADAR !"
     };
     if (this.commentEl) this.commentEl.textContent = labels[level] || "";
     this.reset();
@@ -148,7 +148,7 @@ class BattleshipJeu {
         if (hitShip.hits >= hitShip.size) {
           hitShip.sunk = true;
           if (this.commentEl) {
-            this.commentEl.textContent = `⚓ BÂTIMENT ADVERSE COULÉ : ${hitShip.name.toUpperCase()} !`;
+            this.commentEl.textContent = `[PORT] BÂTIMENT ADVERSE COULÉ : ${hitShip.name.toUpperCase()} !`;
           }
         } else {
           if (this.commentEl) this.commentEl.textContent = window.godOracle.getComment('battleship_hit');
@@ -193,7 +193,7 @@ class BattleshipJeu {
       window.soundEngine.playHolyMiracle();
       if (this.commentEl) {
         const letters = "ABCDEFGHIJ";
-        this.commentEl.textContent = `⚡ SONAR DE DIEU : UN NAVIRE EST DÉTECTÉ EN CASE ${letters[lucky.c]}${lucky.r + 1} !`;
+        this.commentEl.textContent = `[SYS] SONAR DE DIEU : UN NAVIRE EST DÉTECTÉ EN CASE ${letters[lucky.c]}${lucky.r + 1} !`;
       }
     }
   }
@@ -280,7 +280,7 @@ class BattleshipJeu {
         if (hitShip.hits >= hitShip.size) {
           hitShip.sunk = true;
           if (this.commentEl) {
-            this.commentEl.textContent = `💀 ALERTE : TON ${hitShip.name.toUpperCase()} A ÉTÉ COULÉ PAR LA CIA !`;
+            this.commentEl.textContent = `[ERR] ALERTE : TON ${hitShip.name.toUpperCase()} A ÉTÉ COULÉ PAR LA CIA !`;
           }
         }
       }
@@ -308,14 +308,14 @@ class BattleshipJeu {
     if (isPlayerWinner) {
       window.soundEngine.playVictory();
       if (this.statusEl) {
-        this.statusEl.textContent = "🏆 VICTOIRE TOTALE ! LES SOUS-MARINS SONT TOUS NEUTRALISÉS !";
+        this.statusEl.textContent = "[TOP] VICTOIRE TOTALE ! LES SOUS-MARINS SONT TOUS NEUTRALISÉS !";
         this.statusEl.style.color = "var(--vga-light-green)";
       }
       if (this.commentEl) this.commentEl.textContent = window.godOracle.getComment('battleship_win');
     } else {
       window.soundEngine.playDefeat();
       if (this.statusEl) {
-        this.statusEl.textContent = "💀 DÉFAITE ! L'ARCHE ET TA FLOTTE ONT ÉTÉ ENGLOUTIES !";
+        this.statusEl.textContent = "[ERR] DÉFAITE ! L'ARCHE ET TA FLOTTE ONT ÉTÉ ENGLOUTIES !";
         this.statusEl.style.color = "var(--vga-light-red)";
       }
     }

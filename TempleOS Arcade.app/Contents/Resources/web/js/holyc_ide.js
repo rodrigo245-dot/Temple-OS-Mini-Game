@@ -15,7 +15,7 @@ class HolyCIDE {
     this.editor.value = `// COMPILATEUR HOLYC RING-0 - EXÉCUTION EN TEMPS RÉEL
 U0 DivineMiracle()
 {
-  Print("✝ ALLIANCE AVEC LE COMPILATEUR DIVIN DE TERRY A. DAVIS ✝\\n");
+  Print("+ ALLIANCE AVEC LE COMPILATEUR DIVIN DE TERRY A. DAVIS +\\n");
   
   I64 i;
   for (i = 0; i < 4; i++) {
@@ -68,7 +68,7 @@ DivineMiracle();
     } catch (err) {
       const errLine = document.createElement('div');
       errLine.style.color = '#ff5555';
-      errLine.textContent = `❌ ERREUR DE COMPILATION HOLYC : ${err.message}`;
+      errLine.textContent = `[X] ERREUR DE COMPILATION HOLYC : ${err.message}`;
       this.output.appendChild(errLine);
       window.soundEngine.beep(200, 0.2, 'sawtooth');
     }

@@ -79,10 +79,10 @@ class TronGame {
       this.endGame("DOUBLE CRASH ! ÉGALITÉ PARFAITE !");
       return;
     } else if (p1Dead) {
-      this.endGame("🏆 JOUEUR 2 (JAUNE) TRIOMPHE DE LA LUMIÈRE !");
+      this.endGame("[TOP] JOUEUR 2 (JAUNE) TRIOMPHE DE LA LUMIÈRE !");
       return;
     } else if (p2Dead) {
-      this.endGame("🏆 JOUEUR 1 (CYAN) TRIOMPHE DE LA LUMIÈRE !");
+      this.endGame("[TOP] JOUEUR 1 (CYAN) TRIOMPHE DE LA LUMIÈRE !");
       return;
     }
 

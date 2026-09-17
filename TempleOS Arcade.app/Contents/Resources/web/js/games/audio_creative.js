@@ -156,7 +156,7 @@ class PoursuiteGame {
       gridHtml += '<div style="display:flex; gap:3px; justify-content:center;">';
       for (let c = 0; c < this.gridSize; c++) {
         const isTarget = this.found && r === this.target.y && c === this.target.x;
-        gridHtml += `<div style="width:26px; height:26px; background:#000; border:1px solid #444; display:flex; align-items:center; justify-content:center; cursor:pointer;" onclick="desktop.games.poursuite.handleClick(${c}, ${r})">${isTarget ? '💎' : ''}</div>`;
+        gridHtml += `<div style="width:26px; height:26px; background:#000; border:1px solid #444; display:flex; align-items:center; justify-content:center; cursor:pointer;" onclick="desktop.games.poursuite.handleClick(${c}, ${r})">${isTarget ? '[GEM]' : ''}</div>`;
       }
       gridHtml += '</div>';
     }
@@ -165,10 +165,10 @@ class PoursuiteGame {
       <div style="text-align:center;">
         <div style="font-size:12px; color:var(--vga-light-cyan); margin-bottom:4px;">RETROUVE LA BALISE CACHÉE VIA LE FAISCEAU D'ÉCLAIRAGE</div>
         <div style="margin:6px auto; width:180px; height:18px; border:2px inset #aaa; background:black; display:flex; align-items:center; justify-content:center; box-shadow:0 0 ${intensity * 20}px ${beamColor}; color:${beamColor}; font-weight:bold; font-size:11px;">
-          FAISCEAU LYRE MAC 250 : ${this.found ? "CIBLE VERROUILLÉE !" : (this.lastDist < 2.5 ? "TRÈS CHAUD 🔥" : (this.lastDist < 4.5 ? "TIÈDE ⚡" : "FROID ❄️"))}
+          FAISCEAU LYRE MAC 250 : ${this.found ? "CIBLE VERROUILLÉE !" : (this.lastDist < 2.5 ? "TRÈS CHAUD [FIRE]" : (this.lastDist < 4.5 ? "TIÈDE [SYS]" : "FROID [ICE]️"))}
         </div>
         <div style="margin:8px 0;">${gridHtml}</div>
-        <div style="color:var(--vga-yellow); font-weight:bold;">TIRS : ${this.clicks} ${this.found ? '🏆 TRÉSOR DÉCOUVERT !' : ''}</div>
+        <div style="color:var(--vga-yellow); font-weight:bold;">TIRS : ${this.clicks} ${this.found ? '[TOP] TRÉSOR DÉCOUVERT !' : ''}</div>
         <button class="temple-btn primary" style="margin-top:6px;" onclick="desktop.games.poursuite.init()">NOUVELLE POURSUITE</button>
       </div>
     `;
@@ -252,7 +252,7 @@ class PipeDreamGame {
       <div style="text-align:center;">
         <div style="font-size:12px; color:var(--vga-light-cyan); margin-bottom:6px;">CLIQUE SUR LES TUILES POUR RELIER LA RÉGIE AUDIO [BLEU] AUX ENCEINTES [ROUGE]</div>
         <div style="margin:8px 0;">${gridHtml}</div>
-        <div style="color:var(--vga-yellow); font-weight:bold;">${this.isSolved ? "🏆 SIGNAL AUDIO ÉTABLI SANS PARASITES !" : "SIGNAUX DÉCONNECTÉS"}</div>
+        <div style="color:var(--vga-yellow); font-weight:bold;">${this.isSolved ? "[TOP] SIGNAL AUDIO ÉTABLI SANS PARASITES !" : "SIGNAUX DÉCONNECTÉS"}</div>
         <button class="temple-btn primary" style="margin-top:6px;" onclick="desktop.games.pipedream.init()">RÉINITIALISER LES CÂBLES</button>
       </div>
     `;
@@ -325,7 +325,7 @@ class BeatSequencerGame {
     }
     if (match) {
       window.soundEngine.playVictory();
-      alert("🏆 RYTHME REPRODUIT À LA PERFECTION ! OREILLE ABSOLUE !");
+      alert("[TOP] RYTHME REPRODUIT À LA PERFECTION ! OREILLE ABSOLUE !");
     } else {
       window.soundEngine.playDefeat();
       alert("Ce n'est pas le bon motif. Réécoute le beat modèle !");
@@ -348,7 +348,7 @@ class BeatSequencerGame {
           `).join('')}
         </div>
         <div style="display:flex; gap:8px; justify-content:center; margin-top:8px;">
-          <button class="temple-btn holy" onclick="desktop.games.sequencer.playDemo()">ÉCOUTER LE MODÈLE 🎵</button>
+          <button class="temple-btn holy" onclick="desktop.games.sequencer.playDemo()">ÉCOUTER LE MODÈLE [NOTE]</button>
           <button class="temple-btn primary" onclick="desktop.games.sequencer.verify()">VÉRIFIER LE RYTHME</button>
         </div>
       </div>

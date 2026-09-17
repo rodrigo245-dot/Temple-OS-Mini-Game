@@ -16,7 +16,7 @@ class TempleGamepad {
     window.addEventListener('gamepadconnected', (e) => {
       this.gamepadIndex = e.gamepad.index;
       if (this.indicatorEl) {
-        this.indicatorEl.textContent = `🎮 MANETTE : ACTIVE (${e.gamepad.id.slice(0, 15)}...)`;
+        this.indicatorEl.textContent = `[PAD] MANETTE : ACTIVE (${e.gamepad.id.slice(0, 15)}...)`;
         this.indicatorEl.style.color = "var(--vga-light-green)";
       }
       window.soundEngine.playHolyMiracle();
@@ -26,7 +26,7 @@ class TempleGamepad {
     window.addEventListener('gamepaddisconnected', () => {
       this.gamepadIndex = null;
       if (this.indicatorEl) {
-        this.indicatorEl.textContent = "🎮 MANETTE : NON DÉTECTÉE";
+        this.indicatorEl.textContent = "[PAD] MANETTE : NON DÉTECTÉE";
         this.indicatorEl.style.color = "var(--vga-dark-gray)";
       }
     });

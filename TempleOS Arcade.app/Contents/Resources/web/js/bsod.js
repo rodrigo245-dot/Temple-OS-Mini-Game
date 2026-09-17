@@ -52,7 +52,7 @@ class TempleBSOD {
 
     const crashDump = `
 ╔═══════════════════════════════════════════════════════════════════════════════╗
-║          ✝ TEMPLEOS FATAL KERNEL PANIC (RING-0 PRIVILEGE VIOLATION) ✝        ║
+║          + TEMPLEOS FATAL KERNEL PANIC (RING-0 PRIVILEGE VIOLATION) +        ║
 ║                    "A DIVINE EXCEPTION OCCURRED AT CS:RIP"                    ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
 

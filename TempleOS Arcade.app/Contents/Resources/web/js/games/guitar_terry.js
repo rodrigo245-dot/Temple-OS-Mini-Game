@@ -80,11 +80,11 @@ class GuitarTerryGame {
       if (diff <= 15) {
         this.score += 100;
         this.combo++;
-        this.judgment = "PARFAIT ! 🔥";
+        this.judgment = "PARFAIT ! [FIRE]";
       } else {
         this.score += 50;
         this.combo++;
-        this.judgment = "BON ! ⚡";
+        this.judgment = "BON ! [SYS]";
       }
     } else {
       this.combo = 0;
@@ -107,7 +107,7 @@ class GuitarTerryGame {
       // Note ratée
       if (n.y > 255 && !n.hit) {
         this.combo = 0;
-        this.judgment = "RATÉ ! 💀";
+        this.judgment = "RATÉ ! [ERR]";
         this.notes.splice(i, 1);
         this.updateHud();
       } else if (n.y > 270) {
@@ -136,7 +136,7 @@ class GuitarTerryGame {
             </div>
           `).join('')}
         </div>
-        <button class="temple-btn primary clickable" onclick="desktop.games.guitar.start()">DÉMARRER LE RYTHME 🎵</button>
+        <button class="temple-btn primary clickable" onclick="desktop.games.guitar.start()">DÉMARRER LE RYTHME [NOTE]</button>
       </div>
     `;
   }

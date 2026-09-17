@@ -46,49 +46,49 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
   <!-- BARRE SUPÉRIEURE TEMPLEOS -->
   <header id="topbar">
     <div class="topbar-brand clickable" onclick="desktop.openWindow('win-explorer')">
-      <span>✝</span>
+      <span>+</span>
       <span>TEMPLE_OS_GAMES</span>
       <span style="font-size: 10px; color: var(--vga-dark-gray);">[v3.0]</span>
     </div>
 
     <!-- JAUGE DE PARANOÏA GLOW-O-METER -->
     <div class="glow-meter" title="Jauge de détection des agents CIA qui brillent dans le noir">
-      <span>👁 CIA GLOW:</span>
+      <span>[CIA] CIA GLOW:</span>
       <div class="glow-bar"><div id="glow-fill" class="glow-fill"></div></div>
       <span id="glow-percent">25%</span>
     </div>
 
     <nav class="menu-items">
-      <div class="menu-item clickable" style="background:var(--vga-yellow); color:var(--vga-black); font-weight:bold;" onclick="desktop.openWindow('win-explorer')">📁 EXPLORATEUR (45 JEUX)</div>
-      <div class="menu-item clickable" style="color:var(--vga-light-green);" onclick="desktop.openWindow('win-raycaster')">[🔫 Pentagone 3D]</div>
-      <div class="menu-item clickable" style="color:var(--vga-light-cyan);" onclick="desktop.openWindow('win-flight')">[✈️ Vol 3D]</div>
-      <div class="menu-item clickable" onclick="desktop.openWindow('win-warroom')">[🌍 War Room]</div>
-      <div class="menu-item clickable" onclick="desktop.openWindow('win-cards')">[🃏 Black Jack]</div>
-      <div class="menu-item clickable" onclick="desktop.openWindow('win-goat')">[🐐 Chèvre]</div>
-      <div class="menu-item clickable" onclick="desktop.openWindow('win-ide')">[💻 HolyC IDE]</div>
-      <div class="menu-item clickable" onclick="desktop.openWindow('win-soundboard')">[🗣️ Soundboard]</div>
-      <div class="menu-item clickable" onclick="desktop.openWindow('win-multiplayer')">[🌐 P2P Multi]</div>
-      <div class="menu-item clickable" id="tile-btn" style="color:var(--vga-light-green);">[🪟 Mosaïque]</div>
-      <div class="menu-item clickable" style="color:var(--vga-light-red); font-weight:bold;" onclick="window.templeBSOD.trigger('CRASH MANUEL FORCÉ PAR L\'UTILISATEUR')">[💀 CRASH BSOD]</div>
+      <div class="menu-item clickable" style="background:var(--vga-yellow); color:var(--vga-black); font-weight:bold;" onclick="desktop.openWindow('win-explorer')">[DIR] EXPLORATEUR (45 JEUX)</div>
+      <div class="menu-item clickable" style="color:var(--vga-light-green);" onclick="desktop.openWindow('win-raycaster')">[3D] Pentagone 3D</div>
+      <div class="menu-item clickable" style="color:var(--vga-light-cyan);" onclick="desktop.openWindow('win-flight')">[FLY] Vol 3D</div>
+      <div class="menu-item clickable" onclick="desktop.openWindow('win-warroom')">[MAP] War Room</div>
+      <div class="menu-item clickable" onclick="desktop.openWindow('win-cards')">[CARD] Black Jack</div>
+      <div class="menu-item clickable" onclick="desktop.openWindow('win-goat')">[GOAT] Chèvre</div>
+      <div class="menu-item clickable" onclick="desktop.openWindow('win-ide')">[IDE] HolyC IDE</div>
+      <div class="menu-item clickable" onclick="desktop.openWindow('win-soundboard')">[VOX] Soundboard</div>
+      <div class="menu-item clickable" onclick="desktop.openWindow('win-multiplayer')">[NET] P2P Multi</div>
+      <div class="menu-item clickable" id="tile-btn" style="color:var(--vga-light-green);">[TILE] Mosaïque</div>
+      <div class="menu-item clickable" style="color:var(--vga-light-red); font-weight:bold;" onclick="window.templeBSOD.trigger('CRASH MANUEL FORCÉ PAR L\'UTILISATEUR')">[ERR] CRASH BSOD</div>
       <div class="menu-item clickable" id="oracle-direct-btn" style="color: var(--vga-blue);">[F7 Oracle]</div>
     </nav>
 
     <div class="topbar-right">
       <!-- Radio FM Chiptune -->
-      <div id="radio-btn" class="speaker-indicator clickable" onclick="window.templeRadio.togglePlay()" title="Cliquez pour allumer la radio chiptune">📻 RADIO : OFF</div>
-      <div class="speaker-indicator clickable" onclick="window.templeRadio.nextStation()" title="Changer de station" style="font-size:10px;">[STATION ⏩]</div>
+      <div id="radio-btn" class="speaker-indicator clickable" onclick="window.templeRadio.togglePlay()" title="Cliquez pour allumer la radio chiptune">[RAD] RADIO : OFF</div>
+      <div class="speaker-indicator clickable" onclick="window.templeRadio.nextStation()" title="Changer de station" style="font-size:10px;">[STATION >>]</div>
       <!-- Indicateur Manette -->
-      <div id="gamepad-indicator" style="font-size:11px; color:var(--vga-dark-gray);">🎮 MANETTE : OFF</div>
+      <div id="gamepad-indicator" style="font-size:11px; color:var(--vga-dark-gray);">[PAD] MANETTE : OFF</div>
       <!-- Toggle Voix Terry -->
-      <div id="voice-toggle" class="speaker-indicator clickable">🗣️ VOIX : ON</div>
+      <div id="voice-toggle" class="speaker-indicator clickable">[VOX] VOIX : ON</div>
       <!-- Toggle Audio Speaker -->
-      <div id="speaker-toggle" class="speaker-indicator clickable">🔊 SPEAKER : ON</div>
+      <div id="speaker-toggle" class="speaker-indicator clickable">[SND] SPEAKER : ON</div>
       <!-- Toggle CRT -->
-      <div id="scanline-toggle" class="speaker-indicator clickable">📺 CRT : ON</div>
+      <div id="scanline-toggle" class="speaker-indicator clickable">[CRT] CRT : ON</div>
       <!-- Thèmes -->
       <select id="theme-select" style="background:#000; color:#ffff55; border:1px solid #777; font-family:var(--font-temple); font-size:11px; padding:1px 2px;">
         <option value="temple">THÈME : BLEU VGA</option>
-        <option value="illuminati" selected>THÈME : 👁️ ILLUMINATI GOLD</option>
+        <option value="illuminati" selected>THÈME : [CIA] ILLUMINATI GOLD</option>
         <option value="phosphor">THÈME : VERT PHOSPHORE</option>
         <option value="amber">THÈME : AMBRE VT220</option>
         <option value="cga">THÈME : CGA 4 COULEURS</option>
@@ -117,7 +117,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
 
     <!-- WIDGET 3D ASCII WIREFRAME EN BAS À DROITE -->
     <div class="wireframe-widget">
-      <div class="wireframe-title">👁️ PYRAMIDE DE LA PROVIDENCE</div>
+      <div class="wireframe-title">[CIA] PYRAMIDE DE LA PROVIDENCE</div>
       <div id="wireframe-container"></div>
       <div style="font-size: 9px; color: var(--vga-light-green);">ANNUIT CŒPTIS • 60FPS</div>
     </div>
@@ -125,123 +125,123 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- ICONES DU BUREAU -->
     <div class="desktop-icons">
       <div class="desktop-icon" data-window="win-explorer">
-        <span class="icon-art">📁</span>
+        <span class="icon-art">[DIR]</span>
         <span class="icon-label">EXPLORATEUR</span>
       </div>
 
       <div class="desktop-icon" data-window="win-achievements">
-        <span class="icon-art">🏆</span>
+        <span class="icon-art">[TOP]</span>
         <span class="icon-label">SUCCÈS_SACRÉS</span>
       </div>
 
       <div class="desktop-icon" data-window="win-nwo">
-        <span class="icon-art">👁️</span>
+        <span class="icon-art">[CIA]</span>
         <span class="icon-label">NWO_TYCOON</span>
       </div>
 
       <div class="desktop-icon" data-window="win-pyramid">
-        <span class="icon-art">🔺</span>
+        <span class="icon-art">[NWO]</span>
         <span class="icon-label">PYRAMID_RUN</span>
       </div>
 
       <div class="desktop-icon" data-window="win-reptilian">
-        <span class="icon-art">🦎</span>
+        <span class="icon-art">[REP]</span>
         <span class="icon-label">REPTILIENS</span>
       </div>
 
       <div class="desktop-icon" data-window="win-tripong">
-        <span class="icon-art">📐</span>
+        <span class="icon-art">[TRI]</span>
         <span class="icon-label">TRI_PONG</span>
       </div>
 
       <div class="desktop-icon" data-window="win-decrypt">
-        <span class="icon-art">📜</span>
+        <span class="icon-art">[DOC]</span>
         <span class="icon-label">DÉCRYPTEUR</span>
       </div>
 
       <div class="desktop-icon" data-window="win-pong">
-        <span class="icon-art">🏓</span>
+        <span class="icon-art">[PONG]</span>
         <span class="icon-label">HOLY_PONG</span>
       </div>
 
       <div class="desktop-icon" data-window="win-tron">
-        <span class="icon-art">🏍</span>
+        <span class="icon-art">[TRON]</span>
         <span class="icon-label">TRON_2P</span>
       </div>
 
       <div class="desktop-icon" data-window="win-guitar">
-        <span class="icon-art">🎸</span>
+        <span class="icon-art">[TUNE]</span>
         <span class="icon-label">GUITAR_TERRY</span>
       </div>
 
       <div class="desktop-icon" data-window="win-chess">
-        <span class="icon-art">♟</span>
+        <span class="icon-art">[CHESS]</span>
         <span class="icon-label">ECHECS_DIEU</span>
       </div>
 
       <div class="desktop-icon" data-window="win-oracle">
-        <span class="icon-art">⚡</span>
+        <span class="icon-art">[SYS]</span>
         <span class="icon-label">ORACLE_F7</span>
       </div>
 
       <!-- V5.0 MEGASYS ICONS -->
       <div class="desktop-icon" data-window="win-raycaster">
-        <span class="icon-art">🔫</span>
+        <span class="icon-art">[3D]</span>
         <span class="icon-label">PENTAGONE_3D</span>
       </div>
 
       <div class="desktop-icon" data-window="win-flight">
-        <span class="icon-art">✈️</span>
+        <span class="icon-art">[FLY]</span>
         <span class="icon-label">VOL_TERRY_3D</span>
       </div>
 
       <div class="desktop-icon" data-window="win-warroom">
-        <span class="icon-art">🌍</span>
+        <span class="icon-art">[MAP]</span>
         <span class="icon-label">WAR_ROOM</span>
       </div>
 
       <div class="desktop-icon" data-window="win-cards">
-        <span class="icon-art">🃏</span>
+        <span class="icon-art">[CARD]</span>
         <span class="icon-label">VATICAN_BJ</span>
       </div>
 
       <div class="desktop-icon" data-window="win-goat">
-        <span class="icon-art">🐐</span>
+        <span class="icon-art">[GOAT]</span>
         <span class="icon-label">CHÈVRE_RING0</span>
       </div>
 
       <div class="desktop-icon" data-window="win-ide">
-        <span class="icon-art">💻</span>
+        <span class="icon-art">[IDE]</span>
         <span class="icon-label">HOLYC_IDE</span>
       </div>
 
       <div class="desktop-icon" data-window="win-soundboard">
-        <span class="icon-art">🗣️</span>
+        <span class="icon-art">[VOX]</span>
         <span class="icon-label">TERRY_VOICE</span>
       </div>
 
       <div class="desktop-icon" data-window="win-multiplayer">
-        <span class="icon-art">🌐</span>
+        <span class="icon-art">[NET]</span>
         <span class="icon-label">P2P_MULTI</span>
       </div>
 
       <div class="desktop-icon" data-window="win-radio">
-        <span class="icon-art">📻</span>
+        <span class="icon-art">[RAD]</span>
         <span class="icon-label">RADIO_PIRATE</span>
       </div>
 
       <div class="desktop-icon" data-window="win-area51">
-        <span class="icon-art">🛸</span>
+        <span class="icon-art">[S4]</span>
         <span class="icon-label">AREA_51</span>
       </div>
 
       <div class="desktop-icon" data-window="win-cern">
-        <span class="icon-art">⚛️</span>
+        <span class="icon-art">[LHC]</span>
         <span class="icon-label">CERN_LHC</span>
       </div>
 
       <div class="desktop-icon" data-window="win-bbs">
-        <span class="icon-art">💀</span>
+        <span class="icon-art">[ERR]</span>
         <span class="icon-label">BBS_HACK</span>
       </div>
     </div>
@@ -252,7 +252,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <div id="win-explorer" class="temple-window" style="top: 20px; left: 100px; width: 740px; display: none;">
       <div class="window-titlebar">
         <div class="window-title">
-          <span>📁</span>
+          <span>[DIR]</span>
           <span>C:/GAMES_EXPLORER.HC (33 JEUX ET DÉFIS ALGORITHMIQUES)</span>
         </div>
         <div class="window-controls">
@@ -269,7 +269,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- ==================================================================== -->
     <div id="win-achievements" class="temple-window" style="top: 30px; left: 160px; width: 500px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🏆</span><span>C:/SYSTEM/ACHIEVEMENTS.HC</span></div>
+        <div class="window-title"><span>[TOP]</span><span>C:/SYSTEM/ACHIEVEMENTS.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -283,7 +283,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- TRON LIGHTCYCLES -->
     <div id="win-tron" class="temple-window" style="top: 40px; left: 180px; width: 440px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🏍</span><span>C:/GAMES/ARCADE/TRON_LIGHTCYCLES.HC</span></div>
+        <div class="window-title"><span>[TRON]</span><span>C:/GAMES/ARCADE/TRON_LIGHTCYCLES.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -303,7 +303,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- MINI-ÉCHECS DE DIEU -->
     <div id="win-chess" class="temple-window" style="top: 35px; left: 220px; width: 380px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>♟</span><span>C:/GAMES/IA_ALGO/ECHECS_DIVINS.HC</span></div>
+        <div class="window-title"><span>[CHESS]</span><span>C:/GAMES/IA_ALGO/ECHECS_DIVINS.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -320,7 +320,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- GUITAR TERRY -->
     <div id="win-guitar" class="temple-window" style="top: 45px; left: 210px; width: 440px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🎸</span><span>C:/GAMES/ARCADE/GUITAR_TERRY.HC</span></div>
+        <div class="window-title"><span>[TUNE]</span><span>C:/GAMES/ARCADE/GUITAR_TERRY.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -337,7 +337,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- PONG -->
     <div id="win-pong" class="temple-window" style="top: 35px; left: 150px; width: 530px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🏓</span><span>C:/GAMES/ARCADE/HOLY_PONG.HC</span></div>
+        <div class="window-title"><span>[PONG]</span><span>C:/GAMES/ARCADE/HOLY_PONG.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -346,7 +346,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
           <button class="diff-btn clickable" data-diff="facile" onclick="desktop.games.pong.setDifficulty('facile')">FACILE</button>
           <button class="diff-btn active clickable" data-diff="normal" onclick="desktop.games.pong.setDifficulty('normal')">NORMAL</button>
           <button class="diff-btn clickable" data-diff="difficile" onclick="desktop.games.pong.setDifficulty('difficile')">DIFFICILE</button>
-          <button class="diff-btn troll clickable" data-diff="troll" onclick="desktop.games.pong.setDifficulty('troll')">TROLL ⚡</button>
+          <button class="diff-btn troll clickable" data-diff="troll" onclick="desktop.games.pong.setDifficulty('troll')">TROLL [SYS]</button>
         </div>
         <div class="game-hud"><span>JOUEUR : <span id="pong-player-score">0</span></span><span style="color:var(--vga-light-red)">AGENT CIA : <span id="pong-cpu-score">0</span></span></div>
         <div class="pong-container">
@@ -363,7 +363,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- MORPION -->
     <div id="win-morpion" class="temple-window" style="top: 50px; left: 280px; width: 450px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>✝</span><span>C:/GAMES/GRILLES/MORPION_SACRE.HC</span></div>
+        <div class="window-title"><span>+</span><span>C:/GAMES/GRILLES/MORPION_SACRE.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -372,7 +372,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
           <button class="diff-btn clickable" data-diff="facile" onclick="desktop.games.morpion.setDifficulty('facile')">FACILE</button>
           <button class="diff-btn active clickable" data-diff="normal" onclick="desktop.games.morpion.setDifficulty('normal')">NORMAL</button>
           <button class="diff-btn clickable" data-diff="difficile" onclick="desktop.games.morpion.setDifficulty('difficile')">MINIMAX</button>
-          <button class="diff-btn troll clickable" data-diff="troll" onclick="desktop.games.morpion.setDifficulty('troll')">TROLL ⚡</button>
+          <button class="diff-btn troll clickable" data-diff="troll" onclick="desktop.games.morpion.setDifficulty('troll')">TROLL [SYS]</button>
         </div>
         <div class="game-hud"><span id="morpion-status" style="color:var(--vga-yellow);">TOUR : CROIX SACRÉE (X)</span></div>
         <div class="morpion-container">
@@ -386,7 +386,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- PUISSANCE 4 -->
     <div id="win-p4" class="temple-window" style="top: 60px; left: 200px; width: 490px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🔴</span><span>C:/GAMES/GRILLES/PUISSANCE_4.HC</span></div>
+        <div class="window-title"><span>[O]</span><span>C:/GAMES/GRILLES/PUISSANCE_4.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -395,7 +395,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
           <button class="diff-btn clickable" data-diff="facile" onclick="desktop.games.puissance4.setDifficulty('facile')">FACILE</button>
           <button class="diff-btn active clickable" data-diff="normal" onclick="desktop.games.puissance4.setDifficulty('normal')">NORMAL</button>
           <button class="diff-btn clickable" data-diff="difficile" onclick="desktop.games.puissance4.setDifficulty('difficile')">DIFFICILE</button>
-          <button class="diff-btn troll clickable" data-diff="troll" onclick="desktop.games.puissance4.setDifficulty('troll')">TROLL ⚡</button>
+          <button class="diff-btn troll clickable" data-diff="troll" onclick="desktop.games.puissance4.setDifficulty('troll')">TROLL [SYS]</button>
         </div>
         <div class="game-hud"><span id="p4-status" style="color:var(--vga-yellow);">TOUR : CROISÉ BÉNI (JAUNE)</span></div>
         <div class="p4-container">
@@ -409,7 +409,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- BATAILLE NAVALE -->
     <div id="win-battleship" class="temple-window" style="top: 40px; left: 160px; width: 620px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🚢</span><span>C:/GAMES/GRILLES/BATAILLE_NAVALE_ARCHE.HC</span></div>
+        <div class="window-title"><span>[SHIP]</span><span>C:/GAMES/GRILLES/BATAILLE_NAVALE_ARCHE.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -418,7 +418,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
           <button class="diff-btn clickable" data-diff="facile" onclick="desktop.games.battleship.setDifficulty('facile')">FACILE</button>
           <button class="diff-btn active clickable" data-diff="normal" onclick="desktop.games.battleship.setDifficulty('normal')">NORMAL</button>
           <button class="diff-btn clickable" data-diff="difficile" onclick="desktop.games.battleship.setDifficulty('difficile')">RADAR PARITÉ</button>
-          <button class="diff-btn troll clickable" data-diff="troll" onclick="desktop.games.battleship.setDifficulty('troll')">SONAR DIVIN ⚡</button>
+          <button class="diff-btn troll clickable" data-diff="troll" onclick="desktop.games.battleship.setDifficulty('troll')">SONAR DIVIN [SYS]</button>
         </div>
         <div class="game-hud"><span id="bs-status" style="color:var(--vga-light-green)">RADAR PRÊT ! CLIQUE SUR LE RADAR ENNEMI POUR TIRER.</span></div>
         <div class="battleship-container">
@@ -435,7 +435,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- DÉMINEUR -->
     <div id="win-demineur" class="temple-window" style="top: 55px; left: 210px; width: 440px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>💣</span><span>C:/GAMES/GRILLES/DEMINEUR_CIA.HC</span></div>
+        <div class="window-title"><span>[MINE]</span><span>C:/GAMES/GRILLES/DEMINEUR_CIA.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -444,16 +444,16 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
           <button class="diff-btn clickable" data-diff="facile" onclick="desktop.games.demineur.setDifficulty('facile')">FACILE (8)</button>
           <button class="diff-btn active clickable" data-diff="normal" onclick="desktop.games.demineur.setDifficulty('normal')">NORMAL (12)</button>
           <button class="diff-btn clickable" data-diff="difficile" onclick="desktop.games.demineur.setDifficulty('difficile')">DIFFICILE (24)</button>
-          <button class="diff-btn troll clickable" data-diff="troll" onclick="desktop.games.demineur.setDifficulty('troll')">TROLL ⚡</button>
+          <button class="diff-btn troll clickable" data-diff="troll" onclick="desktop.games.demineur.setDifficulty('troll')">TROLL [SYS]</button>
         </div>
         <div class="demineur-container">
           <div class="demineur-header">
             <div id="mine-counter" class="digit-counter">012</div>
-            <div id="mine-face" class="demineur-face clickable">😇</div>
+            <div id="mine-face" class="demineur-face clickable">[:)]</div>
             <div id="mine-timer" class="digit-counter">000</div>
           </div>
           <div id="demineur-grid" class="demineur-grid"></div>
-          <div style="font-size:11px; color:var(--vga-light-gray); text-align:center;">[Clic Gauche: Révéler | Clic Droit: Planter Croix Sainte ✝]</div>
+          <div style="font-size:11px; color:var(--vga-light-gray); text-align:center;">[Clic Gauche: Révéler | Clic Droit: Planter Croix Sainte +]</div>
           <div id="demineur-comment" class="god-message-box"><span class="god-title">[ORACLE] :</span> DÉBUSQUE LES MICROS DE LA CIA !</div>
         </div>
       </div>
@@ -462,7 +462,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- SNAKE -->
     <div id="win-snake" class="temple-window" style="top: 45px; left: 190px; width: 440px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🐍</span><span>C:/GAMES/ARCADE/SERPENT_MOISE.HC</span></div>
+        <div class="window-title"><span>[SNAKE]</span><span>C:/GAMES/ARCADE/SERPENT_MOISE.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -471,9 +471,9 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
           <button class="diff-btn clickable" data-diff="facile" onclick="desktop.games.snake.setDifficulty('facile')">LENTE</button>
           <button class="diff-btn active clickable" data-diff="normal" onclick="desktop.games.snake.setDifficulty('normal')">NORMALE</button>
           <button class="diff-btn clickable" data-diff="difficile" onclick="desktop.games.snake.setDifficulty('difficile')">FÉDÉRALE</button>
-          <button class="diff-btn troll clickable" data-diff="troll" onclick="desktop.games.snake.setDifficulty('troll')">RING-0 ⚡</button>
+          <button class="diff-btn troll clickable" data-diff="troll" onclick="desktop.games.snake.setDifficulty('troll')">RING-0 [SYS]</button>
         </div>
-        <div class="game-hud"><span>SCORE : <span id="snake-score">0</span></span><span style="color:var(--vga-light-cyan);">MANNE : 🍞 | POMME : 🍎</span></div>
+        <div class="game-hud"><span>SCORE : <span id="snake-score">0</span></span><span style="color:var(--vga-light-cyan);">MANNE : [BREAD] | POMME : [APPLE]</span></div>
         <div class="snake-container">
           <canvas id="snake-canvas" class="snake-canvas"></canvas>
           <button class="temple-btn primary clickable" style="margin-top:4px;" onclick="desktop.games.snake.reset()">RECOMMENCER</button>
@@ -485,7 +485,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- CONWAY -->
     <div id="win-conway" class="temple-window" style="top: 30px; left: 140px; width: 520px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🧬</span><span>C:/GAMES/GRILLES/JEU_VIE_CONWAY.HC</span></div>
+        <div class="window-title"><span>[CELL]</span><span>C:/GAMES/GRILLES/JEU_VIE_CONWAY.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -507,7 +507,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- TAQUIN 15 -->
     <div id="win-taquin" class="temple-window" style="top: 60px; left: 260px; width: 420px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🔢</span><span>C:/GAMES/GRILLES/TAQUIN_15.HC</span></div>
+        <div class="window-title"><span>[NUM]</span><span>C:/GAMES/GRILLES/TAQUIN_15.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -524,7 +524,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- SUDOKU -->
     <div id="win-sudoku" class="temple-window" style="top: 40px; left: 200px; width: 450px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🧩</span><span>C:/GAMES/GRILLES/SUDOKU_BACKTRACKING.HC</span></div>
+        <div class="window-title"><span>[GRID]</span><span>C:/GAMES/GRILLES/SUDOKU_BACKTRACKING.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -532,7 +532,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
         <div id="sudoku-board" class="sudoku-board"></div>
         <div style="display:flex; gap:8px; justify-content:center; margin-top:6px;">
           <button class="temple-btn primary clickable" onclick="desktop.games.sudoku.generateNewPuzzle()">NOUVELLE GRILLE</button>
-          <button class="temple-btn holy clickable" onclick="desktop.games.sudoku.solveInstant()">RÉSOUDRE PAR BACKTRACKING ⚡</button>
+          <button class="temple-btn holy clickable" onclick="desktop.games.sudoku.solveInstant()">RÉSOUDRE PAR BACKTRACKING [SYS]</button>
         </div>
       </div>
     </div>
@@ -540,7 +540,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- PLUS OU MOINS -->
     <div id="win-plusmoins" class="temple-window" style="top: 70px; left: 230px; width: 460px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>❓</span><span>C:/GAMES/LOGIQUE/PLUS_OU_MOINS.HC</span></div>
+        <div class="window-title"><span>[?]</span><span>C:/GAMES/LOGIQUE/PLUS_OU_MOINS.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="plusmoins-container"></div></div>
@@ -549,7 +549,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- MASTERMIND -->
     <div id="win-mastermind" class="temple-window" style="top: 45px; left: 210px; width: 480px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🔴</span><span>C:/GAMES/LOGIQUE/MASTERMIND_VGA.HC</span></div>
+        <div class="window-title"><span>[O]</span><span>C:/GAMES/LOGIQUE/MASTERMIND_VGA.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="mastermind-container"></div></div>
@@ -558,7 +558,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- PENDU -->
     <div id="win-pendu" class="temple-window" style="top: 50px; left: 190px; width: 500px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🪢</span><span>C:/GAMES/LOGIQUE/PENDU_SACRE.HC</span></div>
+        <div class="window-title"><span>[HANG]</span><span>C:/GAMES/LOGIQUE/PENDU_SACRE.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="pendu-container"></div></div>
@@ -567,7 +567,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- MOTUS -->
     <div id="win-motus" class="temple-window" style="top: 40px; left: 240px; width: 440px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🔤</span><span>C:/GAMES/LOGIQUE/MOTUS_WORDLE.HC</span></div>
+        <div class="window-title"><span>[WORD]</span><span>C:/GAMES/LOGIQUE/MOTUS_WORDLE.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="motus-container"></div></div>
@@ -576,7 +576,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- NIM -->
     <div id="win-nim" class="temple-window" style="top: 65px; left: 220px; width: 480px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🔥</span><span>C:/GAMES/LOGIQUE/JEU_DE_NIM_XOR.HC</span></div>
+        <div class="window-title"><span>[FIRE]</span><span>C:/GAMES/LOGIQUE/JEU_DE_NIM_XOR.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="nim-container"></div></div>
@@ -585,7 +585,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- CONVERTISSEUR EXPRESS -->
     <div id="win-binary" class="temple-window" style="top: 55px; left: 210px; width: 460px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>⚡</span><span>C:/GAMES/LOGIQUE/CONVERTISSEUR_BIN.HC</span></div>
+        <div class="window-title"><span>[SYS]</span><span>C:/GAMES/LOGIQUE/CONVERTISSEUR_BIN.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="binary-container"></div></div>
@@ -594,7 +594,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- SIMON MUSICAL -->
     <div id="win-simon" class="temple-window" style="top: 40px; left: 230px; width: 430px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🎵</span><span>C:/GAMES/AUDIO/SIMON_MUSICAL.HC</span></div>
+        <div class="window-title"><span>[NOTE]</span><span>C:/GAMES/AUDIO/SIMON_MUSICAL.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="simon-container"></div></div>
@@ -603,7 +603,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- POURSUITE LYRE MAC 250 -->
     <div id="win-poursuite" class="temple-window" style="top: 45px; left: 200px; width: 450px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🔦</span><span>C:/GAMES/AUDIO/POURSUITE_MAC250.HC</span></div>
+        <div class="window-title"><span>[SPOT]</span><span>C:/GAMES/AUDIO/POURSUITE_MAC250.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="poursuite-container"></div></div>
@@ -612,7 +612,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- PIPE DREAM CÂBLAGE -->
     <div id="win-pipedream" class="temple-window" style="top: 50px; left: 220px; width: 460px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🔌</span><span>C:/GAMES/AUDIO/PIPE_DREAM_REGIE.HC</span></div>
+        <div class="window-title"><span>[WIRE]</span><span>C:/GAMES/AUDIO/PIPE_DREAM_REGIE.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="pipedream-container"></div></div>
@@ -621,7 +621,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- SÉQUENCEUR RYTHMIQUE -->
     <div id="win-sequencer" class="temple-window" style="top: 55px; left: 190px; width: 490px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🥁</span><span>C:/GAMES/AUDIO/BEAT_SEQUENCER_8PAS.HC</span></div>
+        <div class="window-title"><span>[DRUM]</span><span>C:/GAMES/AUDIO/BEAT_SEQUENCER_8PAS.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="sequencer-container"></div></div>
@@ -630,7 +630,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- IDLE LOCATION -->
     <div id="win-idle" class="temple-window" style="top: 60px; left: 210px; width: 470px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>💰</span><span>C:/GAMES/AUDIO/RENTAL_IDLE_CLICKER.HC</span></div>
+        <div class="window-title"><span>[GOLD]</span><span>C:/GAMES/AUDIO/RENTAL_IDLE_CLICKER.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="idle-container"></div></div>
@@ -639,7 +639,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- BREAKOUT -->
     <div id="win-breakout" class="temple-window" style="top: 40px; left: 200px; width: 420px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🧱</span><span>C:/GAMES/ARCADE/CASSE_BRIQUES.HC</span></div>
+        <div class="window-title"><span>[BRICK]</span><span>C:/GAMES/ARCADE/CASSE_BRIQUES.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -654,7 +654,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- FLAPPY TERRY -->
     <div id="win-flappy" class="temple-window" style="top: 45px; left: 220px; width: 400px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🕊</span><span>C:/GAMES/ARCADE/FLAPPY_TERRY.HC</span></div>
+        <div class="window-title"><span>[BIRD]</span><span>C:/GAMES/ARCADE/FLAPPY_TERRY.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -669,7 +669,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- TETRIS -->
     <div id="win-tetris" class="temple-window" style="top: 30px; left: 240px; width: 340px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🕹</span><span>C:/GAMES/ARCADE/TETRIS_SACRE.HC</span></div>
+        <div class="window-title"><span>[ARC]</span><span>C:/GAMES/ARCADE/TETRIS_SACRE.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -680,7 +680,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
             <button class="temple-btn primary clickable" onclick="desktop.games.tetris.start()">DÉMARRER</button>
             <button class="temple-btn clickable" onclick="desktop.games.tetris.reset()">RESET</button>
           </div>
-          <div style="font-size:10px; color:var(--vga-light-gray); text-align:center;">Flèches : ◀ ▶ Déplacer | ▲ Tourner | ▼ Descendre</div>
+          <div style="font-size:10px; color:var(--vga-light-gray); text-align:center;">Flèches : ◀ [PLAY] Déplacer | ▲ Tourner | ▼ Descendre</div>
         </div>
       </div>
     </div>
@@ -688,7 +688,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- ASTEROIDS -->
     <div id="win-asteroids" class="temple-window" style="top: 40px; left: 190px; width: 420px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🚀</span><span>C:/GAMES/ARCADE/ASTEROIDS_VECTOR.HC</span></div>
+        <div class="window-title"><span>[ROCKET]</span><span>C:/GAMES/ARCADE/ASTEROIDS_VECTOR.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -698,7 +698,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
             <button class="temple-btn primary clickable" onclick="desktop.games.asteroids.isRunning = true; desktop.games.asteroids.loop();">DÉCOLLER</button>
             <button class="temple-btn clickable" onclick="desktop.games.asteroids.reset()">RESET</button>
           </div>
-          <div style="font-size:10px; color:var(--vga-light-gray);">◀ ▶ Pivoter | ▲ Gaz | ESPACE Tirer</div>
+          <div style="font-size:10px; color:var(--vga-light-gray);">◀ [PLAY] Pivoter | ▲ Gaz | ESPACE Tirer</div>
         </div>
       </div>
     </div>
@@ -706,7 +706,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- SPACE INVADERS -->
     <div id="win-invaders" class="temple-window" style="top: 45px; left: 200px; width: 410px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>👾</span><span>C:/GAMES/ARCADE/SPACE_INVADERS_CIA.HC</span></div>
+        <div class="window-title"><span>[ALIEN]</span><span>C:/GAMES/ARCADE/SPACE_INVADERS_CIA.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -716,7 +716,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
             <button class="temple-btn primary clickable" onclick="desktop.games.invaders.isRunning = true; desktop.games.invaders.loop();">COMBATTRE LES FEDS</button>
             <button class="temple-btn clickable" onclick="desktop.games.invaders.reset()">RESET</button>
           </div>
-          <div style="font-size:10px; color:var(--vga-light-gray);">◀ ▶ Déplacer | ESPACE Tirer</div>
+          <div style="font-size:10px; color:var(--vga-light-gray);">◀ [PLAY] Déplacer | ESPACE Tirer</div>
         </div>
       </div>
     </div>
@@ -724,7 +724,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- LABYRINTHE DFS -->
     <div id="win-labyrinth" class="temple-window" style="top: 35px; left: 180px; width: 440px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🌀</span><span>C:/GAMES/IA_ALGO/LABYRINTHE_DFS.HC</span></div>
+        <div class="window-title"><span>[MAZE]</span><span>C:/GAMES/IA_ALGO/LABYRINTHE_DFS.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -739,7 +739,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- ROGUE-LIKE ASCII -->
     <div id="win-rogue" class="temple-window" style="top: 45px; left: 190px; width: 490px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>⚔️</span><span>C:/GAMES/IA_ALGO/ROGUE_CRAWLER.HC</span></div>
+        <div class="window-title"><span>[SWORD]</span><span>C:/GAMES/IA_ALGO/ROGUE_CRAWLER.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="rogue-container"></div></div>
@@ -748,7 +748,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- CADAVRE EXQUIS -->
     <div id="win-cadavre" class="temple-window" style="top: 55px; left: 210px; width: 470px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>📜</span><span>C:/GAMES/IA_ALGO/CADAVRE_EXQUIS.HC</span></div>
+        <div class="window-title"><span>[DOC]</span><span>C:/GAMES/IA_ALGO/CADAVRE_EXQUIS.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="cadavre-container"></div></div>
@@ -757,7 +757,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- Q-LEARNING TIC-TAC-TOE -->
     <div id="win-qlearn" class="temple-window" style="top: 40px; left: 220px; width: 460px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🧠</span><span>C:/GAMES/IA_ALGO/Q_LEARNING_MORPION.HC</span></div>
+        <div class="window-title"><span>[AI]</span><span>C:/GAMES/IA_ALGO/Q_LEARNING_MORPION.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="qlearn-container"></div></div>
@@ -766,7 +766,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- 8 DAMES -->
     <div id="win-eightqueens" class="temple-window" style="top: 45px; left: 230px; width: 450px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>👑</span><span>C:/GAMES/IA_ALGO/HUIT_DAMES_BACKTRACK.HC</span></div>
+        <div class="window-title"><span>[QUEEN]</span><span>C:/GAMES/IA_ALGO/HUIT_DAMES_BACKTRACK.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body"><div id="eightqueens-container"></div></div>
@@ -775,7 +775,7 @@ APPUYEZ SUR [ENTRÉE] OU PATIENTEZ <span id="bios-countdown" style="color:#ffff5
     <!-- TERMINAL ORACLE & CIA -->
     <div id="win-oracle" class="temple-window" style="top: 90px; left: 140px; width: 580px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>⚡</span><span>C:/SYSTEM/HOLYC_ORACLE_TERMINAL.HC</span></div>
+        <div class="window-title"><span>[SYS]</span><span>C:/SYSTEM/HOLYC_ORACLE_TERMINAL.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -792,8 +792,8 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
           <input type="text" id="terminal-input" class="terminal-input" placeholder="Tapez GodWord; ou ScanCIA; puis Entrée..." autocomplete="off">
         </div>
         <div style="display:flex; gap:8px; margin-top:6px;">
-          <button class="temple-btn holy clickable" onclick="holyTerminal.handleCommand('GodWord;')">PAROLE DE DIEU ⚡ (F7)</button>
-          <button class="temple-btn danger clickable" onclick="holyTerminal.handleCommand('ScanCIA;')">RADAR CIA 👁</button>
+          <button class="temple-btn holy clickable" onclick="holyTerminal.handleCommand('GodWord;')">PAROLE DE DIEU [SYS] (F7)</button>
+          <button class="temple-btn danger clickable" onclick="holyTerminal.handleCommand('ScanCIA;')">RADAR CIA [CIA]</button>
     <!-- ==================================================================== -->
     <!-- NOUVEL ORDRE MONDIAL & JEUX ILLUMINATI (TEMPLEOS V4.0)                -->
     <!-- ==================================================================== -->
@@ -801,7 +801,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 1. PYRAMID RUN -->
     <div id="win-pyramid" class="temple-window" style="top: 30px; left: 160px; width: 380px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🔺</span><span>C:/GAMES/ILLUMINATI/PYRAMID_RUN.HC</span></div>
+        <div class="window-title"><span>[NWO]</span><span>C:/GAMES/ILLUMINATI/PYRAMID_RUN.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body" style="text-align: center;">
@@ -822,7 +822,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 2. NWO TYCOON (CLICKER) -->
     <div id="win-nwo" class="temple-window" style="top: 40px; left: 180px; width: 640px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>👁️</span><span>C:/GAMES/ILLUMINATI/NWO_TYCOON.HC</span></div>
+        <div class="window-title"><span>[CIA]</span><span>C:/GAMES/ILLUMINATI/NWO_TYCOON.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -833,7 +833,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 3. LE DÉCRYPTEUR ILLUMINATI -->
     <div id="win-decrypt" class="temple-window" style="top: 60px; left: 200px; width: 500px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>📜</span><span>C:/GAMES/ILLUMINATI/DECRYPT_CODE.HC</span></div>
+        <div class="window-title"><span>[DOC]</span><span>C:/GAMES/ILLUMINATI/DECRYPT_CODE.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -844,7 +844,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 4. WHACK-A-REPTILIAN -->
     <div id="win-reptilian" class="temple-window" style="top: 50px; left: 220px; width: 420px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🦎</span><span>C:/GAMES/ILLUMINATI/REPTILIAN_HUNT.HC</span></div>
+        <div class="window-title"><span>[REP]</span><span>C:/GAMES/ILLUMINATI/REPTILIAN_HUNT.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -855,7 +855,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 5. TRI-PONG ILLUMINATI -->
     <div id="win-tripong" class="temple-window" style="top: 35px; left: 240px; width: 400px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>📐</span><span>C:/GAMES/ILLUMINATI/TRI_PONG.HC</span></div>
+        <div class="window-title"><span>[TRI]</span><span>C:/GAMES/ILLUMINATI/TRI_PONG.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body" style="text-align: center;">
@@ -876,7 +876,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 1. WOLFENSTEIN PENTAGONE 3D -->
     <div id="win-raycaster" class="temple-window" style="top: 25px; left: 130px; width: 440px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🔫</span><span>C:/MEGASYS/DOOM_PENTAGON_3D.HC</span></div>
+        <div class="window-title"><span>[3D]</span><span>C:/MEGASYS/DOOM_PENTAGON_3D.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body" style="text-align: center;">
@@ -897,7 +897,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 2. SIMULATEUR DE VOL TERRY 3D -->
     <div id="win-flight" class="temple-window" style="top: 35px; left: 150px; width: 480px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>✈️</span><span>C:/MEGASYS/GOD_FLIGHT_3D.HC</span></div>
+        <div class="window-title"><span>[FLY]</span><span>C:/MEGASYS/GOD_FLIGHT_3D.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body" style="text-align: center;">
@@ -918,7 +918,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 3. BLACK JACK DU VATICAN -->
     <div id="win-cards" class="temple-window" style="top: 45px; left: 170px; width: 460px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🃏</span><span>C:/MEGASYS/VATICAN_BLACKJACK.HC</span></div>
+        <div class="window-title"><span>[CARD]</span><span>C:/MEGASYS/VATICAN_BLACKJACK.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -929,7 +929,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 4. TAMAGOTCHI CHÈVRE SACRÉE -->
     <div id="win-goat" class="temple-window" style="top: 55px; left: 190px; width: 440px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🐐</span><span>C:/MEGASYS/GOAT_TAMAGOTCHI.HC</span></div>
+        <div class="window-title"><span>[GOAT]</span><span>C:/MEGASYS/GOAT_TAMAGOTCHI.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -940,7 +940,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 5. WAR ROOM CONSPIRATIONNISTE -->
     <div id="win-warroom" class="temple-window" style="top: 30px; left: 120px; width: 580px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🌍</span><span>C:/MEGASYS/WAR_ROOM_RADAR.HC</span></div>
+        <div class="window-title"><span>[MAP]</span><span>C:/MEGASYS/WAR_ROOM_RADAR.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body" style="text-align: center;">
@@ -957,7 +957,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 6. IDE HOLYC -->
     <div id="win-ide" class="temple-window" style="top: 40px; left: 140px; width: 580px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>💻</span><span>C:/MEGASYS/HOLYC_IDE_COMPILER.HC</span></div>
+        <div class="window-title"><span>[IDE]</span><span>C:/MEGASYS/HOLYC_IDE_COMPILER.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -966,7 +966,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
         </div>
         <textarea id="holyc-editor" style="width: 100%; height: 160px; background: #000; color: #55ff55; font-family: monospace; font-size: 12px; border: 1px solid #777; padding: 6px; resize: none;"></textarea>
         <div style="display: flex; gap: 8px; margin: 6px 0;">
-          <button class="temple-btn primary" onclick="desktop.games.holycIde.run()">⚡ COMPILER & EXÉCUTER</button>
+          <button class="temple-btn primary" onclick="desktop.games.holycIde.run()">[SYS] COMPILER & EXÉCUTER</button>
           <button class="temple-btn" onclick="desktop.games.holycIde.clear()">EFFACER CONSOLE</button>
         </div>
         <div id="holyc-output" style="background: #001100; border: 1px solid #00aa00; padding: 6px; height: 90px; overflow-y: auto; font-family: monospace; font-size: 11px;"></div>
@@ -976,7 +976,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 7. SOUNDBOARD TERRY DAVIS -->
     <div id="win-soundboard" class="temple-window" style="top: 50px; left: 160px; width: 480px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🗣️</span><span>C:/MEGASYS/TERRY_SOUNDBOARD.HC</span></div>
+        <div class="window-title"><span>[VOX]</span><span>C:/MEGASYS/TERRY_SOUNDBOARD.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -987,7 +987,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 8. MULTIJOUEUR WEBRTC P2P -->
     <div id="win-multiplayer" class="temple-window" style="top: 60px; left: 180px; width: 480px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🌐</span><span>C:/MEGASYS/NET_WEBRTC_P2P.HC</span></div>
+        <div class="window-title"><span>[NET]</span><span>C:/MEGASYS/NET_WEBRTC_P2P.HC</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body">
@@ -998,7 +998,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 9. RADIO PIRATE DISSIDENTE & PODCASTS ANARCHISTES -->
     <div id="win-radio" class="temple-window" style="top: 40px; left: 120px; width: 560px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>📻</span><span id="radio-win-title">FM 93.4 MHz • RADIO PIRATE DU TEMPLE</span></div>
+        <div class="window-title"><span>[RAD]</span><span id="radio-win-title">FM 93.4 MHz • RADIO PIRATE DU TEMPLE</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body" style="background: #000; color: #fff; padding: 10px;">
@@ -1030,11 +1030,11 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
 
         <!-- Controls -->
         <div style="display:flex; gap:8px; margin-bottom:10px; align-items:center; flex-wrap:wrap;">
-          <button id="radio-win-play" class="action-btn" onclick="window.templeRadio.togglePlay()" style="min-width:110px;">▶️ DIFFUSER</button>
-          <button class="action-btn" onclick="window.templeRadio.prevStation()">⏮️ PRÉC.</button>
-          <button class="action-btn" onclick="window.templeRadio.nextStation()">SUIV. ⏭️</button>
-          <button id="radio-win-voice-toggle" class="action-btn" onclick="window.templeRadio.toggleVoice()">🗣️ PODCAST : ON</button>
-          <button id="radio-win-music-toggle" class="action-btn" onclick="window.templeRadio.toggleMusic()">🎵 AMBIENT : ON</button>
+          <button id="radio-win-play" class="action-btn" onclick="window.templeRadio.togglePlay()" style="min-width:110px;">[PLAY] DIFFUSER</button>
+          <button class="action-btn" onclick="window.templeRadio.prevStation()"><< PRÉC.</button>
+          <button class="action-btn" onclick="window.templeRadio.nextStation()">SUIV. >></button>
+          <button id="radio-win-voice-toggle" class="action-btn" onclick="window.templeRadio.toggleVoice()">[VOX] PODCAST : ON</button>
+          <button id="radio-win-music-toggle" class="action-btn" onclick="window.templeRadio.toggleMusic()">[NOTE] AMBIENT : ON</button>
           <div style="display:flex; align-items:center; gap:5px; margin-left:auto;">
             <span style="font-size:10px; color:#aaa;">VOL:</span>
             <input type="range" min="0" max="1" step="0.05" value="0.5" onchange="window.templeRadio.setVolume(this.value)" style="width:70px;">
@@ -1061,7 +1061,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 10. INFILTRATION AREA 51 (BUNKER S-4) -->
     <div id="win-area51" class="temple-window" style="top: 30px; left: 140px; width: 620px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>🛸</span><span>C:/GAMES/AREA51_STEALTH.HC • BUNKER S-4</span></div>
+        <div class="window-title"><span>[S4]</span><span>C:/GAMES/AREA51_STEALTH.HC • BUNKER S-4</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body" style="background:#000; text-align:center;">
@@ -1070,7 +1070,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
           <div id="area51-status" style="font-size:11px; color:var(--vga-light-green); text-align:left;">
             OBJET : INFILTREZ LE BUNKER S-4, ÉVITEZ LES FEDS & LIBÉREZ L'EXTRATERRESTRE !
           </div>
-          <button class="action-btn" onclick="desktop.games.area51.reset()">🔄 RECOMMENCER</button>
+          <button class="action-btn" onclick="desktop.games.area51.reset()">[RESET] RECOMMENCER</button>
         </div>
       </div>
     </div>
@@ -1078,7 +1078,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 11. CERN LHC PARTICLE SMASHER -->
     <div id="win-cern" class="temple-window" style="top: 50px; left: 160px; width: 620px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>⚛️</span><span>C:/GAMES/CERN_LHC_SMASHER.HC • ACCÉLÉRATEUR RING-0</span></div>
+        <div class="window-title"><span>[LHC]</span><span>C:/GAMES/CERN_LHC_SMASHER.HC • ACCÉLÉRATEUR RING-0</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body" style="background:#000; text-align:center;">
@@ -1088,8 +1088,8 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
             STATUS : FAISCEAU STABLE • ATTEIGNEZ 99.999% c POUR DÉCOUVRIR LE HIGGS
           </div>
           <div style="display:flex; gap:6px;">
-            <button class="action-btn" onclick="desktop.games.cern.accelerate()">⚡ INJECTER ÉNERGIE</button>
-            <button class="action-btn" onclick="desktop.games.cern.triggerCollision()" style="background:var(--vga-red); color:#fff;">💥 FORCER COLLISION</button>
+            <button class="action-btn" onclick="desktop.games.cern.accelerate()">[SYS] INJECTER ÉNERGIE</button>
+            <button class="action-btn" onclick="desktop.games.cern.triggerCollision()" style="background:var(--vga-red); color:#fff;">[HIT] FORCER COLLISION</button>
           </div>
         </div>
       </div>
@@ -1098,7 +1098,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
     <!-- 12. BBS PHREAK & CYBER-WAR TERMINAL -->
     <div id="win-bbs" class="temple-window" style="top: 45px; left: 150px; width: 620px; display: none;">
       <div class="window-titlebar">
-        <div class="window-title"><span>💀</span><span>C:/NET/BBS_PHREAK_2600.HC • TERMINAL 1200 BAUD</span></div>
+        <div class="window-title"><span>[ERR]</span><span>C:/NET/BBS_PHREAK_2600.HC • TERMINAL 1200 BAUD</span></div>
         <div class="window-controls"><button class="win-btn close">X</button></div>
       </div>
       <div class="window-body" style="background:#000; padding:10px;">
@@ -1108,12 +1108,12 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
           <button class="action-btn" onclick="desktop.games.bbs.handleInput(document.getElementById('bbs-input').value); document.getElementById('bbs-input').value='';">ENVOYER</button>
         </div>
         <div style="display:flex; gap:4px; margin-top:6px; flex-wrap:wrap;">
-          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('dial')">📞 DIAL TONE</button>
-          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('bluebox')">🔵 BLUEBOX 2600Hz</button>
-          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('scan')">📡 SCAN NODES</button>
-          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('brute')">🔨 BRUTE FORCE</button>
-          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('download')">💾 DL CIA LEAKS</button>
-          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('help')">❓ AIDE</button>
+          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('dial')">[CALL] DIAL TONE</button>
+          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('bluebox')">[BLUE] BLUEBOX 2600Hz</button>
+          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('scan')">[SCAN] SCAN NODES</button>
+          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('brute')">[HACK] BRUTE FORCE</button>
+          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('download')">[DISK] DL CIA LEAKS</button>
+          <button class="action-btn" style="font-size:10px; padding:2px 6px;" onclick="desktop.games.bbs.handleInput('help')">[?] AIDE</button>
         </div>
       </div>
     </div>
@@ -1123,7 +1123,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
   <!-- BARRE D'ÉTAT INFÉRIEURE -->
   <footer id="bottombar">
     <div id="oracle-ticker" class="status-oracle-ticker">
-      ✝ TEMPLEOS 64-BIT ARCADE v3.0 - 45 JEUX COMPLETS - VOIX ROBOTIQUE ACTIVE - TOUCHE F7
+      + TEMPLEOS 64-BIT ARCADE v3.0 - 45 JEUX COMPLETS - VOIX ROBOTIQUE ACTIVE - TOUCHE F7
     </div>
     <div class="status-stats">
       <span>[VGA: 640x480]</span>

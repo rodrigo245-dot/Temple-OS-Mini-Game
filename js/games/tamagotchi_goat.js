@@ -78,7 +78,7 @@ class TamagotchiGoatGame {
 `;
     } else if (this.piety > 80) {
       goatAscii = `
-       ✨  ✝  ✨
+       [*]  +  [*]
       / \\__
      (    ^\\___   (Bénie soit Terry !)
      /         O
@@ -99,19 +99,19 @@ ${goatAscii}
 
         <!-- Barres de statut -->
         <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:6px; max-width:320px; margin:8px auto; font-size:11px; text-align:left;">
-          <div>🌾 FAIM : ${this.hunger}%</div>
-          <div>✝ PIÉTÉ : ${this.piety}%</div>
-          <div>⚡ ÉNERGIE : ${this.energy}%</div>
-          <div style="color:${this.paranoia > 50 ? '#ff5555' : '#88ff88'};">👁️ PARANOÏA : ${this.paranoia}%</div>
+          <div>[CORN] FAIM : ${this.hunger}%</div>
+          <div>+ PIÉTÉ : ${this.piety}%</div>
+          <div>[SYS] ÉNERGIE : ${this.energy}%</div>
+          <div style="color:${this.paranoia > 50 ? '#ff5555' : '#88ff88'};">[CIA] PARANOÏA : ${this.paranoia}%</div>
         </div>
 
         <div style="font-size:11px; color:#ffffff; margin:8px 0; min-height:16px;">${this.statusMsg}</div>
 
         <div style="display:flex; gap:6px; justify-content:center; margin-top:6px;">
-          <button class="temple-btn primary" onclick="desktop.games.tamagotchiGoat.feed()">🌾 NOURRIR</button>
-          <button class="temple-btn holy" onclick="desktop.games.tamagotchiGoat.pray()">✝ PRIER</button>
-          <button class="temple-btn danger" onclick="desktop.games.tamagotchiGoat.exorcise()">👁️ EXORCISER</button>
-          <button class="temple-btn" onclick="desktop.games.tamagotchiGoat.sleep()">💤 DORMIR</button>
+          <button class="temple-btn primary" onclick="desktop.games.tamagotchiGoat.feed()">[CORN] NOURRIR</button>
+          <button class="temple-btn holy" onclick="desktop.games.tamagotchiGoat.pray()">+ PRIER</button>
+          <button class="temple-btn danger" onclick="desktop.games.tamagotchiGoat.exorcise()">[CIA] EXORCISER</button>
+          <button class="temple-btn" onclick="desktop.games.tamagotchiGoat.sleep()">[Zz] DORMIR</button>
         </div>
       </div>
     `;

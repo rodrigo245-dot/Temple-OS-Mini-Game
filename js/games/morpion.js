@@ -1,6 +1,6 @@
 // ==========================================================================
 // MORPION CÉLESTE (TIC-TAC-TOE TEMPLEOS V2.0)
-// Difficultés : Facile, Normal, Difficile (Minimax Imbattable), Troll Divin ⚡
+// Difficultés : Facile, Normal, Difficile (Minimax Imbattable), Troll Divin [SYS]
 // ==========================================================================
 
 class MorpionJeu {
@@ -47,7 +47,7 @@ class MorpionJeu {
       facile: "NIVEAU : INFILTRÉ DISTRAIT (FACILE) - IL JOUE AU HASARD.",
       normal: "NIVEAU : AGENT FÉDÉRAL (NORMAL) - STRATÉGIE STANDARD.",
       difficile: "NIVEAU : MINIMAX DIVIN (DIFFICILES) - MATHÉMATIQUEMENT IMBATTABLE !",
-      troll: "NIVEAU : VOLONTÉ DIVINE TROLL ⚡ - MIRACLES ET ÉCLAIRS DU RING-0 !"
+      troll: "NIVEAU : VOLONTÉ DIVINE TROLL [SYS] - MIRACLES ET ÉCLAIRS DU RING-0 !"
     };
     if (this.commentEl) this.commentEl.textContent = labels[level] || "";
     this.reset();

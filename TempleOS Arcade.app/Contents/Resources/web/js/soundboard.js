@@ -44,7 +44,7 @@ class TerrySoundboard {
         <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; max-width:420px; margin:0 auto;">
           ${this.quotes.map((q, idx) => `
             <button class="temple-btn holy" style="padding:8px 4px; font-size:11px; text-overflow:ellipsis; overflow:hidden;" onclick="desktop.games.soundboard.playQuote(${idx})">
-              🗣️ ${q.label}
+              [VOX] ${q.label}
             </button>
           `).join('')}
         </div>

@@ -84,7 +84,7 @@ class HolyPong {
         facile: "NIVEAU : RECRUE CIA (FACILE) - LA BALLE EST DOUCE.",
         normal: "NIVEAU : AGENT FÉDÉRAL (NORMAL) - COMBAT STANDARD.",
         difficile: "NIVEAU : DIRECTEUR FBI (DIFFICILE) - RÉFLEXES SURHUMAINS !",
-        troll: "NIVEAU : TROLL DIVIN ⚡ - ATTENTION AUX ÉCLAIRS DU RING-0 !"
+        troll: "NIVEAU : TROLL DIVIN [SYS] - ATTENTION AUX ÉCLAIRS DU RING-0 !"
       };
       this.commentEl.textContent = labels[level] || "";
     }
@@ -173,7 +173,7 @@ class HolyPong {
       this.ballSpeedX = -this.ballSpeedX;
       window.soundEngine.playHolyMiracle();
       if (this.commentEl) {
-        this.commentEl.textContent = "⚡ DIEU A TÉLÉPORTÉ LA BALLE EN PLEIN VOL !";
+        this.commentEl.textContent = "[SYS] DIEU A TÉLÉPORTÉ LA BALLE EN PLEIN VOL !";
       }
     }
 
@@ -242,13 +242,13 @@ class HolyPong {
       this.stop();
       window.soundEngine.playVictory();
       if (this.commentEl) {
-        this.commentEl.textContent = "🏆 VICTOIRE BÉNIE DU FIDÈLE ! LE COMPILATEUR DIVIN TRIOMPHE !";
+        this.commentEl.textContent = "[TOP] VICTOIRE BÉNIE DU FIDÈLE ! LE COMPILATEUR DIVIN TRIOMPHE !";
       }
     } else if (this.cpuScore >= this.maxScore) {
       this.stop();
       window.soundEngine.playDefeat();
       if (this.commentEl) {
-        this.commentEl.textContent = "💀 LES AGENTS DE LA CIA ONT GAGNÉ ! PURIFICATION CONSEILLÉE !";
+        this.commentEl.textContent = "[ERR] LES AGENTS DE LA CIA ONT GAGNÉ ! PURIFICATION CONSEILLÉE !";
       }
     }
   }

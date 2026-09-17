@@ -41,9 +41,9 @@ class Raycaster3DGame {
 
     // Ennemis (Feds en costume noir qui brillent)
     this.enemies = [
-      { x: 5.5, y: 5.5, alive: true, icon: '🕴️' },
-      { x: 8.5, y: 3.5, alive: true, icon: '🕴️' },
-      { x: 9.5, y: 8.5, alive: true, icon: '🦎' }
+      { x: 5.5, y: 5.5, alive: true, icon: '[FED]️' },
+      { x: 8.5, y: 3.5, alive: true, icon: '[FED]️' },
+      { x: 9.5, y: 8.5, alive: true, icon: '[REP]' }
     ];
 
     this.keys = {};

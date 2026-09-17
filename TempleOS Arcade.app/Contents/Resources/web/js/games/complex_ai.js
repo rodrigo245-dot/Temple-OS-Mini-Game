@@ -48,7 +48,7 @@ class LabyrinthGame {
           window.soundEngine.playClick();
           if (this.player.x === this.exit.x && this.player.y === this.exit.y) {
             window.soundEngine.playVictory();
-            if (this.statusEl) this.statusEl.textContent = "🏆 SORTIE DU LABYRINTHE ATTEINTE ! BÉNÉDICTION !";
+            if (this.statusEl) this.statusEl.textContent = "[TOP] SORTIE DU LABYRINTHE ATTEINTE ! BÉNÉDICTION !";
           }
           this.draw();
         }
@@ -232,7 +232,7 @@ class RogueGame {
           <button class="temple-btn" onclick="desktop.games.rogue.step(0, -1)">▲</button>
           <button class="temple-btn" onclick="desktop.games.rogue.step(-1, 0)">◀</button>
           <button class="temple-btn" onclick="desktop.games.rogue.step(0, 1)">▼</button>
-          <button class="temple-btn" onclick="desktop.games.rogue.step(1, 0)">▶</button>
+          <button class="temple-btn" onclick="desktop.games.rogue.step(1, 0)">[PLAY]</button>
         </div>
       </div>
     `;
@@ -277,7 +277,7 @@ class CadavreGame {
         <div style="background:#000; padding:12px; border:2px dashed var(--vga-yellow); color:var(--vga-yellow); font-size:14px; font-weight:bold; margin-bottom:10px;">
           ${this.history[0] || 'Cliquez pour composer une phrase'}
         </div>
-        <button class="temple-btn primary" onclick="desktop.games.cadavre.generateSentence()">ASSEMBLER UNE PROPHÉTIE ⚡</button>
+        <button class="temple-btn primary" onclick="desktop.games.cadavre.generateSentence()">ASSEMBLER UNE PROPHÉTIE [SYS]</button>
         <div style="margin-top:10px; max-height:100px; overflow-y:auto; text-align:left; font-size:11px; color:var(--vga-light-gray); border-top:1px solid #555; padding-top:6px;">
           ${this.history.slice(1).map(h => `<div>• ${h}</div>`).join('')}
         </div>
@@ -394,7 +394,7 @@ class QLearningGame {
           PARTIES D'ENTRAÎNEMENT : ${this.episodesTrained} | ÉTATS EN MÉMOIRE : ${statesCount}
         </div>
         <div style="display:flex; justify-content:center; gap:8px; margin-bottom:10px;">
-          <button class="temple-btn primary" onclick="desktop.games.qlearn.trainFast(5000)">ENTRAÎNER +5 000 PARTIES ⚡</button>
+          <button class="temple-btn primary" onclick="desktop.games.qlearn.trainFast(5000)">ENTRAÎNER +5 000 PARTIES [SYS]</button>
           <button class="temple-btn" onclick="desktop.games.qlearn.init()">RÉINITIALISER GRILLE</button>
         </div>
         <div style="display:grid; grid-template-columns:repeat(3, 50px); gap:4px; justify-content:center; margin:0 auto;">
@@ -488,7 +488,7 @@ class EightQueensGame {
 
         boardHtml += `
           <div style="width:26px; height:26px; background:${isBlack ? 'var(--vga-blue)' : 'var(--vga-light-gray)'}; color:#ffff55; font-size:18px; font-weight:bold; display:flex; align-items:center; justify-content:center; cursor:pointer;" onclick="desktop.games.eightqueens.toggleQueen(${r}, ${c})">
-            ${hasQueen ? '♛' : ''}
+            ${hasQueen ? '[QUEEN]' : ''}
           </div>
         `;
       }
@@ -507,7 +507,7 @@ class EightQueensGame {
           <div style="display:flex; justify-content:center; align-items:center; gap:8px; font-weight:bold; color:var(--vga-yellow);">
             <button class="temple-btn" onclick="desktop.games.eightqueens.currentSolIdx = (desktop.games.eightqueens.currentSolIdx - 1 + 92) % 92; desktop.games.eightqueens.render();">◀</button>
             <span>SOLUTION ${this.currentSolIdx + 1} / 92</span>
-            <button class="temple-btn" onclick="desktop.games.eightqueens.currentSolIdx = (desktop.games.eightqueens.currentSolIdx + 1) % 92; desktop.games.eightqueens.render();">▶</button>
+            <button class="temple-btn" onclick="desktop.games.eightqueens.currentSolIdx = (desktop.games.eightqueens.currentSolIdx + 1) % 92; desktop.games.eightqueens.render();">[PLAY]</button>
           </div>
         ` : `
           <div style="color:var(--vga-yellow); font-weight:bold;">DAMES PLACÉES : ${this.playerQueens.length} / 8</div>

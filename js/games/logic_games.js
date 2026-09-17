@@ -57,15 +57,15 @@ class PlusMoinsGame {
     tries.textContent = `ESSAIS : ${this.attempts}`;
 
     if (val < this.target) {
-      msg.textContent = "🔼 C'EST PLUS GRAND ! MONTE VERS LES CIEUX !";
+      msg.textContent = "[^] C'EST PLUS GRAND ! MONTE VERS LES CIEUX !";
       msg.style.color = "var(--vga-light-cyan)";
       window.soundEngine.beep(400, 0.08);
     } else if (val > this.target) {
-      msg.textContent = "🔽 C'EST PLUS PETIT ! DESCENDS VERS LA TERRE !";
+      msg.textContent = "[v] C'EST PLUS PETIT ! DESCENDS VERS LA TERRE !";
       msg.style.color = "var(--vga-light-red)";
       window.soundEngine.beep(250, 0.08);
     } else {
-      msg.textContent = `🏆 MIRACLE ! NOMBRE ${this.target} TROUVÉ EN ${this.attempts} COUPS !`;
+      msg.textContent = `[TOP] MIRACLE ! NOMBRE ${this.target} TROUVÉ EN ${this.attempts} COUPS !`;
       msg.style.color = "var(--vga-light-green)";
       window.soundEngine.playVictory();
     }
@@ -179,7 +179,7 @@ class MastermindGame {
       this.isOver = true;
       window.soundEngine.playVictory();
       this.render();
-      document.getElementById('mm-msg').textContent = "🏆 CODE SECRET DÉCHIFFRÉ PAR LE FIDELE !";
+      document.getElementById('mm-msg').textContent = "[TOP] CODE SECRET DÉCHIFFRÉ PAR LE FIDELE !";
       return;
     }
 
@@ -187,7 +187,7 @@ class MastermindGame {
       this.isOver = true;
       window.soundEngine.playDefeat();
       this.render();
-      document.getElementById('mm-msg').textContent = "💀 10 ESSAIS ÉPUISÉS ! LE CODE RESTE CELUI DE LA CIA !";
+      document.getElementById('mm-msg').textContent = "[ERR] 10 ESSAIS ÉPUISÉS ! LE CODE RESTE CELUI DE LA CIA !";
       return;
     }
 
@@ -260,7 +260,7 @@ class PenduGame {
 `
   +---+
   |   |
-  💀   |
+  [ERR]   |
  /|\\  |
  / \\  |
       |
@@ -314,7 +314,7 @@ class PenduGame {
             `).join('')}
           </div>
           <div style="font-weight:bold; color:${isWon ? 'var(--vga-light-green)' : (isLost ? 'var(--vga-light-red)' : 'var(--vga-light-cyan)')}">
-            ${isWon ? "🏆 MOT SACRÉ TROUVÉ ! BÉNÉDICTION !" : (isLost ? `💀 PERDU ! LE MOT ÉTAIT : ${this.secretWord}` : `ERREURS : ${this.errors} / ${this.maxErrors}`)}
+            ${isWon ? "[TOP] MOT SACRÉ TROUVÉ ! BÉNÉDICTION !" : (isLost ? `[ERR] PERDU ! LE MOT ÉTAIT : ${this.secretWord}` : `ERREURS : ${this.errors} / ${this.maxErrors}`)}
           </div>
           <button class="temple-btn primary" style="margin-top:6px;" onclick="desktop.games.pendu.init()">NOUVEAU MOT</button>
         </div>
@@ -408,7 +408,7 @@ class MotusGame {
         <div style="font-size:12px; color:var(--vga-light-cyan); margin-bottom:6px;">DEVINE LE MOT SACRÉ DE 5 LETTRES EN 6 ESSAIS</div>
         ${gridHtml}
         <div style="margin-top:6px; font-weight:bold; color:var(--vga-yellow);">
-          ${this.isOver ? (this.guesses.includes(this.secret) ? "🏆 MOT DÉCOUVERT !" : `💀 PERDU ! LE MOT ÉTAIT : ${this.secret}`) : "TAPE AU CLAVIER OU UTILISE LES TOUCHES CI-DESSOUS"}
+          ${this.isOver ? (this.guesses.includes(this.secret) ? "[TOP] MOT DÉCOUVERT !" : `[ERR] PERDU ! LE MOT ÉTAIT : ${this.secret}`) : "TAPE AU CLAVIER OU UTILISE LES TOUCHES CI-DESSOUS"}
         </div>
         <div style="display:flex; flex-wrap:wrap; gap:3px; justify-content:center; max-width:320px; margin:8px auto;">
           ${"AZERTYUIOPQSDFGHJKLMWXCVBN".split('').map(k => `
@@ -511,7 +511,7 @@ class NimGame {
             <div style="background:#000; padding:10px; border:1px solid #555; width:90px;">
               <div style="color:var(--vga-yellow); font-weight:bold;">TAS ${idx + 1}</div>
               <div style="color:var(--vga-light-red); font-size:20px; min-height:40px; margin:6px 0;">
-                ${'🔥'.repeat(p) || 'VIDE'}
+                ${'[FIRE]'.repeat(p) || 'VIDE'}
               </div>
               <div style="display:flex; gap:4px; justify-content:center;">
                 <button class="temple-btn" ${p < 1 || !this.isPlayerTurn || this.isOver ? 'disabled' : ''} onclick="desktop.games.nim.take(${idx}, 1)">-1</button>
@@ -522,7 +522,7 @@ class NimGame {
           `).join('')}
         </div>
         <div style="font-weight:bold; color:${this.isOver ? 'var(--vga-light-green)' : 'var(--vga-yellow)'}">
-          ${this.isOver ? (this.isPlayerTurn ? "💀 L'IA DE DIEU (OPÉRATEUR XOR) A GAGNÉ !" : "🏆 LE FIDÈLE A TRIOMPHÉ !") : (this.isPlayerTurn ? "À TOI DE JOUER" : "L'IA CALCULE LA SOMME DE NIM (XOR)...")}
+          ${this.isOver ? (this.isPlayerTurn ? "[ERR] L'IA DE DIEU (OPÉRATEUR XOR) A GAGNÉ !" : "[TOP] LE FIDÈLE A TRIOMPHÉ !") : (this.isPlayerTurn ? "À TOI DE JOUER" : "L'IA CALCULE LA SOMME DE NIM (XOR)...")}
         </div>
         <button class="temple-btn primary" style="margin-top:10px;" onclick="desktop.games.nim.init()">REJOUER</button>
       </div>

@@ -1,6 +1,6 @@
 // ==========================================================================
 // PUISSANCE 4 DE L'ALLIANCE (CONNECT 4 TEMPLEOS V2.0)
-// Difficultés : Facile, Normal, Difficile (IA Prédictive), Troll Divin ⚡
+// Difficultés : Facile, Normal, Difficile (IA Prédictive), Troll Divin [SYS]
 // ==========================================================================
 
 class Puissance4 {
@@ -49,7 +49,7 @@ class Puissance4 {
       facile: "NIVEAU : ESPION DÉBUTANT (FACILE) - CHUTES HASARDEUSES.",
       normal: "NIVEAU : AGENT FÉDÉRAL (NORMAL) - VIGILANCE STANDARD.",
       difficile: "NIVEAU : STRATÈGE PENTAGONE (DIFFICILE) - ANTICIPATION À 3 COUPS !",
-      troll: "NIVEAU : GRAVITÉ DIVINE TROLL ⚡ - SÉISME AU RING-0 !"
+      troll: "NIVEAU : GRAVITÉ DIVINE TROLL [SYS] - SÉISME AU RING-0 !"
     };
     if (this.commentEl) this.commentEl.textContent = labels[level] || "";
     this.reset();
@@ -144,7 +144,7 @@ class Puissance4 {
       this.grid[r][c] = this.grid[r][c] === 1 ? 2 : 1;
       this.render();
       if (this.commentEl) {
-        this.commentEl.textContent = "⚡ SÉISME DIVIN ! UN JETON A ÉTÉ CONVERTI PAR L'ÉTERNEL !";
+        this.commentEl.textContent = "[SYS] SÉISME DIVIN ! UN JETON A ÉTÉ CONVERTI PAR L'ÉTERNEL !";
       }
     }
   }
@@ -264,14 +264,14 @@ class Puissance4 {
     if (winner === 1) {
       window.soundEngine.playVictory();
       if (this.statusEl) {
-        this.statusEl.textContent = "🏆 VICTOIRE SAINTE ! LES 4 JETONS BRILLENT !";
+        this.statusEl.textContent = "[TOP] VICTOIRE SAINTE ! LES 4 JETONS BRILLENT !";
         this.statusEl.style.color = "var(--vga-light-green)";
       }
       if (this.commentEl) this.commentEl.textContent = window.godOracle.getComment('p4_win');
     } else if (winner === 2) {
       window.soundEngine.playDefeat();
       if (this.statusEl) {
-        this.statusEl.textContent = "💀 LES AGENTS DE LA CIA ONT ALIGNÉ 4 PIONS !";
+        this.statusEl.textContent = "[ERR] LES AGENTS DE LA CIA ONT ALIGNÉ 4 PIONS !";
         this.statusEl.style.color = "var(--vga-light-red)";
       }
     } else {
@@ -292,10 +292,10 @@ class Puissance4 {
         cell.textContent = '';
         if (val === 1) {
           cell.classList.add('p1-token');
-          cell.textContent = '✝';
+          cell.textContent = '+';
         } else if (val === 2) {
           cell.classList.add('p2-token');
-          cell.textContent = '👁';
+          cell.textContent = '[CIA]';
         }
       }
     }

@@ -177,7 +177,7 @@ class Area51Game {
         d.collected = true;
         this.score += 250;
         window.soundEngine.playTokenDrop();
-        this.updateStatus(`💾 Disquette Top Secret récupérée ! (+250 pts)`);
+        this.updateStatus(`[DISK] Disquette Top Secret récupérée ! (+250 pts)`);
       }
     });
 
@@ -186,7 +186,7 @@ class Area51Game {
       this.keycard.collected = true;
       this.score += 500;
       window.soundEngine.playVictory();
-      this.updateStatus("🔑 PASSE NIVEAU 4 OBTENU ! Foncez libérer l'Alien en bas à droite !");
+      this.updateStatus("[KEY] PASSE NIVEAU 4 OBTENU ! Foncez libérer l'Alien en bas à droite !");
     }
 
     // Libération de l'Alien
@@ -197,9 +197,9 @@ class Area51Game {
         this.stop();
         window.soundEngine.playHolyMiracle();
         if (window.speechEngine) window.speechEngine.speak("L'extraterrestre est libéré ! Victoire divine contre la Zone 51 !");
-        this.updateStatus(`🏆 VICTOIRE TOTALE ! Alien libéré ! Score final : ${this.score + 1000} pts`);
+        this.updateStatus(`[TOP] VICTOIRE TOTALE ! Alien libéré ! Score final : ${this.score + 1000} pts`);
       } else {
-        this.updateStatus("⚠️ PORTE CYBÉRNÉTIQUE VERROUILLÉE ! Trouvez la clé de niveau 4 !");
+        this.updateStatus("[!] PORTE CYBÉRNÉTIQUE VERROUILLÉE ! Trouvez la clé de niveau 4 !");
       }
     }
   }
@@ -209,7 +209,7 @@ class Area51Game {
     window.soundEngine.beep(1200, 0.2, "sawtooth");
     if (window.speechEngine) window.speechEngine.speak("Alerte intrusion !");
     this.stop();
-    this.updateStatus(`❌ CAPTURÉ ! ${msg} Cliquez sur DÉMARRER pour réessayer.`);
+    this.updateStatus(`[X] CAPTURÉ ! ${msg} Cliquez sur DÉMARRER pour réessayer.`);
   }
 
   draw() {
@@ -276,7 +276,7 @@ class Area51Game {
       this.ctx.font = "12px monospace";
       this.ctx.textAlign = "center";
       this.ctx.textBaseline = "middle";
-      this.ctx.fillText("🕴️", g.x, g.y);
+      this.ctx.fillText("[FED]️", g.x, g.y);
     });
 
     // Dessin des disquettes
@@ -285,7 +285,7 @@ class Area51Game {
         this.ctx.font = "16px monospace";
         this.ctx.textAlign = "center";
         this.ctx.textBaseline = "middle";
-        this.ctx.fillText("💾", d.x, d.y);
+        this.ctx.fillText("[DISK]", d.x, d.y);
       }
     });
 
@@ -294,7 +294,7 @@ class Area51Game {
       this.ctx.font = "16px monospace";
       this.ctx.textAlign = "center";
       this.ctx.textBaseline = "middle";
-      this.ctx.fillText("🔑", this.keycard.x, this.keycard.y);
+      this.ctx.fillText("[KEY]", this.keycard.x, this.keycard.y);
     }
 
     // Dessin de la cage de l'Alien
@@ -303,7 +303,7 @@ class Area51Game {
     this.ctx.font = "20px monospace";
     this.ctx.textAlign = "center";
     this.ctx.textBaseline = "middle";
-    this.ctx.fillText("👽", this.alien.x, this.alien.y);
+    this.ctx.fillText("[ET]", this.alien.x, this.alien.y);
 
     // Dessin du Joueur (Hacker dissident en trench-coat)
     this.ctx.fillStyle = "#55ff55";
@@ -315,7 +315,7 @@ class Area51Game {
     this.ctx.font = "14px monospace";
     this.ctx.textAlign = "center";
     this.ctx.textBaseline = "middle";
-    this.ctx.fillText("🕵️", this.player.x, this.player.y);
+    this.ctx.fillText("[FED]️", this.player.x, this.player.y);
   }
 
   loop() {
@@ -415,10 +415,10 @@ class CernSmasherGame {
     } else {
       this.stability = Math.max(0, this.stability - 15);
       window.soundEngine.beep(150, 0.15, "square");
-      this.updateStatus(`⚠️ COLLISION RATÉE ! Faisceau désynchronisé. Stabilité anneau : ${this.stability}%`);
+      this.updateStatus(`[!] COLLISION RATÉE ! Faisceau désynchronisé. Stabilité anneau : ${this.stability}%`);
       if (this.stability <= 0) {
         this.stop();
-        this.updateStatus("💥 EFFONDREMENT DU CHAMP MAGNÉTIQUE ! Le LHC a disjoncté.");
+        this.updateStatus("[HIT] EFFONDREMENT DU CHAMP MAGNÉTIQUE ! Le LHC a disjoncté.");
       }
     }
   }
@@ -445,7 +445,7 @@ class CernSmasherGame {
     const roll = Math.random() * 100;
     let name = "";
     if (this.energyTev >= 12.0 && roll > 70) {
-      name = "✨ LE BOSON DE HIGGS SACRÉ (PARTICULE DE DIEU) !";
+      name = "[*] LE BOSON DE HIGGS SACRÉ (PARTICULE DE DIEU) !";
       window.soundEngine.playHolyMiracle();
       if (window.speechEngine) window.speechEngine.speak("Eurêka ! Le Boson de Higgs sacré a été détecté dans le Ring-0 !");
     } else if (roll > 50) {
@@ -460,7 +460,7 @@ class CernSmasherGame {
 
     this.discoveredParticles.unshift(name);
     if (this.discoveredParticles.length > 3) this.discoveredParticles.pop();
-    this.updateStatus(`💥 COLLISION À ${this.energyTev.toFixed(1)} TeV ! ${name}`);
+    this.updateStatus(`[HIT] COLLISION À ${this.energyTev.toFixed(1)} TeV ! ${name}`);
   }
 
   start() {
@@ -671,14 +671,14 @@ class BBSPhreakGame {
         this.print("[BLUE BOX 2600 Hz] ÉMISSION DE LA TONALITÉ DE DÉCONNEXION TRUNK OPERATOR...", "#55ffff");
         window.soundEngine.beep(2600, 0.4, "sine");
         setTimeout(() => {
-          this.print("✅ LIGNE INTERURBAINE PIRATÉE ! Tous vos appels sont désormais gratuits et intraçables.", "#ffd700");
+          this.print("[OK] LIGNE INTERURBAINE PIRATÉE ! Tous vos appels sont désormais gratuits et intraçables.", "#ffd700");
           window.soundEngine.playHolyMiracle();
         }, 450);
         break;
 
       case "dial":
         if (!arg || !this.nodes[arg]) {
-          this.print("❌ NUMÉRO INVALIDE OU NON ASSIGNÉ. Essayez 'scan' pour trouver des numéros.", "#ff5555");
+          this.print("[X] NUMÉRO INVALIDE OU NON ASSIGNÉ. Essayez 'scan' pour trouver des numéros.", "#ff5555");
           window.soundEngine.beep(200, 0.2);
           return;
         }
@@ -696,7 +696,7 @@ class BBSPhreakGame {
       case "ls":
       case "dir":
         if (!this.connectedNode) {
-          this.print("❌ VOUS N'ÊTES CONNECTÉ À AUCUN NOEUD. Utilisez 'dial <num>' d'abord.", "#ff5555");
+          this.print("[X] VOUS N'ÊTES CONNECTÉ À AUCUN NOEUD. Utilisez 'dial <num>' d'abord.", "#ff5555");
           return;
         }
         this.print(`CONTENU DU SERVEUR ${this.connectedNode.name} :`);
@@ -708,7 +708,7 @@ class BBSPhreakGame {
       case "cat":
       case "read":
         if (!arg || !this.files[arg]) {
-          this.print("❌ FICHIER INTROUVABLE. Tapez 'ls' pour voir les fichiers.", "#ff5555");
+          this.print("[X] FICHIER INTROUVABLE. Tapez 'ls' pour voir les fichiers.", "#ff5555");
           return;
         }
         this.print(`[AFFICHAGE DE ${arg}] :`, "#ffd700");
@@ -718,7 +718,7 @@ class BBSPhreakGame {
 
       case "crack":
         if (!this.connectedNode) {
-          this.print("❌ AUCUNE CIBLE À PIRATER.", "#ff5555");
+          this.print("[X] AUCUNE CIBLE À PIRATER.", "#ff5555");
           return;
         }
         this.print("INJECTION DU DICTIONNAIRE DE BRUTE-FORCE DANS LE PORT SERIEL...", "#55ffff");
@@ -729,7 +729,7 @@ class BBSPhreakGame {
           this.print(`Test du hash SHA-256 bloc #${step}... [MATCH DÉTECTÉ]`);
           if (step >= 4) {
             clearInterval(crackInt);
-            this.print("🔓 ACCÈS ROOT RING-0 ACCORDÉ ! Mot de passe : 'TERRY_GOD_1993'", "#ffd700");
+            this.print("[OPEN] ACCÈS ROOT RING-0 ACCORDÉ ! Mot de passe : 'TERRY_GOD_1993'", "#ffd700");
             window.soundEngine.playHolyMiracle();
           }
         }, 180);

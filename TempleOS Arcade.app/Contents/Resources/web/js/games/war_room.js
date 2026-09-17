@@ -14,13 +14,13 @@ class WarRoomGame {
     this.height = this.canvas.height = 320;
 
     this.bases = [
-      { id: 'area51', name: 'ZONE 51 (NEVADA)', x: 120, y: 115, icon: '🛸', desc: 'Rétro-ingénierie de soucoupes volantes et tests de moteurs à anti-gravité dans le hangar S-4.' },
-      { id: 'denver', name: 'AÉROPORT DE DENVER', x: 145, y: 110, icon: '👁️', desc: 'Fresques prophétiques apocalyptiques et tunnels souterrains profonds de niveau -4 réservés aux élites.' },
-      { id: 'bermuda', name: 'TRIANGLE DES BERMUDES', x: 180, y: 155, icon: '⚠️', desc: 'Anomalie électromagnétique majeure. Disparition de bombardiers de l\'US Navy et vortex temporel.' },
-      { id: 'cern', name: 'CERN (GENÈVE)', x: 285, y: 95, icon: '⚛️', desc: 'Collisionneur de hadrons tentant d\'ouvrir un portail vers la 4ème dimension et statut de Shiva dans la cour.' },
-      { id: 'bohemian', name: 'BOHEMIAN GROVE', x: 95, y: 105, icon: '🦉', desc: 'Forêt de séquoias où les dirigeants mondiaux simulent le sacrifice de la Crémation des Soucis devant la Chouette.' },
-      { id: 'pyramids', name: 'GÎZEH (ÉGYPTE)', x: 330, y: 130, icon: '🔺', desc: 'Alignement parfait avec la constellation d\'Orion et générateur d\'énergie scalaire antique.' },
-      { id: 'vatican', name: 'ARCHIVES DU VATICAN', x: 295, y: 105, icon: '✝', desc: '38 kilomètres de rayonnages secrets renfermant le chronoviseur et les évangiles apocryphes perdus.' }
+      { id: 'area51', name: 'ZONE 51 (NEVADA)', x: 120, y: 115, icon: '[S4]', desc: 'Rétro-ingénierie de soucoupes volantes et tests de moteurs à anti-gravité dans le hangar S-4.' },
+      { id: 'denver', name: 'AÉROPORT DE DENVER', x: 145, y: 110, icon: '[CIA]', desc: 'Fresques prophétiques apocalyptiques et tunnels souterrains profonds de niveau -4 réservés aux élites.' },
+      { id: 'bermuda', name: 'TRIANGLE DES BERMUDES', x: 180, y: 155, icon: '[!]', desc: 'Anomalie électromagnétique majeure. Disparition de bombardiers de l\'US Navy et vortex temporel.' },
+      { id: 'cern', name: 'CERN (GENÈVE)', x: 285, y: 95, icon: '[LHC]', desc: 'Collisionneur de hadrons tentant d\'ouvrir un portail vers la 4ème dimension et statut de Shiva dans la cour.' },
+      { id: 'bohemian', name: 'BOHEMIAN GROVE', x: 95, y: 105, icon: '[OWL]', desc: 'Forêt de séquoias où les dirigeants mondiaux simulent le sacrifice de la Crémation des Soucis devant la Chouette.' },
+      { id: 'pyramids', name: 'GÎZEH (ÉGYPTE)', x: 330, y: 130, icon: '[NWO]', desc: 'Alignement parfait avec la constellation d\'Orion et générateur d\'énergie scalaire antique.' },
+      { id: 'vatican', name: 'ARCHIVES DU VATICAN', x: 295, y: 105, icon: '+', desc: '38 kilomètres de rayonnages secrets renfermant le chronoviseur et les évangiles apocryphes perdus.' }
     ];
 
     this.radarAngle = 0;

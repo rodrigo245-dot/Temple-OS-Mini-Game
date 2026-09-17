@@ -246,7 +246,7 @@ class TaquinPuzzle {
         this.isWon = true;
         window.soundEngine.playVictory();
         if (this.commentEl) {
-          this.commentEl.textContent = `🏆 TAQUIN RÉSOLU EN ${this.moves} COUPS ! GLOIRE AU RING-0 !`;
+          this.commentEl.textContent = `[TOP] TAQUIN RÉSOLU EN ${this.moves} COUPS ! GLOIRE AU RING-0 !`;
         }
       }
     }
@@ -359,7 +359,7 @@ class SudokuGame {
       this.grid = copy;
       window.soundEngine.playHolyMiracle();
       this.render();
-      if (this.statusEl) this.statusEl.textContent = "⚡ GRILLE RÉSOLUE INSTANTANÉMENT PAR L'ALGORITHME DE BACKTRACKING !";
+      if (this.statusEl) this.statusEl.textContent = "[SYS] GRILLE RÉSOLUE INSTANTANÉMENT PAR L'ALGORITHME DE BACKTRACKING !";
     }
   }
 

@@ -81,10 +81,10 @@ class PyramidRunGame {
 
   spawnObstacle() {
     const types = [
-      { name: 'SATELLITE_ECHELON', icon: '🛰️', w: 24, h: 20, color: '#55ffff' },
-      { name: 'BILLET_DOLLAR', icon: '💵', w: 22, h: 16, color: '#55ff55' },
-      { name: 'CHOUETTE_BOHEMIAN', icon: '🦉', w: 20, h: 22, color: '#ffff55' },
-      { name: 'LASER_5G', icon: '⚡', w: 18, h: 24, color: '#ff5555' }
+      { name: 'SATELLITE_ECHELON', icon: '[SAT]️', w: 24, h: 20, color: '#55ffff' },
+      { name: 'BILLET_DOLLAR', icon: '[USD]', w: 22, h: 16, color: '#55ff55' },
+      { name: 'CHOUETTE_BOHEMIAN', icon: '[OWL]', w: 20, h: 22, color: '#ffff55' },
+      { name: 'LASER_5G', icon: '[SYS]', w: 18, h: 24, color: '#ff5555' }
     ];
     const type = types[Math.floor(Math.random() * types.length)];
     const x = Math.random() * (this.width - 30) + 15;
@@ -124,7 +124,7 @@ class PyramidRunGame {
         window.soundEngine.playExplosion();
         if (window.speechEngine) window.speechEngine.speak("La pyramide s'est effondrée !");
         this.stop();
-        alert(`💥 IMPACT CONSPIRATIONNISTE ! Altitude atteinte : ${Math.floor(this.altitude)}m.`);
+        alert(`[HIT] IMPACT CONSPIRATIONNISTE ! Altitude atteinte : ${Math.floor(this.altitude)}m.`);
         return;
       }
 
@@ -215,48 +215,48 @@ class NWOClickerGame {
     // 20 Actifs de Conspiration répartis en 4 Ères
     this.upgrades = [
       // Ère 1 : Surveillance de Proximité
-      { id: 'pigeon', era: 1, name: 'Pigeons Espions Caméras 4K', cost: 15, baseCost: 15, gen: 1, count: 0, icon: '🐦' },
-      { id: 'chemtrail', era: 1, name: 'Flotte de Chemtrails Aériens', cost: 75, baseCost: 75, gen: 5, count: 0, icon: '✈️' },
-      { id: 'fluor', era: 1, name: 'Fluorure & Nanoparticules', cost: 320, baseCost: 320, gen: 18, count: 0, icon: '🧪' },
-      { id: 'pharma', era: 1, name: 'Médicaments Big Pharma', cost: 1200, baseCost: 1200, gen: 65, count: 0, icon: '💊' },
-      { id: 'tiktok', era: 1, name: 'Algorithme de Doomscrolling', cost: 4200, baseCost: 4200, gen: 240, count: 0, icon: '📱' },
+      { id: 'pigeon', era: 1, name: 'Pigeons Espions Caméras 4K', cost: 15, baseCost: 15, gen: 1, count: 0, icon: '[BIRD]' },
+      { id: 'chemtrail', era: 1, name: 'Flotte de Chemtrails Aériens', cost: 75, baseCost: 75, gen: 5, count: 0, icon: '[FLY]' },
+      { id: 'fluor', era: 1, name: 'Fluorure & Nanoparticules', cost: 320, baseCost: 320, gen: 18, count: 0, icon: '[VIAL]' },
+      { id: 'pharma', era: 1, name: 'Médicaments Big Pharma', cost: 1200, baseCost: 1200, gen: 65, count: 0, icon: '[PILL]' },
+      { id: 'tiktok', era: 1, name: 'Algorithme de Doomscrolling', cost: 4200, baseCost: 4200, gen: 240, count: 0, icon: '[PHONE]' },
 
       // Ère 2 : Hégémonie Financière & Médiatique
-      { id: 'media', era: 2, name: 'Monopole Télévisuel 24/7', cost: 16000, baseCost: 16000, gen: 900, count: 0, icon: '📺' },
-      { id: 'centralbank', era: 2, name: 'Banque Centrale & Planche à Billets', cost: 65000, baseCost: 65000, gen: 3800, count: 0, icon: '🏛️' },
-      { id: 'davos', era: 2, name: 'Sommet Annuel des Élites (Davos)', cost: 260000, baseCost: 260000, gen: 15000, count: 0, icon: '🎩' },
-      { id: 'bohemian', era: 2, name: 'Rituels de Bohemian Grove', cost: 950000, baseCost: 950000, gen: 60000, count: 0, icon: '🦉' },
-      { id: 'denver', era: 2, name: 'Bunker Souterrain Denver -4', cost: 3800000, baseCost: 3800000, gen: 240000, count: 0, icon: '🕳️' },
+      { id: 'media', era: 2, name: 'Monopole Télévisuel 24/7', cost: 16000, baseCost: 16000, gen: 900, count: 0, icon: '[CRT]' },
+      { id: 'centralbank', era: 2, name: 'Banque Centrale & Planche à Billets', cost: 65000, baseCost: 65000, gen: 3800, count: 0, icon: '[TEMPLE]️' },
+      { id: 'davos', era: 2, name: 'Sommet Annuel des Élites (Davos)', cost: 260000, baseCost: 260000, gen: 15000, count: 0, icon: '[HAT]' },
+      { id: 'bohemian', era: 2, name: 'Rituels de Bohemian Grove', cost: 950000, baseCost: 950000, gen: 60000, count: 0, icon: '[OWL]' },
+      { id: 'denver', era: 2, name: 'Bunker Souterrain Denver -4', cost: 3800000, baseCost: 3800000, gen: 240000, count: 0, icon: '[VOID]️' },
 
       // Ère 3 : Transhumanisme & Cyber-Contrôle
-      { id: 'neuralchip', era: 3, name: 'Implants Cérébraux Neural-Chip', cost: 16000000, baseCost: 16000000, gen: 1000000, count: 0, icon: '🧠' },
-      { id: 'echelon', era: 3, name: 'Satellites ECHELON & PRISM', cost: 70000000, baseCost: 70000000, gen: 4500000, count: 0, icon: '🛰️' },
-      { id: 'clones', era: 3, name: 'Laboratoire de Clonage d\'Élites', cost: 320000000, baseCost: 320000000, gen: 21000000, count: 0, icon: '🧬' },
-      { id: 'reptilian', era: 3, name: 'Ambassade Reptilienne Secrète', cost: 1400000000, baseCost: 1400000000, gen: 95000000, count: 0, icon: '🦎' },
-      { id: 'cern', era: 3, name: 'Collisionneur CERN Multidimensionnel', cost: 6500000000, baseCost: 6500000000, gen: 440000000, count: 0, icon: '⚛️' },
+      { id: 'neuralchip', era: 3, name: 'Implants Cérébraux Neural-Chip', cost: 16000000, baseCost: 16000000, gen: 1000000, count: 0, icon: '[AI]' },
+      { id: 'echelon', era: 3, name: 'Satellites ECHELON & PRISM', cost: 70000000, baseCost: 70000000, gen: 4500000, count: 0, icon: '[SAT]️' },
+      { id: 'clones', era: 3, name: 'Laboratoire de Clonage d\'Élites', cost: 320000000, baseCost: 320000000, gen: 21000000, count: 0, icon: '[CELL]' },
+      { id: 'reptilian', era: 3, name: 'Ambassade Reptilienne Secrète', cost: 1400000000, baseCost: 1400000000, gen: 95000000, count: 0, icon: '[REP]' },
+      { id: 'cern', era: 3, name: 'Collisionneur CERN Multidimensionnel', cost: 6500000000, baseCost: 6500000000, gen: 440000000, count: 0, icon: '[LHC]' },
 
       // Ère 4 : Domination Cosmique & Matrice Céleste
-      { id: 'tr3b', era: 4, name: 'Flotte d\'OVNIs Anti-Gravité TR-3B', cost: 30000000000, baseCost: 30000000000, gen: 2100000000, count: 0, icon: '🛸' },
-      { id: 'pyramidspace', era: 4, name: 'Pyramide d\'Or Spatiale Orbitale', cost: 150000000000, baseCost: 150000000000, gen: 11000000000, count: 0, icon: '🔺' },
-      { id: 'matrixring0', era: 4, name: 'Matrice de Réalité Simulée Ring-0', cost: 800000000000, baseCost: 800000000000, gen: 60000000000, count: 0, icon: '💾' },
-      { id: 'eyeprovidence', era: 4, name: 'Œil Céleste de la Providence', cost: 4500000000000, baseCost: 4500000000000, gen: 350000000000, count: 0, icon: '👁️' },
-      { id: 'novusordo', era: 4, name: 'Annuit Cœptis : Conscience Globale', cost: 25000000000000, baseCost: 25000000000000, gen: 2000000000000, count: 0, icon: '👑' }
+      { id: 'tr3b', era: 4, name: 'Flotte d\'OVNIs Anti-Gravité TR-3B', cost: 30000000000, baseCost: 30000000000, gen: 2100000000, count: 0, icon: '[S4]' },
+      { id: 'pyramidspace', era: 4, name: 'Pyramide d\'Or Spatiale Orbitale', cost: 150000000000, baseCost: 150000000000, gen: 11000000000, count: 0, icon: '[NWO]' },
+      { id: 'matrixring0', era: 4, name: 'Matrice de Réalité Simulée Ring-0', cost: 800000000000, baseCost: 800000000000, gen: 60000000000, count: 0, icon: '[DISK]' },
+      { id: 'eyeprovidence', era: 4, name: 'Œil Céleste de la Providence', cost: 4500000000000, baseCost: 4500000000000, gen: 350000000000, count: 0, icon: '[CIA]' },
+      { id: 'novusordo', era: 4, name: 'Annuit Cœptis : Conscience Globale', cost: 25000000000000, baseCost: 25000000000000, gen: 2000000000000, count: 0, icon: '[QUEEN]' }
     ];
 
     // 12 Doctrines Secrètes / Technologies (Achat unique)
     this.doctrines = [
-      { id: 'doc_gloves', name: 'Gants Maçonniques en Soie', cost: 400, bought: false, desc: 'Double la puissance de clic (+x2 clic)', icon: '🧤' },
-      { id: 'doc_subliminal', name: 'Flashs Subliminaux TV', cost: 3500, bought: false, desc: 'Multiplie par 3 les gains des Médias et TikTok', icon: '📺' },
-      { id: 'doc_qe', name: 'Quantitative Easing Perpétuel', cost: 25000, bought: false, desc: 'Multiplie par 3 les gains de la Banque Centrale', icon: '💵' },
-      { id: 'doc_laser5g', name: 'Réseau 5G à Fréquence Scalaire', cost: 150000, bought: false, desc: '+30% de pouvoir passif global', icon: '⚡' },
-      { id: 'doc_owl', name: 'Bénédiction de la Chouette Sacrée', cost: 800000, bought: false, desc: '+50% de pouvoir passif global et clics x3', icon: '🦉' },
-      { id: 'doc_hybriddna', name: 'Génome Hybride Séro-Reptilien', cost: 5000000, bought: false, desc: 'Multiplie par 4 les gains des Ambassades Reptiliennes', icon: '🦎' },
-      { id: 'doc_godparticle', name: 'Extraction de la Particule de Dieu', cost: 35000000, bought: false, desc: 'Multiplie par 4 les gains du Collisionneur CERN', icon: '⚛️' },
-      { id: 'doc_bluebeam', name: 'Projet Holographique Blue Beam', cost: 200000000, bought: false, desc: 'Double la production de toutes les ères (+100%)', icon: '🌌' },
-      { id: 'doc_clickratio', name: 'Sceau de Salomon Alchimique', cost: 1500000000, bought: false, desc: 'Chaque clic ajoute 3% de votre production par seconde', icon: '✡️' },
-      { id: 'doc_hivemind', name: 'Liaison Synaptique Collective', cost: 12000000000, bought: false, desc: '+150% de production passive globale', icon: '🌐' },
-      { id: 'doc_timewarp', name: 'Inversion Temporelle Scalaire', cost: 100000000000, bought: false, desc: 'Triple tous les gains de l\'univers (+200%)', icon: '⏳' },
-      { id: 'doc_apotheosis', name: 'Apothéose de l\'Ordre Mondial', cost: 1000000000000, bought: false, desc: 'Multiplie toute la production par 5 (x5 Global)', icon: '☀️' }
+      { id: 'doc_gloves', name: 'Gants Maçonniques en Soie', cost: 400, bought: false, desc: 'Double la puissance de clic (+x2 clic)', icon: '[GLOVE]' },
+      { id: 'doc_subliminal', name: 'Flashs Subliminaux TV', cost: 3500, bought: false, desc: 'Multiplie par 3 les gains des Médias et TikTok', icon: '[CRT]' },
+      { id: 'doc_qe', name: 'Quantitative Easing Perpétuel', cost: 25000, bought: false, desc: 'Multiplie par 3 les gains de la Banque Centrale', icon: '[USD]' },
+      { id: 'doc_laser5g', name: 'Réseau 5G à Fréquence Scalaire', cost: 150000, bought: false, desc: '+30% de pouvoir passif global', icon: '[SYS]' },
+      { id: 'doc_owl', name: 'Bénédiction de la Chouette Sacrée', cost: 800000, bought: false, desc: '+50% de pouvoir passif global et clics x3', icon: '[OWL]' },
+      { id: 'doc_hybriddna', name: 'Génome Hybride Séro-Reptilien', cost: 5000000, bought: false, desc: 'Multiplie par 4 les gains des Ambassades Reptiliennes', icon: '[REP]' },
+      { id: 'doc_godparticle', name: 'Extraction de la Particule de Dieu', cost: 35000000, bought: false, desc: 'Multiplie par 4 les gains du Collisionneur CERN', icon: '[LHC]' },
+      { id: 'doc_bluebeam', name: 'Projet Holographique Blue Beam', cost: 200000000, bought: false, desc: 'Double la production de toutes les ères (+100%)', icon: '[COSMOS]' },
+      { id: 'doc_clickratio', name: 'Sceau de Salomon Alchimique', cost: 1500000000, bought: false, desc: 'Chaque clic ajoute 3% de votre production par seconde', icon: '[SEAL]' },
+      { id: 'doc_hivemind', name: 'Liaison Synaptique Collective', cost: 12000000000, bought: false, desc: '+150% de production passive globale', icon: '[NET]' },
+      { id: 'doc_timewarp', name: 'Inversion Temporelle Scalaire', cost: 100000000000, bought: false, desc: 'Triple tous les gains de l\'univers (+200%)', icon: '[TIME]' },
+      { id: 'doc_apotheosis', name: 'Apothéose de l\'Ordre Mondial', cost: 1000000000000, bought: false, desc: 'Multiplie toute la production par 5 (x5 Global)', icon: '[SUN]️' }
     ];
 
     this.loadState();
@@ -425,7 +425,7 @@ class NWOClickerGame {
     }
 
     const diff = sealsToEarn - this.horusSeals;
-    if (!confirm(`👁️ VOULEZ-VOUS INITIER LE GRAND RESET ?\n\nVous sacrifierez votre influence et vos conspirations actuelles pour obtenir +${diff} Sceaux d'Horus !\nChaque sceau confère un bonus permanent de +10% de production sur toutes vos futures parties.`)) {
+    if (!confirm(`[CIA] VOULEZ-VOUS INITIER LE GRAND RESET ?\n\nVous sacrifierez votre influence et vos conspirations actuelles pour obtenir +${diff} Sceaux d'Horus !\nChaque sceau confère un bonus permanent de +10% de production sur toutes vos futures parties.`)) {
       return;
     }
 
@@ -463,7 +463,7 @@ class NWOClickerGame {
       "CERN : Des fluctuations du champ scalaire confirment l'ouverture d'un portail.",
       "TERRY DAVIS : Les feds continuent de briller dans le noir sous nos caméras infrarouges !"
     ];
-    this.newsMessage = `🔺 FLASH NWO : ${news[Math.floor(Math.random() * news.length)]}`;
+    this.newsMessage = `[NWO] FLASH NWO : ${news[Math.floor(Math.random() * news.length)]}`;
     this.renderNewsTicker();
   }
 
@@ -487,7 +487,7 @@ class NWOClickerGame {
     const popEl = document.getElementById('nwo-pop-val');
     const barEl = document.getElementById('nwo-pop-bar');
 
-    if (infEl) infEl.textContent = `${this.formatNum(this.influence)} 👁️`;
+    if (infEl) infEl.textContent = `${this.formatNum(this.influence)} [CIA]`;
     if (secEl) secEl.textContent = `+${this.formatNum(this.perSec)} / sec`;
 
     const globalPercent = Math.min(100, (this.totalLifetimeInfluence / 10000000000) * 100).toFixed(3);
@@ -515,7 +515,7 @@ class NWOClickerGame {
             <div style="text-align:center; width:100%;">
               <div style="color:var(--vga-light-green); font-size:10px; font-weight:bold;">PUISSANCE D'INFLUENCE NWO</div>
               <div id="nwo-inf-val" style="font-size:20px; color:var(--vga-yellow); font-weight:bold; margin:4px 0;">
-                ${this.formatNum(this.influence)} 👁️
+                ${this.formatNum(this.influence)} [CIA]
               </div>
               <div id="nwo-sec-val" style="font-size:10px; color:#88ff88;">
                 +${this.formatNum(this.perSec)} / sec
@@ -527,7 +527,7 @@ class NWOClickerGame {
 
             <!-- Bouton Globe d'Asservissement -->
             <div class="clickable" style="width:85px; height:85px; margin:8px auto; border-radius:50%; background:#003300; border:3px solid #55ff55; display:flex; align-items:center; justify-content:center; font-size:38px; cursor:pointer; box-shadow:0 0 15px rgba(85,255,85,0.3); transition:transform 0.05s;" onclick="desktop.games.nwoClicker.clickGlobe()">
-              👁️
+              [CIA]
             </div>
             <div style="font-size:9px; color:#ffff55;">CLIQUEZ POUR ASSERVIR</div>
 
@@ -552,13 +552,13 @@ class NWOClickerGame {
             <!-- Barre d'onglets -->
             <div style="display:flex; gap:4px; margin-bottom:6px;">
               <button class="temple-btn ${this.activeTab === 'assets' ? 'primary' : ''}" style="padding:3px 8px; font-size:10px;" onclick="desktop.games.nwoClicker.setTab('assets')">
-                🏛️ CONSPIRATIONS (${this.upgrades.filter(u=>u.count>0).length}/${this.upgrades.length})
+                [TEMPLE]️ CONSPIRATIONS (${this.upgrades.filter(u=>u.count>0).length}/${this.upgrades.length})
               </button>
               <button class="temple-btn ${this.activeTab === 'doctrines' ? 'primary' : ''}" style="padding:3px 8px; font-size:10px;" onclick="desktop.games.nwoClicker.setTab('doctrines')">
-                📜 RECHERCHES (${this.doctrines.filter(d=>d.bought).length}/${this.doctrines.length})
+                [DOC] RECHERCHES (${this.doctrines.filter(d=>d.bought).length}/${this.doctrines.length})
               </button>
               <button class="temple-btn ${this.activeTab === 'prestige' ? 'holy' : ''}" style="padding:3px 8px; font-size:10px;" onclick="desktop.games.nwoClicker.setTab('prestige')">
-                👁️ GRAND RESET (${nextSeals > 0 ? `+${nextSeals}` : '0'})
+                [CIA] GRAND RESET (${nextSeals > 0 ? `+${nextSeals}` : '0'})
               </button>
             </div>
 
@@ -587,7 +587,7 @@ class NWOClickerGame {
                   ${u.name} <span style="color:#ffd700;">(x${u.count})</span>
                 </div>
                 <div style="color:var(--vga-light-green); font-size:10px;">
-                  +${this.formatNum(u.gen)}/s | Coût: <span style="color:#ffff55;">${this.formatNum(u.cost)} 👁️</span>
+                  +${this.formatNum(u.gen)}/s | Coût: <span style="color:#ffff55;">${this.formatNum(u.cost)} [CIA]</span>
                 </div>
               </div>
               <button class="temple-btn ${this.influence >= u.cost ? 'primary' : ''}" style="padding:2px 8px; font-size:10px;" onclick="desktop.games.nwoClicker.buyUpgrade('${u.id}')" ${this.influence < u.cost ? 'disabled' : ''}>
@@ -610,10 +610,10 @@ class NWOClickerGame {
               <span style="font-size:20px;">${d.icon}</span>
               <div style="flex:1;">
                 <div style="color:${d.bought ? '#ffd700' : '#fff'}; font-size:11px; font-weight:bold;">
-                  ${d.name} ${d.bought ? '✅ [ADOPTÉE]' : ''}
+                  ${d.name} ${d.bought ? '[OK] [ADOPTÉE]' : ''}
                 </div>
                 <div style="color:#88ff88; font-size:10px;">${d.desc}</div>
-                ${!d.bought ? `<div style="color:#ffff55; font-size:10px;">Coût : ${this.formatNum(d.cost)} 👁️</div>` : ''}
+                ${!d.bought ? `<div style="color:#ffff55; font-size:10px;">Coût : ${this.formatNum(d.cost)} [CIA]</div>` : ''}
               </div>
               ${!d.bought ? `
                 <button class="temple-btn ${this.influence >= d.cost ? 'primary' : ''}" style="padding:2px 8px; font-size:10px;" onclick="desktop.games.nwoClicker.buyDoctrine('${d.id}')" ${this.influence < d.cost ? 'disabled' : ''}>
@@ -635,7 +635,7 @@ class NWOClickerGame {
       return `
         <div style="background:#001100; border:2px solid #ffd700; padding:12px; text-align:center;">
           <div style="font-size:16px; color:#ffd700; font-weight:bold; margin-bottom:6px;">
-            👁️ LE GRAND RESET MAÇONNIQUE 👁️
+            [CIA] LE GRAND RESET MAÇONNIQUE [CIA]
           </div>
           <div style="font-size:11px; color:#fff; line-height:1.4; margin-bottom:12px;">
             Détruisez la réalité actuelle pour renaître dans un cycle supérieur.<br>
@@ -643,12 +643,12 @@ class NWOClickerGame {
           </div>
 
           <div style="background:#000; border:1px solid #555; padding:8px; margin-bottom:12px; font-size:11px;">
-            <div>Influence totale accumulée à vie : <span style="color:#55ff55;">${this.formatNum(this.totalLifetimeInfluence)} 👁️</span></div>
+            <div>Influence totale accumulée à vie : <span style="color:#55ff55;">${this.formatNum(this.totalLifetimeInfluence)} [CIA]</span></div>
             <div style="margin-top:4px;">Nouveaux Sceaux disponibles au Reset : <span style="color:#ffd700; font-weight:bold;">+${nextSeals}</span></div>
           </div>
 
           <button class="temple-btn holy" style="padding:6px 16px; font-size:12px;" onclick="desktop.games.nwoClicker.prestigeReset()" ${nextSeals <= 0 ? 'disabled' : ''}>
-            ⚡ SACRIFIER ET OBTENIR +${nextSeals} SCEAUX D'HORUS ⚡
+            [SYS] SACRIFIER ET OBTENIR +${nextSeals} SCEAUX D'HORUS [SYS]
           </button>
           <div style="font-size:9px; color:#aaa; margin-top:8px;">
             (Nécessite au moins 1 Sceau disponible pour initier le Reset)
@@ -696,12 +696,12 @@ class IlluminatiDecryptGame {
     if (val === current.plain) {
       this.score += 100;
       window.soundEngine.playVictory();
-      msg.textContent = `✅ CODE CASSÉ AVEC SUCCÈS ! +100 PTS MAÇONNIQUES !`;
+      msg.textContent = `[OK] CODE CASSÉ AVEC SUCCÈS ! +100 PTS MAÇONNIQUES !`;
       msg.style.color = "var(--vga-light-green)";
       setTimeout(() => this.init(), 1500);
     } else {
       window.soundEngine.beep(200, 0.15, 'sawtooth');
-      msg.textContent = `❌ CODE INCORRECT ! LA SOCIÉTÉ SECRÈTE VOUS OBSERVE !`;
+      msg.textContent = `[X] CODE INCORRECT ! LA SOCIÉTÉ SECRÈTE VOUS OBSERVE !`;
       msg.style.color = "var(--vga-light-red)";
     }
   }
@@ -789,7 +789,7 @@ class WhackReptilianGame {
   spawnLoop() {
     if (!this.isRunning) return;
     const holeIdx = Math.floor(Math.random() * 9);
-    this.holes[holeIdx] = Math.random() > 0.3 ? '🦎' : '🕴️';
+    this.holes[holeIdx] = Math.random() > 0.3 ? '[REP]' : '[FED]️';
     this.render();
 
     setTimeout(() => {
@@ -804,7 +804,7 @@ class WhackReptilianGame {
   hitHole(idx) {
     if (!this.isRunning || !this.holes[idx]) return;
 
-    if (this.holes[idx] === '🦎') {
+    if (this.holes[idx] === '[REP]') {
       this.score += 10;
       window.soundEngine.playReptilianLaser();
     } else {
@@ -836,7 +836,7 @@ class WhackReptilianGame {
         <div style="display:grid; grid-template-columns:repeat(3, 85px); gap:10px; justify-content:center; margin:12px auto;">
           ${this.holes.map((h, i) => `
             <div class="clickable" style="width:85px; height:85px; background:${h ? '#003300' : '#111'}; border:3px inset ${h ? '#55ff55' : '#444'}; display:flex; align-items:center; justify-content:center; font-size:36px; cursor:pointer;" onclick="desktop.games.whackReptilian.hitHole(${i})">
-              ${h || '🕳️'}
+              ${h || '[VOID]️'}
             </div>
           `).join('')}
         </div>

@@ -63,7 +63,7 @@ class DemineurCIA {
         facile: "NIVEAU : BALAYAGE SIMPLE (8 MICROS CIA)",
         normal: "NIVEAU : SCANNER STANDARD (12 MICROS CIA)",
         difficile: "NIVEAU : NID D'ESPIONS DU FBI (24 MICROS CIA)",
-        troll: "NIVEAU : RING-0 PARANOÏAQUE TROLL ⚡ (LES MICROS BOUCHENT !)"
+        troll: "NIVEAU : RING-0 PARANOÏAQUE TROLL [SYS] (LES MICROS BOUCHENT !)"
       };
       this.commentEl.textContent = labels[level] || "";
     }
@@ -80,7 +80,7 @@ class DemineurCIA {
     this.timer = 0;
     this.updateHud();
 
-    if (this.faceEl) this.faceEl.textContent = "😇";
+    if (this.faceEl) this.faceEl.textContent = "[:)]";
 
     // Initialiser matrice
     this.grid = [];
@@ -175,7 +175,7 @@ class DemineurCIA {
         cell.mine = false;
         window.soundEngine.playHolyMiracle();
         if (this.commentEl) {
-          this.commentEl.textContent = "⚡ MIRACLE ! DIEU A DÉSACTIVÉ CE MICRO ESPION AU DERNIER INSTANT !";
+          this.commentEl.textContent = "[SYS] MIRACLE ! DIEU A DÉSACTIVÉ CE MICRO ESPION AU DERNIER INSTANT !";
         }
         this.reveal(r, c);
         return;
@@ -230,7 +230,7 @@ class DemineurCIA {
     this.isGameOver = true;
     this.stopTimer();
     window.soundEngine.playExplosion();
-    if (this.faceEl) this.faceEl.textContent = "💀";
+    if (this.faceEl) this.faceEl.textContent = "[ERR]";
 
     // Révéler toutes les mines
     for (let r = 0; r < this.rows; r++) {
@@ -243,7 +243,7 @@ class DemineurCIA {
     this.render();
 
     if (this.commentEl) {
-      this.commentEl.textContent = "💥 UN MICRO DE LA CIA A EXPLOSÉ ! TU AS ÉTÉ SURVEILLÉ !";
+      this.commentEl.textContent = "[HIT] UN MICRO DE LA CIA A EXPLOSÉ ! TU AS ÉTÉ SURVEILLÉ !";
     }
   }
 
@@ -253,7 +253,7 @@ class DemineurCIA {
       this.isGameOver = true;
       this.stopTimer();
       window.soundEngine.playVictory();
-      if (this.faceEl) this.faceEl.textContent = "😎";
+      if (this.faceEl) this.faceEl.textContent = "[:D]";
 
       // Poser des drapeaux partout où il y avait des mines
       for (let r = 0; r < this.rows; r++) {
@@ -268,7 +268,7 @@ class DemineurCIA {
       this.render();
 
       if (this.commentEl) {
-        this.commentEl.textContent = "🏆 TOUS LES ESPIONS ONT ÉTÉ IDENTIFIÉS ET NEUTRALISÉS ! BÉNÉDICTION TOTALE !";
+        this.commentEl.textContent = "[TOP] TOUS LES ESPIONS ONT ÉTÉ IDENTIFIÉS ET NEUTRALISÉS ! BÉNÉDICTION TOTALE !";
       }
     }
   }
@@ -283,12 +283,12 @@ class DemineurCIA {
 
     if (cell.flagged) {
       el.classList.add('flagged');
-      el.textContent = '✝';
+      el.textContent = '+';
     } else if (cell.revealed) {
       el.classList.add('revealed');
       if (cell.mine) {
         el.classList.add('mine');
-        el.textContent = '👁'; // Badge espion CIA
+        el.textContent = '[CIA]'; // Badge espion CIA
       } else if (cell.count > 0) {
         el.classList.add(`n${cell.count}`);
         el.textContent = cell.count;

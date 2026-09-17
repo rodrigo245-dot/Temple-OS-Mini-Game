@@ -77,7 +77,7 @@ class HolySnake {
         facile: "NIVEAU : MARCHE DANS LE DÉSERT (LENT, AUCUN FED)",
         normal: "NIVEAU : PÈLERINAGE STANDARD (VITESSE MOYENNE)",
         difficile: "NIVEAU : FUITE DU PENTAGONE (RAPIDE, AGENTS INFILTRÉS)",
-        troll: "NIVEAU : SERPENT RING-0 TROLL ⚡ (VITESSE DIVINE)"
+        troll: "NIVEAU : SERPENT RING-0 TROLL [SYS] (VITESSE DIVINE)"
       };
       this.commentEl.textContent = labels[level] || "";
     }
@@ -228,7 +228,7 @@ class HolySnake {
     this.isGameOver = true;
     window.soundEngine.playDefeat();
     if (this.commentEl) {
-      this.commentEl.textContent = `💀 DÉFAITE : ${reason} (SCORE : ${this.score})`;
+      this.commentEl.textContent = `[ERR] DÉFAITE : ${reason} (SCORE : ${this.score})`;
     }
   }
 

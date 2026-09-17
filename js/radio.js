@@ -29,7 +29,7 @@ class TempleRadio {
         freq: "FM 93.4 MHz",
         title: "MIKHAÏL BAKOUNINE - DIEU ET L'ÉTAT",
         author: "Mikhaïl Bakounine (1871)",
-        tag: "🏴 ANARCHISME INSURRECTIONNEL",
+        tag: "[FLAG] ANARCHISME INSURRECTIONNEL",
         chordProgression: [
           [130.81, 196.00, 246.94, 293.66], // Do mineur 7
           [116.54, 174.61, 220.00, 261.63], // Sib Majeur
@@ -49,7 +49,7 @@ class TempleRadio {
         freq: "FM 97.8 MHz",
         title: "PIOTR KROPOTKINE - L'ENTRAIDE ET LE PAIN",
         author: "Piotr Kropotkine (1892)",
-        tag: "🍞 COMMUNISME LIBERTAIRE",
+        tag: "[BREAD] COMMUNISME LIBERTAIRE",
         chordProgression: [
           [146.83, 220.00, 261.63, 329.63], // Ré mineur 7
           [130.81, 196.00, 246.94, 293.66], // Do mineur 7
@@ -69,7 +69,7 @@ class TempleRadio {
         freq: "FM 104.2 MHz",
         title: "HAKIM BEY - ZONES D'AUTONOMIE TEMPORAIRE (TAZ)",
         author: "Hakim Bey (1991)",
-        tag: "⚡ CYBER-ANARCHISME & TAZ",
+        tag: "[SYS] CYBER-ANARCHISME & TAZ",
         chordProgression: [
           [110.00, 164.81, 207.65, 261.63], // La mineur mystique
           [98.00, 146.83, 185.00, 246.94],  // Sol suspended
@@ -89,7 +89,7 @@ class TempleRadio {
         freq: "FM 88.5 MHz",
         title: "H.D. THOREAU - LA DÉSOBÉISSANCE CIVILE",
         author: "Henry David Thoreau (1849)",
-        tag: "🌲 REFUS DE L'OBÉISSANCE",
+        tag: "[TREE] REFUS DE L'OBÉISSANCE",
         chordProgression: [
           [130.81, 164.81, 196.00, 246.94], // Do Majeur 7
           [146.83, 174.61, 220.00, 261.63], // Ré mineur 7
@@ -109,7 +109,7 @@ class TempleRadio {
         freq: "FM 106.9 MHz",
         title: "LOUISE MICHEL - LA COMMUNE & LE DRAPEAU NOIR",
         author: "Louise Michel (1886)",
-        tag: "🔥 L'INSURRECTION POPULAIRE",
+        tag: "[FIRE] L'INSURRECTION POPULAIRE",
         chordProgression: [
           [123.47, 164.81, 196.00, 246.94], // Si mineur
           [110.00, 146.83, 174.61, 220.00], // La mineur
@@ -129,7 +129,7 @@ class TempleRadio {
         freq: "FM 64.0 MHz",
         title: "TERRY DAVIS - MANIFESTE DU RING-0 & DU CODE PUR",
         author: "Terry A. Davis (2014)",
-        tag: "✝ RÉSISTANCE RING-0 & PURIFICATION",
+        tag: "+ RÉSISTANCE RING-0 & PURIFICATION",
         chordProgression: [
           [110.00, 130.81, 164.81, 196.00], // Am7
           [116.54, 146.83, 174.61, 220.00], // Bb maj
@@ -149,7 +149,7 @@ class TempleRadio {
         freq: "FM 108.0 MHz",
         title: "NUIT NOIRE - DARK AMBIENT / DUNGEON SYNTH",
         author: "Temple Audio Sanctum",
-        tag: "🌙 AMBIENT MÉDITATIF PUR (SANS VOIX)",
+        tag: "[DARK] AMBIENT MÉDITATIF PUR (SANS VOIX)",
         chordProgression: [
           [82.41, 123.47, 146.83, 196.00],  // Mi mineur 7
           [98.00, 130.81, 164.81, 196.00],  // Sol Majeur
@@ -451,7 +451,7 @@ class TempleRadio {
     // Topbar radio button
     const btn = document.getElementById('radio-btn');
     if (btn) {
-      btn.textContent = this.isPlaying ? `📻 RADIO : ${st.title.split(' - ')[0]}` : `📻 RADIO : OFF`;
+      btn.textContent = this.isPlaying ? `[RAD] RADIO : ${st.title.split(' - ')[0]}` : `[RAD] RADIO : OFF`;
       btn.classList.toggle('active', this.isPlaying);
     }
 
@@ -463,13 +463,13 @@ class TempleRadio {
     if (authorEl) authorEl.textContent = `${st.author} • ${st.tag}`;
 
     const playBtn = document.getElementById('radio-win-play');
-    if (playBtn) playBtn.textContent = this.isPlaying ? '⏸️ PAUSE' : '▶️ DIFFUSER';
+    if (playBtn) playBtn.textContent = this.isPlaying ? '[PAUSE] PAUSE' : '[PLAY] DIFFUSER';
 
     const voiceBtn = document.getElementById('radio-win-voice-toggle');
-    if (voiceBtn) voiceBtn.textContent = this.voiceEnabled ? '🗣️ PODCAST : ON' : '🗣️ PODCAST : OFF';
+    if (voiceBtn) voiceBtn.textContent = this.voiceEnabled ? '[VOX] PODCAST : ON' : '[VOX] PODCAST : OFF';
 
     const musicBtn = document.getElementById('radio-win-music-toggle');
-    if (musicBtn) musicBtn.textContent = this.musicEnabled ? '🎵 AMBIENT : ON' : '🎵 AMBIENT : OFF';
+    if (musicBtn) musicBtn.textContent = this.musicEnabled ? '[NOTE] AMBIENT : ON' : '[NOTE] AMBIENT : OFF';
 
     const tapeLeft = document.getElementById('tape-reel-left');
     const tapeRight = document.getElementById('tape-reel-right');
@@ -490,7 +490,7 @@ class TempleRadio {
         <div class="clickable" style="padding:4px 8px; margin-bottom:3px; background:${idx === this.currentStation ? '#003300' : '#000'}; border:1px solid ${idx === this.currentStation ? '#55ff55' : '#333'}; font-size:11px; display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="window.templeRadio.selectStation(${idx})">
           <span style="color:${idx === this.currentStation ? '#ffff55' : '#aaa'}; font-weight:bold;">${s.freq}</span>
           <span style="color:#fff; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; max-width:240px;">${s.title}</span>
-          <span style="color:${idx === this.currentStation ? '#55ff55' : '#555'}; font-size:10px;">${idx === this.currentStation && this.isPlaying ? '● ON AIR' : '▶'}</span>
+          <span style="color:${idx === this.currentStation ? '#55ff55' : '#555'}; font-size:10px;">${idx === this.currentStation && this.isPlaying ? '● ON AIR' : '[PLAY]'}</span>
         </div>
       `).join('');
     }

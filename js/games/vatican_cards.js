@@ -21,7 +21,7 @@ class VaticanCardsGame {
   }
 
   buildDeck() {
-    const suits = ['✝', '👁️', '🔺', '👑'];
+    const suits = ['+', '[CIA]', '[NWO]', '[QUEEN]'];
     const values = [
       { name: '2', val: 2 }, { name: '3', val: 3 }, { name: '4', val: 4 },
       { name: '5', val: 5 }, { name: '6', val: 6 }, { name: '7', val: 7 },
@@ -79,18 +79,18 @@ class VaticanCardsGame {
     let resultMsg = "";
     if (pScore > 21) {
       this.playerMoney -= this.currentBet;
-      resultMsg = "❌ BUST ! VOUS AVEZ DÉPASSÉ 21 ! LE DIABLE EMPORTE LA MISE.";
+      resultMsg = "[X] BUST ! VOUS AVEZ DÉPASSÉ 21 ! LE DIABLE EMPORTE LA MISE.";
       window.soundEngine.playDefeat();
     } else if (dScore > 21 || pScore > dScore) {
       this.playerMoney += this.currentBet;
-      resultMsg = "🏆 VICTOIRE DIVINE ! LE DIABLE EST EXORCISÉ DE LA TABLE !";
+      resultMsg = "[TOP] VICTOIRE DIVINE ! LE DIABLE EST EXORCISÉ DE LA TABLE !";
       window.soundEngine.playVictory();
     } else if (pScore === dScore) {
-      resultMsg = "⚖️ ÉGALITÉ ! PAIX PROVISOIRE AVEC LES ENFERS.";
+      resultMsg = "[LAW] ÉGALITÉ ! PAIX PROVISOIRE AVEC LES ENFERS.";
       window.soundEngine.playPaddleHit();
     } else {
       this.playerMoney -= this.currentBet;
-      resultMsg = "❌ DÉFAITE ! LE CROUPIER A UNE MEILLEURE MAIN.";
+      resultMsg = "[X] DÉFAITE ! LE CROUPIER A UNE MEILLEURE MAIN.";
       window.soundEngine.playDefeat();
     }
 
@@ -116,8 +116,8 @@ class VaticanCardsGame {
     this.container.innerHTML = `
       <div style="text-align:center; padding:10px; background:#002200; border:2px solid #55ff55;">
         <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-weight:bold; font-size:12px;">
-          <span style="color:var(--vga-yellow);">OR MAÇONNIQUE : ${this.playerMoney} 🪙</span>
-          <span style="color:var(--vga-light-cyan);">MISE : ${this.currentBet} 🪙</span>
+          <span style="color:var(--vga-yellow);">OR MAÇONNIQUE : ${this.playerMoney} [COIN]</span>
+          <span style="color:var(--vga-light-cyan);">MISE : ${this.currentBet} [COIN]</span>
         </div>
 
         <!-- Main du Diable -->
@@ -126,7 +126,7 @@ class VaticanCardsGame {
           <div style="display:flex; gap:8px; justify-content:center; margin-top:4px;">
             ${this.dealerHand.map((c, i) => `
               <div style="width:55px; height:75px; background:#fff; color:#000; border:2px solid #333; border-radius:4px; display:flex; flex-direction:column; justify-content:space-between; padding:3px; font-weight:bold; font-size:11px;">
-                ${(!this.isGameOver && i === 1) ? '<div style="margin:auto; font-size:24px; color:#aa0000;">😈</div>' : `
+                ${(!this.isGameOver && i === 1) ? '<div style="margin:auto; font-size:24px; color:#aa0000;">[DEVIL]</div>' : `
                   <div>${c.name[0]}</div>
                   <div style="font-size:18px;">${c.suit}</div>
                   <div style="text-align:right;">${c.name[0]}</div>
