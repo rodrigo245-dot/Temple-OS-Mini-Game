@@ -17,6 +17,12 @@ class TempleRadio {
     this.speechTimer = null;
     this.speechParagraphIdx = 0;
 
+    // Voix et profil audio
+    this.selectedVoiceURI = 'auto';
+    this.timbreStyle = 'radio'; // 'radio', 'storyteller', 'natural', 'solemn'
+    this.availableVoices = [];
+    this.initVoicesList();
+
     // Contexte Audio Web
     this.audioCtx = null;
     this.masterGain = null;
@@ -364,6 +370,125 @@ class TempleRadio {
     this.synthInterval = setInterval(playNextChord, 4000);
   }
 
+  initVoicesList() {
+    if (typeof window === 'undefined' || !window.speechSynthesis) return;
+    const populate = () => {
+      this.availableVoices = window.speechSynthesis.getVoices() || [];
+      this.populateVoiceSelect();
+    };
+    populate();
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = populate;
+    }
+  }
+
+  populateVoiceSelect() {
+    const select = document.getElementById('radio-voice-select');
+    if (!select || !this.availableVoices || this.availableVoices.length === 0) return;
+
+    // Filtrer les voix françaises et quelques voix de haute qualité
+    const frVoices = this.availableVoices.filter(v => v.lang && v.lang.startsWith('fr'));
+    const otherVoices = this.availableVoices.filter(v => !v.lang || !v.lang.startsWith('fr'));
+
+    let html = '<option value="auto">Auto (Voix Naturelle HD)</option>';
+
+    if (frVoices.length > 0) {
+      html += '<optgroup label="Voix Françaises">';
+      frVoices.forEach(v => {
+        const isSelected = this.selectedVoiceURI === v.voiceURI ? 'selected' : '';
+        html += `<option value="${v.voiceURI}" ${isSelected}>${v.name} (${v.lang})</option>`;
+      });
+      html += '</optgroup>';
+    }
+
+    if (otherVoices.length > 0) {
+      html += '<optgroup label="Autres Voix">';
+      otherVoices.slice(0, 15).forEach(v => {
+        const isSelected = this.selectedVoiceURI === v.voiceURI ? 'selected' : '';
+        html += `<option value="${v.voiceURI}" ${isSelected}>${v.name} (${v.lang})</option>`;
+      });
+      html += '</optgroup>';
+    }
+
+    select.innerHTML = html;
+  }
+
+  setVoice(voiceURI) {
+    this.selectedVoiceURI = voiceURI;
+    if (this.isPlaying && this.voiceEnabled) {
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+      if (this.speechTimer) clearTimeout(this.speechTimer);
+      this.startPodcastSpeech();
+    }
+  }
+
+  setTimbre(style) {
+    this.timbreStyle = style;
+    if (this.isPlaying && this.voiceEnabled) {
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+      if (this.speechTimer) clearTimeout(this.speechTimer);
+      this.startPodcastSpeech();
+    }
+  }
+
+  // Recherche la voix la plus naturelle et agréable possible
+  getBestVoice() {
+    if (!window.speechSynthesis) return null;
+    const voices = window.speechSynthesis.getVoices() || [];
+    if (voices.length === 0) return null;
+
+    // Si l'utilisateur a choisi une voix spécifique
+    if (this.selectedVoiceURI && this.selectedVoiceURI !== 'auto') {
+      const chosen = voices.find(v => v.voiceURI === this.selectedVoiceURI);
+      if (chosen) return chosen;
+    }
+
+    // Ordre de préférence pour les voix françaises les plus chaudes et agréables
+    const preferredOrder = [
+      'Thomas',      // Voix française macOS très naturelle, fluide et claire
+      'Amélie',      // Voix française très posée et douce
+      'Audrey',      // Voix française studio
+      'Aurelie',     // Voix française studio
+      'Jacques',     // Voix française masculine
+      'Flo',         // Voix moderne
+      'Eddy'         // Voix moderne
+    ];
+
+    for (const name of preferredOrder) {
+      const match = voices.find(v => v.lang && v.lang.startsWith('fr') && v.name.toLowerCase().includes(name.toLowerCase()));
+      if (match) return match;
+    }
+
+    // Voix française par défaut du système
+    const defaultFr = voices.find(v => v.lang && v.lang.startsWith('fr') && v.default);
+    if (defaultFr) return defaultFr;
+
+    // N'importe quelle voix française
+    const anyFr = voices.find(v => v.lang && v.lang.startsWith('fr'));
+    if (anyFr) return anyFr;
+
+    return voices[0] || null;
+  }
+
+  // Paramètres acoustiques selon le style choisi pour une écoute reposante
+  getTimbreParams() {
+    switch (this.timbreStyle) {
+      case 'storyteller':
+        // Conteur : tempo calme, tonalité douce, très agréable
+        return { rate: 0.90, pitch: 0.98 };
+      case 'natural':
+        // Débit naturel conversationnel
+        return { rate: 1.0, pitch: 1.0 };
+      case 'solemn':
+        // Discours historique / orateur engagé
+        return { rate: 0.88, pitch: 0.92 };
+      case 'radio':
+      default:
+        // Studio FM : débit fluide, posé (0.94), tonalité légèrement ronde (0.96)
+        return { rate: 0.94, pitch: 0.96 };
+    }
+  }
+
   // Podcasts narrés en direct avec SpeechSynthesis
   startPodcastSpeech() {
     if (!this.isPlaying || !this.voiceEnabled) return;
@@ -377,28 +502,32 @@ class TempleRadio {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'fr-FR';
-      utterance.rate = 0.95; // Élocution posée, solennelle
-      utterance.pitch = 0.88; // Voix grave et radiophonique
 
-      // Recherche d'une voix française naturelle
-      const voices = window.speechSynthesis.getVoices();
-      const frVoice = voices.find(v => v.lang && v.lang.startsWith('fr') && !v.name.includes('Google'));
-      if (frVoice) utterance.voice = frVoice;
+      const voice = this.getBestVoice();
+      if (voice) {
+        utterance.voice = voice;
+        utterance.lang = voice.lang || 'fr-FR';
+      }
+
+      const params = this.getTimbreParams();
+      utterance.rate = params.rate;
+      utterance.pitch = params.pitch;
+      utterance.volume = 1.0;
 
       utterance.onend = () => {
         if (!this.isPlaying) return;
         this.speechParagraphIdx++;
-        // Pause de 3 secondes entre chaque tirade pour apprécier la musique
+        // Pause de 2.8 secondes entre chaque extrait pour apprécier la musique ambient
         this.speechTimer = setTimeout(() => {
           this.startPodcastSpeech();
-        }, 3200);
+        }, 2800);
       };
 
-      utterance.onerror = () => {
+      utterance.onerror = (err) => {
         this.speechTimer = setTimeout(() => {
           this.speechParagraphIdx++;
           this.startPodcastSpeech();
-        }, 6000);
+        }, 5000);
       };
 
       window.speechSynthesis.speak(utterance);
@@ -498,6 +627,7 @@ class TempleRadio {
 
   renderWindow() {
     this.updateUI();
+    this.populateVoiceSelect();
     const st = this.stations[this.currentStation];
     this.displayTranscript(st.paragraphs[this.speechParagraphIdx % st.paragraphs.length]);
   }

@@ -1085,7 +1085,7 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
         </div>
 
         <!-- Controls -->
-        <div style="display:flex; gap:8px; margin-bottom:10px; align-items:center; flex-wrap:wrap;">
+        <div style="display:flex; gap:8px; margin-bottom:8px; align-items:center; flex-wrap:wrap;">
           <button id="radio-win-play" class="action-btn" onclick="window.templeRadio.togglePlay()" style="min-width:110px;">[PLAY] DIFFUSER</button>
           <button class="action-btn" onclick="window.templeRadio.prevStation()"><< PRÉC.</button>
           <button class="action-btn" onclick="window.templeRadio.nextStation()">SUIV. >></button>
@@ -1095,6 +1095,21 @@ TAPEZ 'help;' POUR LES COMMANDES SAINTES.
             <span style="font-size:10px; color:#aaa;">VOL:</span>
             <input type="range" min="0" max="1" step="0.05" value="0.5" onchange="window.templeRadio.setVolume(this.value)" style="width:70px;">
           </div>
+        </div>
+
+        <!-- Voice Settings -->
+        <div style="display:flex; gap:10px; margin-bottom:10px; align-items:center; background:#0a0a0a; border:1px solid #333; padding:6px 10px; font-size:11px;">
+          <span style="color:var(--vga-light-cyan); font-weight:bold;">[VOIX] :</span>
+          <select id="radio-voice-select" onchange="window.templeRadio.setVoice(this.value)" style="background:#111; color:#fff; border:1px solid var(--vga-light-green); padding:2px 6px; font-family:monospace; font-size:11px; max-width:230px;">
+            <option value="auto">Auto (Voix Naturelle HD)</option>
+          </select>
+          <span style="color:#888; margin-left:8px;">STYLE :</span>
+          <select id="radio-timbre-select" onchange="window.templeRadio.setTimbre(this.value)" style="background:#111; color:#ffff55; border:1px solid #555; padding:2px 6px; font-family:monospace; font-size:11px;">
+            <option value="radio" selected>Studio FM (Chaud & Posé)</option>
+            <option value="storyteller">Conteur / Calme</option>
+            <option value="natural">Naturel Fluide</option>
+            <option value="solemn">Solennel / Orateur</option>
+          </select>
         </div>
 
         <!-- Transcription en direct -->
