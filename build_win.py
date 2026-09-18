@@ -126,11 +126,18 @@ print("resources.neu generated successfully. Size:", os.path.getsize(asar_output
 # 4. Copy neutralino-win_x64.exe to TempleOS_Arcade.exe
 win_exe_src = "/tmp/neu_dl/neutralino-win_x64.exe"
 win_exe_dst = os.path.join(OUTPUT_DIR, "TempleOS_Arcade.exe")
-shutil.copy(win_exe_src, win_exe_dst)
-print("TempleOS_Arcade.exe created successfully. Size:", os.path.getsize(win_exe_dst))
+if os.path.exists(win_exe_src):
+    shutil.copy(win_exe_src, win_exe_dst)
+elif not os.path.exists(win_exe_dst):
+    # Try getting from git
+    subprocess.run(["git", "checkout", "HEAD", "--", "TempleOS_Arcade_Windows/TempleOS_Arcade.exe"], cwd=DIR)
+
+if os.path.exists(win_exe_dst):
+    print("TempleOS_Arcade.exe ready. Size:", os.path.getsize(win_exe_dst))
 
 # Clean temp build
-shutil.rmtree(BUILD_DIR)
+if os.path.exists(BUILD_DIR):
+    shutil.rmtree(BUILD_DIR)
 
 # 5. Zip Windows package
 zip_path = os.path.join(DIR, "TempleOS_Arcade_Windows_x64.zip")

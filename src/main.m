@@ -10,7 +10,8 @@
 @end
 @implementation LoggingHandler
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    NSLog(@"[JS] %@", message.body);
+    fprintf(stderr, "[WKWEBVIEW_JS] %s\n", [message.body description].UTF8String);
+    fflush(stderr);
 }
 @end
 
@@ -87,15 +88,24 @@
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    NSLog(@"[DEBUG] WKWebView didFinishNavigation!");
+    fprintf(stderr, "[WKWEBVIEW] didFinishNavigation: Index loaded successfully!\n");
+    fflush(stderr);
+    [webView evaluateJavaScript:@"console.log('TEST FROM OBJC: desktop is', typeof window.desktop, 'windows count:', Object.keys(window.desktop ? window.desktop.windows : {}).length);" completionHandler:^(id result, NSError *error) {
+        if (error) {
+            fprintf(stderr, "[WKWEBVIEW] Eval Error: %s\n", error.localizedDescription.UTF8String);
+            fflush(stderr);
+        }
+    }];
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"[DEBUG] WKWebView didFailNavigation: %@", error);
+    fprintf(stderr, "[WKWEBVIEW] didFailNavigation: %s\n", error.localizedDescription.UTF8String);
+    fflush(stderr);
 }
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"[DEBUG] WKWebView didFailProvisionalNavigation: %@", error);
+    fprintf(stderr, "[WKWEBVIEW] didFailProvisionalNavigation: %s\n", error.localizedDescription.UTF8String);
+    fflush(stderr);
 }
 
 - (void)setupMenuBar {

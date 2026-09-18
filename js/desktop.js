@@ -28,29 +28,37 @@ class TempleDesktop {
     const bootEl = document.getElementById('bootloader-overlay');
     if (!bootEl) return;
 
+    let interval = null;
     const skipBoot = () => {
-      bootEl.style.display = 'none';
-      window.soundEngine.playHolyMiracle();
-      if (window.speechEngine) {
-        window.speechEngine.speak("Temple O S Arcade chargé. Gloire à Dieu.");
+      if (interval) {
+        clearInterval(interval);
+        interval = null;
       }
+      bootEl.style.display = 'none';
+      bootEl.style.pointerEvents = 'none';
+      try {
+        if (window.soundEngine) window.soundEngine.playHolyMiracle();
+        if (window.speechEngine) window.speechEngine.speak("Temple O S Arcade chargé. Gloire à Dieu.");
+      } catch (e) {}
     };
 
     bootEl.addEventListener('click', skipBoot);
+    bootEl.addEventListener('mousedown', skipBoot);
     window.addEventListener('keydown', (e) => {
-      if (bootEl.style.display !== 'none' && (e.key === 'Enter' || e.key === 'Space')) {
+      if (bootEl.style.display !== 'none') {
         skipBoot();
       }
     });
 
     let countdown = 3;
     const cdEl = document.getElementById('bios-countdown');
-    const interval = setInterval(() => {
+    interval = setInterval(() => {
       countdown--;
       if (cdEl) cdEl.textContent = countdown;
-      window.soundEngine.beep(750, 0.04);
+      try {
+        if (window.soundEngine) window.soundEngine.beep(750, 0.04);
+      } catch (e) {}
       if (countdown <= 0) {
-        clearInterval(interval);
         skipBoot();
       }
     }, 1000);
@@ -65,12 +73,26 @@ class TempleDesktop {
 
     const iconEls = document.querySelectorAll('.desktop-icon');
     iconEls.forEach(icon => {
-      icon.addEventListener('click', () => {
-        window.soundEngine.playClick();
+      icon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (window.soundEngine) window.soundEngine.playClick();
         const targetWinId = icon.dataset.window;
         if (targetWinId) this.openWindow(targetWinId);
       });
     });
+
+    // Écouteur délégué sur le bureau pour garantir la détection des clics sur toutes les icônes
+    const desktopEl = document.getElementById('desktop');
+    if (desktopEl) {
+      desktopEl.addEventListener('click', (e) => {
+        const icon = e.target.closest('.desktop-icon');
+        if (icon && icon.dataset && icon.dataset.window) {
+          const targetWinId = icon.dataset.window;
+          if (window.soundEngine) window.soundEngine.playClick();
+          this.openWindow(targetWinId);
+        }
+      });
+    }
 
     // Toggle Audio speaker
     const speakerBtn = document.getElementById('speaker-toggle');
@@ -410,7 +432,11 @@ class TempleDesktop {
       console.warn("Fenêtre inconnue :", id);
       return;
     }
+    // Assurer la visibilité immédiate et lever toute minimisation
     win.style.display = 'flex';
+    win.style.visibility = 'visible';
+    win.style.opacity = '1';
+    win.classList.remove('minimized');
     this.bringToFront(win);
     if (window.soundEngine) window.soundEngine.playClick();
 
@@ -418,8 +444,8 @@ class TempleDesktop {
     if (id !== 'win-explorer') {
       const deskW = window.innerWidth || 1024;
       const deskH = (window.innerHeight || 768) - 56;
-      const winW = parseInt(win.style.width) || win.offsetWidth || 480;
-      const winH = parseInt(win.style.height) || win.offsetHeight || 380;
+      const winW = parseInt(win.style.width) || 480;
+      const winH = parseInt(win.style.height) || 360;
       const posX = Math.max(15, Math.floor((deskW - winW) / 2));
       const posY = Math.max(32, Math.floor((deskH - winH) / 2));
       win.style.left = `${posX}px`;
